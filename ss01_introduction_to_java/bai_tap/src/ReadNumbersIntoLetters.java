@@ -76,10 +76,10 @@ public class ReadNumbersIntoLetters {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Nhập số bạn muốn đọc: ");
+        System.out.println("Enter the number you want to read: ");
         int number = sc.nextInt();
         while (number<0 || number>999){
-            System.out.println("Vui lòng nhập lại số bạn muốn đọc: ");
+            System.out.println("Out of ability. Please re-enter. ");
             number = sc.nextInt();
         }
         if (number <= 9) {
