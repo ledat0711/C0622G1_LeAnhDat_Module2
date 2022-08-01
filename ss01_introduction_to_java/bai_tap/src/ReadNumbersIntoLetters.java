@@ -11,13 +11,11 @@ public class ReadNumbersIntoLetters {
     }
 
     public static void oneNumber(int number) {
-        if (number >= 0 && number <= 9) {
             if (number == 0) {
                 System.out.println("Zero");
             } else {
                 arrayNumber(number);
             }
-        }
     }
 
     public static void twoNumbers(int number) {
@@ -85,8 +83,9 @@ public class ReadNumbersIntoLetters {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập số bạn muốn đọc: ");
         int number = sc.nextInt();
-        oneNumber(number);
-        if (number >= 10 && number <= 99) {
+        if (number >= 0 && number <= 9) {
+            oneNumber(number);
+        }else if (number >= 10 && number <= 99) {
             twoNumbers(number);
         } else if (number >= 100) {
             threeNumbers(number);
