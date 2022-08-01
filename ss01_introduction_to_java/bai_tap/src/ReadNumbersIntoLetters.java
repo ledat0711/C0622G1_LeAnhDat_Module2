@@ -2,12 +2,8 @@ import java.util.Scanner;
 
 public class ReadNumbersIntoLetters {
     public static void arrayNumber(int index) {
-        String[] array = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
-        if (index == 0) {
-            System.out.println("");
-        } else {
+        String[] array = {"", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
             System.out.printf(array[index]);
-        }
     }
 
     public static void oneNumber(int number) {
@@ -21,8 +17,7 @@ public class ReadNumbersIntoLetters {
     public static void twoNumbers(int number) {
         if (number >= 0 && number <= 9) {
             oneNumber(number);
-        }
-        if (number >= 10 && number <= 15) {
+        }else if (number >= 10 && number <= 15) {
             String[] arrayInTwoNum = {"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen"};
             System.out.println(arrayInTwoNum[number - 10]);
         } else if (number >= 16 && number <= 19) {
