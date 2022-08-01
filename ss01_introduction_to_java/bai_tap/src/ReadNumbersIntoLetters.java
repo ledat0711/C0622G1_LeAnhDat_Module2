@@ -24,7 +24,7 @@ public class ReadNumbersIntoLetters {
             int numberIn = number % 10;
             arrayNumber(numberIn);
             System.out.println("teen");
-        } else if (number >= 20 && number <= 99) {
+        } else {
             if (number <= 29) {
                 System.out.print("Twenty ");
                 int rightNumberOf20 = number % 20;
