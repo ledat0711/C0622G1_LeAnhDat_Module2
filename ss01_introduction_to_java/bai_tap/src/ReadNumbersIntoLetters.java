@@ -16,8 +16,8 @@ public class ReadNumbersIntoLetters {
 
     public static void twoNumbers(int number) {
         if (number >= 0 && number <= 9) {
-            oneNumber(number);
-        }else if (number >= 10 && number <= 15) {
+            arrayNumber(number);
+        } else if (number >= 10 && number <= 15) {
             String[] arrayInTwoNum = {"Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen"};
             System.out.println(arrayInTwoNum[number - 10]);
         } else if (number >= 16 && number <= 19) {
