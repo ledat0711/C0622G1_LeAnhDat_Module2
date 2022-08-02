@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class ShowFirst20Primes {
     public static boolean checkPrime(int numberInside) {
         int i;
