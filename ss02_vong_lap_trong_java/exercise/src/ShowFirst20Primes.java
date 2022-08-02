@@ -1,8 +1,8 @@
 public class ShowFirst20Primes {
     public static boolean checkPrime(int numberInside) {
-        int i;
-        for (i = 2; i <= Math.sqrt(numberInside); i++) {
-            if (numberInside % i == 0) {
+        int j;
+        for (j = 2; j <= Math.sqrt(numberInside); j++) {
+            if (numberInside % j == 0) {
                 return false;
             }
         }
