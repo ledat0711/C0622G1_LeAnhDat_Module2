@@ -4,11 +4,7 @@ public class SumNumbersOnMainDiagonal {
         Scanner sc = new Scanner(System.in);
         float sum = 0;
         for (int i = 0; i < arr2D.length; i++) {
-            for (int j = 0; j < arr2D[i].length; j++) {
-                if (i==j) {
-                    sum += arr2D[i][j];
-                }
-            }
+            sum += arr2D[i][i];
         }
         System.out.printf("\nTổng các phần tử đường chéo chính: %f ", sum);
     }
