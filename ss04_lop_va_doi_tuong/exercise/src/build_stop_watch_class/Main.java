@@ -12,12 +12,23 @@ public class Main {
             stopWatchObject.start();
             stopWatchObject.getStartTime();
         }
-        System.out.print("\nNhấn 2 để kết thúc bấm giờ và in ra thời gian: ");
-        int pressTwo = Integer.parseInt(sc.nextLine());
-        if (pressTwo == 2) {
+        int i;
+        int j;
+        int l;
+        long k=0;
+        for (i = 0; i < 1000; i++) {
+            for (j = 0; j < 1000; j++){
+                for (l=0; l < 1000;l++){
+                    k++;
+                }
+            }
+        }
+        System.out.println(k);
+        long pressTwo = k;
+        if (pressTwo == 1000000000) {
             stopWatchObject.stop();
             stopWatchObject.getEndTime();
-            System.out.println("Đã trôi qua " + stopWatchObject.getElapsedTime()+" mili giây");
+            System.out.println("\nĐã trôi qua " + stopWatchObject.getElapsedTime() + " mili giây");
         }
     }
 }

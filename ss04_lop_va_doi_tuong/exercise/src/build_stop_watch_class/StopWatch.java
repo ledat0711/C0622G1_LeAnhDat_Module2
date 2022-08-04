@@ -33,16 +33,17 @@ import java.util.Date;
 class StopWatch {
     private long startTime;
     private long endTime;
+
+    public StopWatch() {
+        long startTime = System.currentTimeMillis();
+    }
+
     public long getStartTime() {
         return this.startTime;
     }
 
     public long getEndTime() {
         return this.endTime;
-    }
-
-    public StopWatch() {
-        long endTime = System.currentTimeMillis();
     }
 
     public void start() {
