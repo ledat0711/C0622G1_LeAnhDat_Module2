@@ -59,7 +59,7 @@ public class FanClass {
         }
         return ("fan is off" +
                 "\nColor: " + this.color +
-                "\nRadius: " + this.radius +
+                "\nRadius= " + this.radius +
                 "\n");
     }
 }
