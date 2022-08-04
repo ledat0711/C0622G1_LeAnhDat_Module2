@@ -1,5 +1,8 @@
 package build_stop_watch_class;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
@@ -12,6 +15,8 @@ public class Main {
             stopWatchObject.start();
             stopWatchObject.getStartTime();
         }
+        LocalDateTime time1 = LocalDateTime.now();
+        System.out.println(time1);
         int i;
         int j;
         int l;
@@ -23,11 +28,12 @@ public class Main {
                 }
             }
         }
-        System.out.println(k);
         long pressTwo = k;
         if (pressTwo == 1000000000) {
             stopWatchObject.stop();
             stopWatchObject.getEndTime();
+            LocalDateTime time2 = LocalDateTime.now();
+            System.out.println(time2);
             System.out.println("\nĐã trôi qua " + stopWatchObject.getElapsedTime() + " mili giây");
         }
     }
