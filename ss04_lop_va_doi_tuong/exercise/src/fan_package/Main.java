@@ -9,12 +9,12 @@ public class Main {
         fanObject1.setRadius(10);
         fanObject1.setColor("yellow");
         fanObject1.setSpeed(FAST);
-        System.out.println(fanObject1.toString());
+        System.out.println("First "+fanObject1.toString());
         FanClass fanObject2= new FanClass();
         fanObject2.setOn(false);
         fanObject2.setRadius(5);
         fanObject2.setColor("blue");
         fanObject2.setSpeed(MEDIUM);
-        System.out.println(fanObject2.toString());
+        System.out.println("Second "+fanObject2.toString());
     }
 }

@@ -52,12 +52,12 @@ public class FanClass {
 
     public String toString() {
         if (this.on) {
-            return ("Fan is on" +
+            return ("fan is on" +
                     "\nSpeed: " + getSpeed() +
                     "\nColor: " + this.color +
                     "\nRadius= " + this.radius + "\n");
         }
-        return ("Fan is off" +
+        return ("fan is off" +
                 "\nColor: " + this.color +
                 "\nRadius: " + this.radius +
                 "\n");
