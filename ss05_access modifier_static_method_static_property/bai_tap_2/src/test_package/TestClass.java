@@ -1,9 +1,11 @@
 package test_package;
-
+//static không thể gọi non-static
 public class TestClass {
     String ten;
     private int tuoi;
     boolean gioiTinh;
+    static int soKhacStatic=18;
+    private int soKhacNonStaticPrivate = 67;
 
     public TestClass() {
     }
@@ -16,7 +18,7 @@ public class TestClass {
     public void setTuoi(int tuoi){
         this.tuoi=tuoi;
     }
-    public int getTuoi() {
-        return tuoi;
+    public static int getTuoi() {
+        return soKhacStatic;
     }
 }
