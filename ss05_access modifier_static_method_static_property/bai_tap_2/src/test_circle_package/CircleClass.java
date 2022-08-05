@@ -12,6 +12,14 @@ public class CircleClass {
         this.radius = radius;
     }
 
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public double getRadius() {
         return this.radius;
     }

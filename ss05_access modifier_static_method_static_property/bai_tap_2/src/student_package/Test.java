@@ -11,7 +11,7 @@ package student_package;
 public class Test {
     public static void main(String[] args) {
         Student studentObject = new Student();
-        studentObject.setClassName("C12");
         studentObject.setName("Kevin");
+        studentObject.setClassName("C12");
     }
 }

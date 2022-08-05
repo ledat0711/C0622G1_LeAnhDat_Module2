@@ -1,8 +1,8 @@
 package test_package;
 
 public class TestClass {
-    String ten; /// biến ten này có phải sẽ được chuyển thành this.ten ko?
-    int tuoi;
+    String ten;
+    private int tuoi;
     boolean gioiTinh;
 
     public TestClass() {
