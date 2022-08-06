@@ -12,11 +12,10 @@ Xây dựng lớp TestCandidate để kiểm tra lớp trên:
 public class Candidate {
     private String studentID;
     private String name;
-    private String dateOfBirth;
+    private String birthDay;
     private int mathScore;
     private int literatureScore;
     private int englishScore;
-    private int sum;
 
     public Candidate() {
     }
@@ -29,8 +28,8 @@ public class Candidate {
         this.name = name;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
     }
 
     public void setMathScore(int mathScore) {
@@ -53,8 +52,8 @@ public class Candidate {
         return name;
     }
 
-    public String getDateOfBirth() {
-        return dateOfBirth;
+    public String getBirthDay() {
+        return birthDay;
     }
 
     public int getMathScore() {
@@ -70,6 +69,6 @@ public class Candidate {
     }
 
     public int getSum() {
-        return this.mathScore+this.literatureScore+this.englishScore;
+        return this.mathScore + this.literatureScore + this.englishScore;
     }
 }

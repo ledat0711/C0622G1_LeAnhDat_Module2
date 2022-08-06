@@ -7,10 +7,11 @@ public class TestCandidate {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập vào số thí sinh: ");
         int candidatesNumber = Integer.parseInt(scanner.nextLine());
+        System.out.println();
 
         Candidate candidate = new Candidate();
         int i;
-        String list = "";
+        StringBuilder list = new StringBuilder();
         for (i = 0; i < candidatesNumber; i++) {
             System.out.println("Nhập thông tin thí sinh thứ " + (i + 1));
             System.out.print("Mã số học sinh: ");
@@ -23,10 +24,11 @@ public class TestCandidate {
             candidate.setLiteratureScore(Integer.parseInt(scanner.nextLine()));
             System.out.print("Điểm Anh: ");
             candidate.setEnglishScore(Integer.parseInt(scanner.nextLine()));
+            System.out.println();
             if (candidate.getSum() > 15) {
-                list += "\nMã số thí sinh: " + candidate.getStudentID() +
-                        ". Tên thí sinh: " + candidate.getName() +
-                        ". Điểm: " + candidate.getSum();
+                list.append("\nMã số thí sinh: ").append(candidate.getStudentID()).
+                        append(". Tên thí sinh: ").append(candidate.getName()).
+                        append(". Tổng điểm: ").append(candidate.getSum());
             }
         }
         System.out.println("\nNhững thí sinh có số điểm hơn 15: ");

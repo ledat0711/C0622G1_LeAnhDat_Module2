@@ -7,6 +7,7 @@ public class TestClass {
     static int soKhacStatic=18;
     private int soKhacNonStaticPrivate = 67;
     static int numberCheckStatic = 789;
+    String khongStaticKhongPrivate = "khongStaticKhongPrivate";
     public TestClass() {
     }
 
@@ -23,8 +24,19 @@ public class TestClass {
     public static int getNumberCheckStatic(){
         return TestClass.numberCheckStatic;
     }
+    public static int sgs(){
+        return staticClass();
+//        return staticClass();
+    }
 
-    public int getTuoi(){
-        return this.tuoi;
+    public int nonStaticGetStatic(){
+        return nonStaticPhuongThuc();
+    }
+
+    public static int staticClass(){
+        return 0;
+    }
+    public int nonStaticPhuongThuc(){
+        return 2;
     }
 }
