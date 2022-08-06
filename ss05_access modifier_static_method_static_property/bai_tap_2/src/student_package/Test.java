@@ -12,6 +12,6 @@ public class Test {
     public static void main(String[] args) {
         Student studentObject = new Student();
         studentObject.setName("Kevin");
-        studentObject.setClassName("C12");
+        studentObject.setClasses("C12");
     }
 }

@@ -8,7 +8,7 @@ public class Student {
     public void setName (String name){
         this.name = name;
     }
-    public void setClassName(String classes){
+    public void setClasses(String classes){
         this.classes = classes;
     }
 }
