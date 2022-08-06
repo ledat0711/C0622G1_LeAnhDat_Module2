@@ -2,13 +2,13 @@ package student_package;
 
 public class Student {
     private String name="John";
-    private String className = "C02";
+    private String classes = "C02";
     public Student (){
     }
-    public void setName (String Name){
-        this.name = Name;
+    public void setName (String name){
+        this.name = name;
     }
-    public void setClassName(String className){
-        this.className = className;
+    public void setClassName(String classes){
+        this.classes = classes;
     }
 }
