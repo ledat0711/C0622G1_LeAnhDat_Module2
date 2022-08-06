@@ -13,7 +13,5 @@ public class Test {
         Student studentObject = new Student();
         studentObject.setName("Kevin");
         studentObject.setClassName("C12");
-        System.out.println(studentObject.getClassName());
-        System.out.println(studentObject.getName());
     }
 }

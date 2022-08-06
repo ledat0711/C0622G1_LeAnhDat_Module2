@@ -11,10 +11,4 @@ public class Student {
     public void setClassName(String className){
         this.className = className;
     }
-    public String getName(){
-        return this.name;
-    }
-    public String getClassName(){
-        return this.className;
-    }
 }

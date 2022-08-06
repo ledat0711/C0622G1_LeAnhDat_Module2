@@ -1,4 +1,5 @@
-import java.text.DateFormat;
+package candidate_package;
+
 /*Bài 1:
 Xây dựng lớp Candidate (Thí sinh) gồm các thuộc tính:
  mã, tên, ngày tháng năm sinh, điểm thi Toán, Văn, Anh
@@ -15,7 +16,7 @@ public class Candidate {
     private int mathScore;
     private int literatureScore;
     private int englishScore;
-    private int sum = mathScore+literatureScore+englishScore;
+    private int sum = mathScore + literatureScore + englishScore;
 
     public Candidate() {
     }
@@ -67,15 +68,17 @@ public class Candidate {
     public int getEnglishScore() {
         return englishScore;
     }
+
     public int getSum() {
         return englishScore;
     }
 
     @Override
     public String toString() {
-            return "Candidate{" +
-                    "studentID='" + studentID + '\'' +
-                    ", name='" + name + '\'' +
-                    ", dateOfBirth='" + dateOfBirth + '\'' +
-                    '}';
+        return "Candidate{" +
+                "studentID='" + studentID + '\'' +
+                ", name='" + name + '\'' +
+                ", dateOfBirth='" + dateOfBirth + '\'' +
+                '}';
+    }
 }

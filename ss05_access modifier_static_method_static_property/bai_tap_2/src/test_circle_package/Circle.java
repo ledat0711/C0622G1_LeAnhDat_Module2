@@ -1,14 +1,14 @@
 package test_circle_package;
 
-public class CircleClass {
+public class Circle {
     private double radius = 1.0;
     private String color = "red";
     private double area = Math.PI * Math.pow(radius, 2);
 
-    public CircleClass() {
+    public Circle() {
     }
 
-    public CircleClass(double radius) {
+    public Circle(double radius) {
         this.radius = radius;
     }
 
