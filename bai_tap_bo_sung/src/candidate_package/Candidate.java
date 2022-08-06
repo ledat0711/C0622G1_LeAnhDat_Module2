@@ -16,16 +16,9 @@ public class Candidate {
     private int mathScore;
     private int literatureScore;
     private int englishScore;
-    private int sum = mathScore + literatureScore + englishScore;
+    private int sum;
 
     public Candidate() {
-        this("", "", 0);
-    }
-
-    public Candidate(String name, String studentID, int mathScore) {
-        this.name = name;
-        this.studentID = studentID;
-        this.mathScore = mathScore;
     }
 
     public void setStudentID(String studentID) {
@@ -77,15 +70,6 @@ public class Candidate {
     }
 
     public int getSum() {
-        return englishScore;
-    }
-
-    @Override
-    public String toString() {
-        return "Candidate{" +
-                "studentID='" + studentID + '\'' +
-                ", name='" + name + '\'' +
-                ", dateOfBirth='" + dateOfBirth + '\'' +
-                '}';
+        return this.mathScore+this.literatureScore+this.englishScore;
     }
 }

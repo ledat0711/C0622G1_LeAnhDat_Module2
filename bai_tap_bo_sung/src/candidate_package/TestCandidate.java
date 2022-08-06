@@ -9,7 +9,6 @@ public class TestCandidate {
         int candidatesNumber = Integer.parseInt(scanner.nextLine());
 
         Candidate candidate = new Candidate();
-        Candidate score15 = new Candidate(" ", " ", 15);
         int i;
         String list = "";
         for (i = 0; i < candidatesNumber; i++) {
@@ -20,10 +19,14 @@ public class TestCandidate {
             candidate.setName(scanner.nextLine());
             System.out.print("Điểm Toán: ");
             candidate.setMathScore(Integer.parseInt(scanner.nextLine()));
-            if (candidate.getMathScore() > score15.getMathScore()) {
+            System.out.print("Điểm Văn: ");
+            candidate.setLiteratureScore(Integer.parseInt(scanner.nextLine()));
+            System.out.print("Điểm Anh: ");
+            candidate.setEnglishScore(Integer.parseInt(scanner.nextLine()));
+            if (candidate.getSum() > 15) {
                 list += "\nMã số thí sinh: " + candidate.getStudentID() +
                         ". Tên thí sinh: " + candidate.getName() +
-                        ". Điểm: " + candidate.getMathScore();
+                        ". Điểm: " + candidate.getSum();
             }
         }
         System.out.println("\nNhững thí sinh có số điểm hơn 15: ");
