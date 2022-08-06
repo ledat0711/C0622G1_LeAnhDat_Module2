@@ -19,9 +19,16 @@ public class Candidate {
     private int sum = mathScore + literatureScore + englishScore;
 
     public Candidate() {
+        this("", "", 0);
     }
 
-    public void setiD(String studentID) {
+    public Candidate(String name, String studentID, int mathScore) {
+        this.name = name;
+        this.studentID = studentID;
+        this.mathScore = mathScore;
+    }
+
+    public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
 
