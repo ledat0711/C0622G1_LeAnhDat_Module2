@@ -1,5 +1,3 @@
-package candidate_package;
-
 /*Bài 1:
 Xây dựng lớp Candidate (Thí sinh) gồm các thuộc tính:
  mã, tên, ngày tháng năm sinh, điểm thi Toán, Văn, Anh
@@ -9,6 +7,8 @@ Xây dựng lớp TestCandidate để kiểm tra lớp trên:
 – Nhập vào n thí sinh (n do người dùng nhập)
 – In ra thông tin về các thí sinh có tổng điểm lớn hơn 15
 */
+package candidate_package;
+
 public class Candidate {
     private String studentID;
     private String name;
