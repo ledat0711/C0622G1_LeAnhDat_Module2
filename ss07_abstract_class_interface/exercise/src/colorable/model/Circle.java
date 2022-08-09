@@ -1,4 +1,4 @@
-package resizeable.model;
+package colorable.model;
 
 import java.text.DecimalFormat;
 
@@ -6,11 +6,14 @@ public class Circle extends Shape {
     private double radius;
 
     public Circle() {
-        this(1.0);
     }
 
     public Circle(double radius) {
         this.radius = radius;
+    }
+
+    public Circle(String color) {
+        super(color);
     }
 
     public Circle(double radius, String color, boolean filled) {
@@ -38,10 +41,5 @@ public class Circle extends Shape {
                 " area: " + f.format(getArea()) + " ," +
                 super.toString() +
                 '}';
-    }
-
-    @Override
-    public void resize(double percent) {
-        setRadius(getRadius() + getRadius() * percent / 100);
     }
 }

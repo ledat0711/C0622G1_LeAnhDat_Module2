@@ -1,4 +1,4 @@
-package resizeable.model;
+package colorable.model;
 
 import java.text.DecimalFormat;
 
@@ -7,7 +7,10 @@ public class Rectangle extends Shape {
     private double length;
 
     public Rectangle() {
-        this(1.0,1.0);
+    }
+
+    public Rectangle(String color) {
+        super(color);
     }
 
     public Rectangle(double width, double length) {
@@ -50,11 +53,5 @@ public class Rectangle extends Shape {
                 " area= " + f.format(getArea()) + ", " +
                 super.toString() +
                 '}';
-    }
-
-    @Override
-    public void resize(double percent) {
-        setWidth(getWidth() + getWidth() * (percent / 100));
-        setLength(getLength() + getLength() * (percent / 100));
     }
 }

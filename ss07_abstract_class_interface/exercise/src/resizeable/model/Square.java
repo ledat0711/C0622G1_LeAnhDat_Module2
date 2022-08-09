@@ -6,6 +6,7 @@ public class Square extends Shape{
     private double squareEdge;
 
     public Square() {
+        this(1.0);
     }
 
     public Square(double squareEdge) {
