@@ -18,7 +18,7 @@ public class MainController {
         Shape[] shapes = new Shape[3];
         shapes[0] = new Circle(5, "red", true);
         shapes[1] = new Rectangle(8,8);
-        shapes[2] = new Square(7);//for (kieuDuLieu bienDaiDien : tenMang) {
+        shapes[2] = new Square(7);
         for(Shape represent : shapes){
             System.out.println("Before: ");
             System.out.println(represent);
