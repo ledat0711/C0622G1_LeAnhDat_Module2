@@ -13,14 +13,11 @@ public class MainController {
         shapes[2] = new Square(7);
         for (Shape represent : shapes) {
             if (represent == shapes[2]) {
-                System.out.println("Before: ");
                 System.out.println(represent);
                 represent.howToColor();
+            } else {
+                System.out.println(represent + "\n");
             }
-            System.out.println("Before: ");
-            System.out.println(represent);
-            System.out.println("After");
-            System.out.println(represent + "\n\n");
         }
     }
 }
