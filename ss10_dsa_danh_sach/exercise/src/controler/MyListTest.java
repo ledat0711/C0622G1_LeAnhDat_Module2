@@ -19,5 +19,8 @@ public class MyListTest {
         System.out.println(integerMyList);
         System.out.printf("Phần tử có chỉ số 2: %d\n", integerMyList.get(2));
         System.out.printf("Phần tử có chỉ số 3: %d\n",integerMyList.get(3));
+        integerMyList.clear();
+        System.out.println();
+        System.out.println(integerMyList);
     }
 }

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class MyList<E> {
     private int size = 0;
     private static final int DEFAULT_CAPACITY = 10;
-    private Object elements[];
+    private Object[] elements;
 
     public MyList() {
         elements = new Object[DEFAULT_CAPACITY];
@@ -37,7 +37,7 @@ public class MyList<E> {
         return size;
     }
 
-    public E remove(int indexInput) {
+    public void remove(int indexInput) {
         if (indexInput < 0 || indexInput > size) {
             throw new IndexOutOfBoundsException("Index: " + indexInput + ", Size " + indexInput);
         } else for (int i = indexInput; i < size; i++) {
@@ -46,7 +46,6 @@ public class MyList<E> {
         Object removeElement = elements[indexInput];
         elements[size - 1] = null;
         size--;
-        return (E) removeElement;
     }
 
     public boolean contains(E ElementInput) {
