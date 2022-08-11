@@ -1,10 +1,10 @@
 package model;
 
 public class TennisGame {
-    public static final int ZERO_POINT = 0;
-    public static final int ONE_POINT = 1;
-    public static final int TWO_POINT = 2;
-    public static final int THREE_POINT = 3;
+    public static final int POINT_0 = 0;
+    public static final int POINT_1 = 1;
+    public static final int POINT_2 = 2;
+    public static final int POINT_3 = 3;
     public static final int SCORE_DIFFERENCE_ADVANTAGE = 1;
     public static final int SCORE_DIFFERENCE_WIN = 2;
     public static String resultDisplay="";
@@ -12,13 +12,13 @@ public class TennisGame {
 
     public static String showTieResult(int drawPoint) {
         switch (drawPoint) {
-            case ZERO_POINT:
+            case POINT_0:
                 resultDisplay = "Love-All";
                 break;
-            case ONE_POINT:
+            case POINT_1:
                 resultDisplay = "Fifteen-All";
                 break;
-            case TWO_POINT:
+            case POINT_2:
                 resultDisplay = "Thirty-All";
                 break;
             default:
@@ -50,16 +50,16 @@ public class TennisGame {
                 temp = player2;
             }
             switch (temp) {
-                case ZERO_POINT:
+                case POINT_0:
                     resultDisplay += "Love";
                     break;
-                case ONE_POINT:
+                case POINT_1:
                     resultDisplay += "Fifteen";
                     break;
-                case TWO_POINT:
+                case POINT_2:
                     resultDisplay += "Thirty";
                     break;
-                case THREE_POINT:
+                case POINT_3:
                     resultDisplay += "Forty";
                     break;
             }
