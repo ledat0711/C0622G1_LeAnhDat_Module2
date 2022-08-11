@@ -12,26 +12,24 @@ public class MyList<E> {
     }
 
     public void ensureCapacity(int minCapacity) {
-
         if (size() >= 0) {
             int newSize = elements.length + minCapacity;
             elements = Arrays.copyOf(elements, newSize);
         }
     }
 
-    public boolean add(E ElementInside) {
+    public void add(E ElementInput) {
         if (size() == elements.length) {
             ensureCapacity(5);
         }
-        elements[size++] = ElementInside;
-        return true;
+        elements[size++] = ElementInput;
     }
 
-    public void add(int index, E element) {
+    public void add(int index, E elementInput) {
         for (int i = size - 1; i >= index; i--) {
             elements[i + 1] = elements[i];
         }
-        elements[index] = element;
+        elements[index] = elementInput;
         size++;
     }
 
@@ -39,28 +37,28 @@ public class MyList<E> {
         return size;
     }
 
-    public E remove(int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
-        } else for (int i = index; i < size; i++) {
+    public E remove(int indexInput) {
+        if (indexInput < 0 || indexInput > size) {
+            throw new IndexOutOfBoundsException("Index: " + indexInput + ", Size " + indexInput);
+        } else for (int i = indexInput; i < size; i++) {
             elements[i] = elements[i + 1];
         }
-        Object removeElement = elements[index];
+        Object removeElement = elements[indexInput];
         elements[size - 1] = null;
         size--;
         return (E) removeElement;
     }
 
-    public boolean contains(E ElementInside) {
-        if (indexOf(ElementInside) != -1) {
+    public boolean contains(E ElementInput) {
+        if (indexOf(ElementInput) != -1) {
             return true;
         }
         return false;
     }
 
-    public int indexOf(E ElementInside) {
+    public int indexOf(E elementInput) {
         for (int i = 0; i < size; i++) {
-            if (ElementInside == elements[i]) {
+            if (elementInput == elements[i]) {
                 return i;
             }
         }
