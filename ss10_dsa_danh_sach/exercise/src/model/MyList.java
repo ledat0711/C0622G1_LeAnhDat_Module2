@@ -37,7 +37,7 @@ public class MyList<E> {
         return size;
     }
 
-    public void remove(int indexInput) {
+    public E remove(int indexInput) {
         if (indexInput < 0 || indexInput > size) {
             throw new IndexOutOfBoundsException("Index: " + indexInput + ", Size " + indexInput);
         } else for (int i = indexInput; i < size; i++) {
@@ -46,6 +46,7 @@ public class MyList<E> {
         Object removeElement = elements[indexInput];
         elements[size - 1] = null;
         size--;
+        return (E) removeElement;
     }
 
     public boolean contains(E ElementInput) {
