@@ -80,7 +80,6 @@ public class MyList<E> {
         }
         if (size() >= 0) System.arraycopy(elements, 0, cMyList, 0, size());
         return (E) Arrays.toString(cMyList);
-
     }
 
     public void clear() {
