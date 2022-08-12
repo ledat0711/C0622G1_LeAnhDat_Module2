@@ -18,7 +18,7 @@ public class MyListTest {
         System.out.printf("Phần tử có chỉ số 2: %d\n", integerMyList.get(2));
         System.out.printf("Phần tử có chỉ số 3: %d\n", integerMyList.get(3));
         System.out.println("Phần tử bị xóa: " + integerMyList.remove(1));
-        System.out.println("Mảng sau khi bị xóa 1 phần tử:" + integerMyList);
+        System.out.println("Mảng sau khi bị xóa 1 phần tử: " + integerMyList);
         integerMyList.clear();
         System.out.println();
         System.out.println(integerMyList);
