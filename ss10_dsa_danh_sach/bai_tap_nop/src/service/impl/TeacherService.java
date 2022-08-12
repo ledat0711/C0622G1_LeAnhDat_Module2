@@ -1,6 +1,6 @@
 package service.impl;
 
-import model.Student;
+import controller.MainController;
 import model.Teacher;
 import service.ITeacherService;
 
@@ -27,7 +27,7 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void displayAllTeacher() {
-        MemberService.numericalOrder=0;
+        MainController.numericalOrder=0;
         for (Teacher teacher : teachers) {
             System.out.println(teacher);
         }

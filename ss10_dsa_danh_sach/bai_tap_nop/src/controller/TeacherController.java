@@ -1,8 +1,6 @@
 package controller;
 
-import service.IStudentService;
 import service.ITeacherService;
-import service.impl.StudentService;
 import service.impl.TeacherService;
 
 import java.util.Scanner;
@@ -13,7 +11,7 @@ public class TeacherController {
     // StudentController.menuManagementStudent();
     private static Scanner scanner = new Scanner(System.in);
     private static ITeacherService teacherService = new TeacherService();
-    private static MemberController memberController =new MemberController();
+    private static MainController memberController =new MainController();
     public static void menuManagementTeacher() {
         int i = 0;
         while (i != 10) {
@@ -40,7 +38,7 @@ public class TeacherController {
                     teacherService.removeTeacher();
                     break;
                 case 5:
-                    memberController.menuManagementMember();
+                    memberController.menuMainController();
                     break;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

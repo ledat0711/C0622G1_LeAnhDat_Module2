@@ -11,7 +11,7 @@ public class StudentController {
     // StudentController.menuManagementStudent();
     private static Scanner scanner = new Scanner(System.in);
     private static IStudentService studentService = new StudentService();
-    private static MemberController memberController =new MemberController();
+    private static MainController memberController =new MainController();
     public static void menuManagementStudent() {
         int i = 0;
         while (i != 10) {
@@ -38,7 +38,7 @@ public class StudentController {
                     studentService.removeStudent();
                     break;
                 case 5:
-                    memberController.menuManagementMember();
+                    memberController.menuMainController();
                     break;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

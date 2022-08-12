@@ -1,16 +1,15 @@
 package controller;
 
 import service.IStudentService;
-import service.impl.MemberService;
 import service.impl.StudentService;
 
 import java.util.Scanner;
 
-public class MemberController {
+public class MainController {
     private static Scanner scanner = new Scanner(System.in);
     private IStudentService studentService = new StudentService();
-
-    public void menuManagementMember() {
+    public static int numericalOrder = 0;
+    public void menuMainController() {
         int i = 0;
         while (i < 10) {
             i++;

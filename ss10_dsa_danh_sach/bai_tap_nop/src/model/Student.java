@@ -1,6 +1,6 @@
 package model;
 
-import service.impl.MemberService;
+import controller.MainController;
 
 public class Student extends Person {
     private double point;
@@ -11,8 +11,8 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        ++MemberService.numericalOrder;
-        return "Student " + MemberService.numericalOrder + "{" + super.toString() +
+        ++MainController.numericalOrder;
+        return "Student " + MainController.numericalOrder + "{" + super.toString() +
                 ", point=" + point +
                 ", nameClass= '" + nameClass + '\''
                 +

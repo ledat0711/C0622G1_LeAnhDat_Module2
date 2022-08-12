@@ -1,6 +1,6 @@
 package model;
 
-import service.impl.MemberService;
+import controller.MainController;
 
 public class Teacher extends Person {
     private String position;
@@ -11,8 +11,8 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        ++MemberService.numericalOrder;
-        return "Teacher"+MemberService.numericalOrder+"{" + super.toString()+
+        ++MainController.numericalOrder;
+        return "Teacher"+ MainController.numericalOrder+"{" + super.toString()+
                 ", position= '" + position + '\'' +
                 ", salary= " + salary + " million VND "+
                 '}';

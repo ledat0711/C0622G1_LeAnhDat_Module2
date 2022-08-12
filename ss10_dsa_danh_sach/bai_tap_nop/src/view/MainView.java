@@ -1,10 +1,10 @@
 package view;
 
-import controller.MemberController;
+import controller.MainController;
 
 public class MainView {
     public static void main(String[] args) {
-        MemberController memberController = new MemberController();
-        memberController.menuManagementMember();
+        MainController mainController = new MainController();
+        mainController.menuMainController();
     }
 }
