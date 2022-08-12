@@ -1,28 +1,29 @@
 package model;
 
 public class Teacher extends Person {
-    private double point;
-    private String nameClass;
+    private String position;
+    private double salary;
 
     public Teacher() {
     }
 
     @Override
     public String toString() {
-        return "Student{" +
-                "point=" + point +
-                ", nameClass='" + nameClass + '\'' +
-                "} " + super.toString();
+        return "Teacher{" +
+                "position= '" + position + '\'' +
+                ", salary= " + salary + " million VND, "+
+                super.toString()+
+                '}';
     }
 
-    public Teacher(double point, String nameClass) {
-        this.point = point;
-        this.nameClass = nameClass;
+    public Teacher(String position, double salary) {
+        this.position = position;
+        this.salary = salary;
     }
 
-    public Teacher(int id, String name, String dateOfBirth, double point, String nameClass) {
+    public Teacher(int id, String name, String dateOfBirth, String position, double salary) {
         super(id, name, dateOfBirth);
-        this.point = point;
-        this.nameClass = nameClass;
+        this.position = position;
+        this.salary= salary;
     }
 }

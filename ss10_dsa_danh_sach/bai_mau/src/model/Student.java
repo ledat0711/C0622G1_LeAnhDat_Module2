@@ -11,7 +11,7 @@ public class Student extends Person {
     public String toString() {
         return "Student{" +
                 "point=" + point +
-                ", nameClass='" + nameClass + '\'' +
+                ", nameClass= '" + nameClass + '\'' +
                 "} " + super.toString();
     }
 
@@ -25,5 +25,4 @@ public class Student extends Person {
         this.point = point;
         this.nameClass = nameClass;
     }
-
 }
