@@ -25,4 +25,5 @@ public class Student extends Person {
         this.point = point;
         this.nameClass = nameClass;
     }
+
 }

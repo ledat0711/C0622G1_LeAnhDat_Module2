@@ -11,6 +11,7 @@ public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> students = new ArrayList<>() ;
 
+
     static {
         students.add(new Student(1,"HaiTT","12/12/1222",9,"C06"));
         students.add(new Student(1,"HaiTT","12/12/1222",9,"C06"));
@@ -18,7 +19,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public void addStudent() {
-        Student student = this.infoStudent();
+        Student student = this.addInfoStudent();
         students.add(student);
         System.out.println("Thêm mới học sinh thành công");
     }
@@ -45,7 +46,6 @@ public class StudentService implements IStudentService {
               System.out.println("Xóa thành công!");
           }
       }
-
     }
 
     public Student findStudent() {
@@ -59,7 +59,7 @@ public class StudentService implements IStudentService {
         return null;
     }
 
-    public Student infoStudent() {
+    public Student addInfoStudent() {
         System.out.print("Mời bạn nhập id: ");
         int id = Integer.parseInt(scanner.nextLine());
         System.out.print("Mời bạn nhập tên: ");
@@ -73,4 +73,5 @@ public class StudentService implements IStudentService {
         Student student = new Student(id, name, dateOfBirth, point,nameClass);
         return student;
     }
+
 }
