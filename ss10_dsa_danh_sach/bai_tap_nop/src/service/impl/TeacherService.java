@@ -54,13 +54,13 @@ public class TeacherService implements ITeacherService {
     @Override
     public void updateTeacher() {
         System.out.println("Mời bạn nhập ID cần cập nhật ");
-        Teacher teacherFind = this.findTeacher();
-        if (teacherFind == null) {
+        Teacher teacherFinded = this.findTeacher();
+        if (teacherFinded == null) {
             System.out.println("Không tìm thấy đối tượng cần cập nhật");
         } else {
             int i;
             for (i = 0; i < teachers.size(); i++) {
-                if (teacherFind.equals(teachers.get(i))) {
+                if (teacherFinded.equals(teachers.get(i))) {
                     teachers.remove(teachers.get(i));
                     teachers.add(i, this.addInfoTeacher());
                     System.out.println("Đã cập nhập.");

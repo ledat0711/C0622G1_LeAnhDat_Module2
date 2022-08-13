@@ -54,13 +54,13 @@ public class StudentService implements IStudentService {
     @Override
     public void updateStudent() {
         System.out.println("Mời bạn nhập ID cần cập nhật ");
-        Student studentFind = this.findStudent();
-        if (studentFind == null) {
+        Student studentFinded = this.findStudent();
+        if (studentFinded == null) {
             System.out.println("Không tìm thấy đối tượng cần cập nhật");
         } else {
             int i;
             for (i = 0; i < students.size(); i++) {
-                if (studentFind.equals(students.get(i))) {
+                if (studentFinded.equals(students.get(i))) {
                     students.remove(students.get(i));
                     students.add(i, this.addInfoStudent());
                     System.out.println("Đã cập nhập.");
