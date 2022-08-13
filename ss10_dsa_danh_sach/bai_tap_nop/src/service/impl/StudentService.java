@@ -28,7 +28,6 @@ public class StudentService implements IStudentService {
     @Override
     public void displayAllStudent() {
         MainController.numericalOrder = 0;
-        ;
         for (Student student : students) {
             System.out.println(student);
         }
@@ -60,7 +59,6 @@ public class StudentService implements IStudentService {
             System.out.println("Không tìm thấy đối tượng cần cập nhật");
         } else {
             int i;
-            int j;
             for (i = 0; i < students.size(); i++) {
                 if (studentFind == students.get(i)) {
                     students.remove(students.get(i));

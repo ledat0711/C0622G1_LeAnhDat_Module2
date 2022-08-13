@@ -6,7 +6,7 @@ import service.impl.TeacherService;
 import java.util.Scanner;
 
 public class TeacherController {
-    /** menuManagementStudent(): Menu quản lý học sinh
+    /** menuManagementStudent(): Menu quản lý giảng viên
      */
     // StudentController.menuManagementStudent();
     private static Scanner scanner = new Scanner(System.in);

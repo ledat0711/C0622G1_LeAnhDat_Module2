@@ -18,11 +18,6 @@ public class Teacher extends Person {
                 '}';
     }
 
-    public Teacher(String position, double salary) {
-        this.position = position;
-        this.salary = salary;
-    }
-
     public Teacher(int id, String name, String dateOfBirth, String position, double salary) {
         super(id, name, dateOfBirth);
         this.position = position;

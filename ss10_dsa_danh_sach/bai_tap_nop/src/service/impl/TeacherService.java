@@ -1,7 +1,6 @@
 package service.impl;
 
 import controller.MainController;
-import model.Student;
 import model.Teacher;
 import service.ITeacherService;
 
@@ -60,7 +59,6 @@ public class TeacherService implements ITeacherService {
             System.out.println("Không tìm thấy đối tượng cần cập nhật");
         } else {
             int i;
-            int j;
             for (i = 0; i < teachers.size(); i++) {
                 if (teacherFind == teachers.get(i)) {
                     teachers.remove(teachers.get(i));

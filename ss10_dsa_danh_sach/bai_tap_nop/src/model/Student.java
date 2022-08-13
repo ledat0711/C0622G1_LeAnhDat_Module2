@@ -9,12 +9,6 @@ public class Student extends Person {
     public Student() {
     }
 
-    public Student(String name, String dateOfBirth, double point, String nameClass) {
-        super(name,dateOfBirth);
-        this.point = point;
-        this.nameClass=nameClass;
-    }
-
     @Override
     public String toString() {
         ++MainController.numericalOrder;
@@ -25,10 +19,6 @@ public class Student extends Person {
                 "} ";
     }
 
-    public Student(double point, String nameClass) {
-        this.point = point;
-        this.nameClass = nameClass;
-    }
 
     public Student(int id, String name, String dateOfBirth, double point, String nameClass) {
         super(id, name, dateOfBirth);
