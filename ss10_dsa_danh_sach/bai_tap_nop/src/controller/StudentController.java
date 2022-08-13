@@ -14,7 +14,7 @@ public class StudentController {
     private static MainController memberController =new MainController();
     public static void menuManagementStudent() {
         int i = 0;
-        while (i != 10) {
+        while (i < 10) {
             System.out.println("-------------------------------------------");
             System.out.println("Quản lý danh sách học viên.");
             System.out.println("1. Hiển thị danh sách học viên");
@@ -33,6 +33,8 @@ public class StudentController {
                     studentService.addStudent();
                     break;
                 case 3:
+                    studentService.displayAllStudent();
+                    studentService.updateStudent();
                     break;
                 case 4:
                     studentService.removeStudent();

@@ -27,7 +27,8 @@ public class StudentService implements IStudentService {
 
     @Override
     public void displayAllStudent() {
-        MainController.numericalOrder=0;;
+        MainController.numericalOrder = 0;
+        ;
         for (Student student : students) {
             System.out.println(student);
         }
@@ -35,6 +36,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public void removeStudent() {
+        System.out.print("Mời bạn nhập vào ID cần xóa: ");
         Student student = this.findStudent();
         if (student == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
@@ -50,10 +52,30 @@ public class StudentService implements IStudentService {
         }
     }
 
+    @Override
+    public void updateStudent() {
+        System.out.println("Mời bạn nhập ID cần cập nhật ");
+        Student studentFind = this.findStudent();
+        if (studentFind == null) {
+            System.out.println("Không tìm thấy đối tượng cần cập nhật");
+        } else {
+            int i;
+            int j;
+            for (i = 0; i < students.size(); i++) {
+                if (studentFind == students.get(i)) {
+                    students.remove(students.get(i));
+                    students.add(i, this.addInfoStudent());
+                    System.out.println("Đã cập nhập.");
+                    break;
+                }
+            }
+        }
+    }
+
     public Student findStudent() {
-        System.out.print("Mời bạn nhập vào ID cần xóa: ");
         int id = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < students.size(); i++) {
+        int i;
+        for (i = 0; i < students.size(); i++) {
             if (students.get(i).getId() == id) {
                 return students.get(i);
             }

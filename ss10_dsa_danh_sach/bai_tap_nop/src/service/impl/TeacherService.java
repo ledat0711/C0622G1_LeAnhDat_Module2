@@ -1,6 +1,7 @@
 package service.impl;
 
 import controller.MainController;
+import model.Student;
 import model.Teacher;
 import service.ITeacherService;
 
@@ -27,7 +28,7 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void displayAllTeacher() {
-        MainController.numericalOrder=0;
+        MainController.numericalOrder = 0;
         for (Teacher teacher : teachers) {
             System.out.println(teacher);
         }
@@ -35,6 +36,7 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void removeTeacher() {
+        System.out.println("Mời bạn nhập vào ID cần xóa");
         Teacher teacher = this.findTeacher();
         if (teacher == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
@@ -50,8 +52,27 @@ public class TeacherService implements ITeacherService {
         }
     }
 
+    @Override
+    public void updateTeacher() {
+        System.out.println("Mời bạn nhập ID cần cập nhật ");
+        Teacher teacherFind = this.findTeacher();
+        if (teacherFind == null) {
+            System.out.println("Không tìm thấy đối tượng cần cập nhật");
+        } else {
+            int i;
+            int j;
+            for (i = 0; i < teachers.size(); i++) {
+                if (teacherFind == teachers.get(i)) {
+                    teachers.remove(teachers.get(i));
+                    teachers.add(i, this.addInfoTeacher());
+                    System.out.println("Đã cập nhập.");
+                    break;
+                }
+            }
+        }
+    }
+
     public Teacher findTeacher() {
-        System.out.println("Mời bạn nhập vào ID cần xóa");
         int id = Integer.parseInt(scanner.nextLine());
         int i;
         for (i = 0; i < teachers.size(); i++) {

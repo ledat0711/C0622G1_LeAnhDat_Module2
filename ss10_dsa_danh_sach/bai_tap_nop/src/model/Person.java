@@ -16,6 +16,11 @@ public abstract class Person {
                 ;
     }
 
+    public Person(String name, String dateOfBirth) {
+        this.name = name;
+        this.dateOfBirth = dateOfBirth;
+    }
+
     public Person(int id, String name, String dateOfBirth) {
         this.id = id;
         this.name = name;
