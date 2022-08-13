@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class StudentController {
     /** menuManagementStudent(): Menu quản lý học sinh
      */
-    // StudentController.menuManagementStudent();
     private static Scanner scanner = new Scanner(System.in);
     private static IStudentService studentService = new StudentService();
     private static MainController memberController =new MainController();
