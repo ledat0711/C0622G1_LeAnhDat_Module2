@@ -60,7 +60,7 @@ public class StudentService implements IStudentService {
         } else {
             int i;
             for (i = 0; i < students.size(); i++) {
-                if (studentFind == students.get(i)) {
+                if (studentFind.equals(students.get(i))) {
                     students.remove(students.get(i));
                     students.add(i, this.addInfoStudent());
                     System.out.println("Đã cập nhập.");

@@ -60,7 +60,7 @@ public class TeacherService implements ITeacherService {
         } else {
             int i;
             for (i = 0; i < teachers.size(); i++) {
-                if (teacherFind == teachers.get(i)) {
+                if (teacherFind.equals(teachers.get(i))) {
                     teachers.remove(teachers.get(i));
                     teachers.add(i, this.addInfoTeacher());
                     System.out.println("Đã cập nhập.");
