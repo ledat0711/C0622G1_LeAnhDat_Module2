@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class CountOccurrencesWord {
-    public static void CountOccurrencesWordMethod() {
+    public static void countOccurrencesWordMethod() {
         String string1 = "Thu hai la ngay dau tuan chu nhat la ngay cuoi tuan";
         String[] arr = string1.toLowerCase().split(" ");
         Map<String, Integer> map1 = new TreeMap<>();
