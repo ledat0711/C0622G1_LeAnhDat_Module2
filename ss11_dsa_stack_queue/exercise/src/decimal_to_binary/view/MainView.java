@@ -6,6 +6,6 @@ import decimal_to_binary.service.DecimalToBinary;
 
 public class MainView {
     public static void main(String[] args) {
-        DecimalToBinary.decimalToBinary();
+        DecimalToBinary.changeDecimalToBinary();
     }
 }

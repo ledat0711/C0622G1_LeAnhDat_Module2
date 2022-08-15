@@ -3,7 +3,7 @@ package decimal_to_binary.service;
 import java.util.Stack;
 
 public class DecimalToBinary {
-    public static void decimalToBinary() {
+    public static void changeDecimalToBinary() {
         int numberDecimal = 26;
         Stack<Integer> stackBinary = new Stack<>();
         while (numberDecimal != 0) {
