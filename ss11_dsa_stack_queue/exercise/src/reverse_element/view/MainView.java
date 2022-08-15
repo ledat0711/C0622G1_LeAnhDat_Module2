@@ -1,8 +1,8 @@
 package reverse_element.view;
 
-import static reverse_element.model.ReverseElements.reserveElements;
+import static reverse_element.service.ReverseElements.reserveElements;
 
-public class MainController {
+public class MainView {
     public static void main(String[] args) {
         reserveElements();
     }
