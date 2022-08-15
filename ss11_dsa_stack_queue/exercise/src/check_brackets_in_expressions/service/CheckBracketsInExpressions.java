@@ -28,7 +28,7 @@ package check_brackets_in_expressions.service;
 import java.util.Stack;
 
 public class CheckBracketsInExpressions {
-    public static boolean check(String stringInside) {
+    public static boolean checkBrackets(String stringInside) {
         Stack<Character> bStack = new Stack<>();
         char[] charArr = stringInside.toCharArray();
         for (char sym : charArr) {
