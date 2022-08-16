@@ -51,10 +51,10 @@ public class Product implements Comparator<Product>{
                 ", giá: " + price + " triệu VND" +
                 '}';
     }
-    // Giải thích về phương thức toString2():
-    // Lúc tìm sản phẩm bằng tên, khi gọi toString() thì số thứ tự hiển thị không đúng.
-    // Vì vậy, nên bỏ luôn số thứ tự bằng cách gọi hàm toString2() bên dưới,
-    // toString2() chỉ áp dụng cho chức năng tìm kiếm.
+// Giải thích về phương thức toString2():
+// Lúc tìm và hiển thị sản phẩm tìm được, khi gọi toString() (bên trên) thì số thứ tự (numericalOrder) hiển thị không đúng.
+// Vì vậy, khi tìm và hiển thị được sản phẩm mà mình tìm được,
+// Ta nên loại bỏ hẳn số thứ tự bằng cách gọi hàm toString2() bên dưới (chỉ áp dụng cho chức năng tìm kiếm s.phẩm):
     public String toString2() {
         return "Sản phẩm {" +
                 "ID:'" + iD + '\'' +
