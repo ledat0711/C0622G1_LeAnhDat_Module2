@@ -25,8 +25,6 @@ import java.util.Scanner;
 
 
 public class ProductController {
-    /** menuManagementStudent(): Menu quản lý học sinh
-     */
     public static int numericalOrder=0;
     private static Scanner scanner = new Scanner(System.in);
     private static IProductManager productManager = new ProductManager();
