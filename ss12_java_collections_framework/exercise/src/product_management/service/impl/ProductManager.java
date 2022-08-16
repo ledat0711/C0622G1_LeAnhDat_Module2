@@ -1,21 +1,3 @@
-/*Mục tiêu
-Luyện tập sử dụng ArrayList, LinkedList trong Java Collection Framework
-Mô tả:
-Xây dựng chương trình quản lý sản phẩm gồm các thao tác:
-Thêm sản phẩm
-Sửa thông tin sản phẩm theo id
-Xoá sản phẩm theo id
-Hiển thị danh sách sản phẩm
-Tìm kiếm sản phẩm theo tên
-Sắp xếp sản phẩm tăng dần, giảm dần theo giá
-Chương trình sử dụng ArrayList để lưu danh sách sản phẩm.
-Hướng dẫn
-Bước 1: Xây dựng lớp Product
-Bước 2: Xây dựng lớp ProductManager gồm các phương thức thêm, sửa, xoá, hiển thị, tìm kiếm, sắp xếp.
-Trong lớp ProductManager khai báo ArrayList để lưu danh sách sản phẩm.
-Bước 3: Chạy chương trình và test từng chức năng
-Bước 4: Làm lại bài tập, thay thế ArrayList bằng LinkedList.
-Practice using ArrayList, LinkedList in Java Collection Framework*/
 package product_management.service.impl;
 
 import product_management.model.Product;
