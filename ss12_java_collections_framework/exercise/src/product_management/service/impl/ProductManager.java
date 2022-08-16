@@ -113,7 +113,7 @@ public class ProductManager implements IProductManager {
 
     @Override
     public void sortByPriceDescending() {
-        Collections.sort(products, new Product());
+        products.sort(new Product());
         numericalOrder = 0;
         int i;
         for (i = products.size() - 1; i >= 0; i--) {
@@ -144,7 +144,6 @@ public class ProductManager implements IProductManager {
     }
 
     public int inputPositiveID() {
-        System.out.println("Mời bạn nhập ID sản phẩm (ID là một dãy số): ");
         int iD;
         boolean isInvalidID;
         do {
@@ -153,17 +152,16 @@ public class ProductManager implements IProductManager {
             for (Product product : products) {
                 if (iD == product.getID()) {
                     isInvalidID = false;
+                    System.out.println("Bạn đã nhập trùng ID, xin hãy nhập lại.");
                     break;
                 }
-            }
-            if (!isInvalidID) {
-                System.out.println("Bạn đã nhập trùng ID, xin hãy nhập lại.");
             }
         } while (!isInvalidID);
         return iD;
     }
 
     public Product addInfoProduct() {
+        System.out.println("Mời bạn nhập ID sản phẩm (ID là một dãy số): ");
         int iD = this.inputPositiveID();
         System.out.println("Mời bạn nhập tên sản phẩm: ");
         String name = scanner.nextLine();
