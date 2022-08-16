@@ -4,7 +4,6 @@ import product_management.model.Product;
 import product_management.service.IProductManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -41,7 +40,7 @@ public class ProductManager implements IProductManager {
     @Override
     public void removeProduct() {
         System.out.print("Mời bạn nhập vào ID cần xóa: ");
-        Product product = this.findProduct();
+        Product product = this.findIDSimple();
         if (product == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
@@ -57,9 +56,9 @@ public class ProductManager implements IProductManager {
     }
 
     @Override
-    public void updateProduct() {
+    public void updateProductByID() {
         System.out.println("Mời bạn nhập ID cần cập nhật ");
-        Product productFinded = this.findProduct();
+        Product productFinded = this.findIDSimple();
         if (productFinded == null) {
             System.out.println("Không tìm thấy đối tượng cần cập nhật");
         } else {
@@ -103,7 +102,7 @@ public class ProductManager implements IProductManager {
         }
     }
 
-    public Product findProduct() {
+    public Product findIDSimple() {
         int iD = Integer.parseInt(scanner.nextLine());
         int i;
         for (i = 0; i < products.size(); i++) {

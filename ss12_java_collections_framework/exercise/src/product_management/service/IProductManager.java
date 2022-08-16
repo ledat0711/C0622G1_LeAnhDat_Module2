@@ -7,7 +7,7 @@ public interface IProductManager {
 
     void removeProduct();
 
-    void updateProduct();
+    void updateProductByID();
 
     void findProductByName();
 

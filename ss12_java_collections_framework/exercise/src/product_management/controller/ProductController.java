@@ -26,7 +26,7 @@ public class ProductController {
                     productManager.addProduct();
                     break;
                 case 2:
-                    productManager.updateProduct();
+                    productManager.updateProductByID();
                     break;
                 case 3:
                     productManager.displayAllProduct();
