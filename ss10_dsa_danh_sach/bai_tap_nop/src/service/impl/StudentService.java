@@ -40,7 +40,7 @@ public class StudentService implements IStudentService {
         if (student == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
-            System.out.println("Bạn có chắc muốn xóa đối tượng có id là " + student.getId() + " không?");
+            System.out.println("Bạn có chắc muốn xóa đối tượng có ID là " + student.getID() + " không?");
             System.out.println("1. Có");
             System.out.println("2. Không");
             int choice = Integer.parseInt(scanner.nextLine());
@@ -71,10 +71,10 @@ public class StudentService implements IStudentService {
     }
 
     public Student findStudent() {
-        int id = Integer.parseInt(scanner.nextLine());
+        int iD = Integer.parseInt(scanner.nextLine());
         int i;
         for (i = 0; i < students.size(); i++) {
-            if (students.get(i).getId() == id) {
+            if (students.get(i).getID() == iD) {
                 return students.get(i);
             }
         }

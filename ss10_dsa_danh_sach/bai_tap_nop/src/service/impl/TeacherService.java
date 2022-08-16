@@ -40,7 +40,7 @@ public class TeacherService implements ITeacherService {
         if (teacher == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
-            System.out.println("Bạn có chắc muốn xóa đối tượng có id là " + teacher.getId() + " không?");
+            System.out.println("Bạn có chắc muốn xóa đối tượng có id là " + teacher.getID() + " không?");
             System.out.println("1. Có");
             System.out.println("2. Không");
             int choice = Integer.parseInt(scanner.nextLine());
@@ -74,7 +74,7 @@ public class TeacherService implements ITeacherService {
         int id = Integer.parseInt(scanner.nextLine());
         int i;
         for (i = 0; i < teachers.size(); i++) {
-            if (teachers.get(i).getId() == id) {
+            if (teachers.get(i).getID() == id) {
                 return teachers.get(i);
             }
         }

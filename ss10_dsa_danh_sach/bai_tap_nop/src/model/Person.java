@@ -27,12 +27,12 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public int getId() {
+    public int getID() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setID(int iD) {
+        this.id = iD;
     }
 
     public String getName() {
