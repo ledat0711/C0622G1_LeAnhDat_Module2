@@ -4,12 +4,13 @@ import product_management.model.Product;
 import product_management.service.IProductManager;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Scanner;
 
 import static product_management.controller.ProductController.numericalOrder;
 
-public class ProductManager implements IProductManager {
+public class ProductManager implements IProductManager{
     private static Scanner scanner = new Scanner(System.in);
     private static List<Product> products = new ArrayList<>();
 
