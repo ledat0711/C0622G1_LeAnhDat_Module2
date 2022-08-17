@@ -2,7 +2,6 @@ package package_quan_ly.model;
 
 import package_quan_ly.controller.MainController;
 
-import java.util.List;
 
 public class Student extends Person {
     private double point;

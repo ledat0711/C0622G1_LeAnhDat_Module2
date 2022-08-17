@@ -7,7 +7,6 @@ import package_quan_ly.service.IStudentService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-import java.util.function.Predicate;
 
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);

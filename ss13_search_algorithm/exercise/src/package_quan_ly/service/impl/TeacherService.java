@@ -1,7 +1,6 @@
 package package_quan_ly.service.impl;
 
 import package_quan_ly.controller.MainController;
-import package_quan_ly.model.Student;
 import package_quan_ly.model.Teacher;
 import package_quan_ly.service.ITeacherService;
 
