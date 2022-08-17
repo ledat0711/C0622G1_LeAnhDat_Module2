@@ -1,4 +1,5 @@
 package package_quan_ly.service;
+
 public interface IStudentService {
     void addStudent();
 
@@ -7,5 +8,8 @@ public interface IStudentService {
     void removeStudent();
 
     void updateStudent();
-    void findProductByName();
+
+    void findStudentByID();
+
+    void findStudentByName();
 }

@@ -1,6 +1,7 @@
 package package_quan_ly.service.impl;
 
 import package_quan_ly.controller.MainController;
+import package_quan_ly.model.Student;
 import package_quan_ly.model.Teacher;
 import package_quan_ly.service.ITeacherService;
 
@@ -36,7 +37,7 @@ public class TeacherService implements ITeacherService {
     @Override
     public void removeTeacher() {
         System.out.println("Mời bạn nhập vào ID cần xóa");
-        Teacher teacher = this.findTeacher();
+        Teacher teacher = this.findIDTeacherSimple();
         if (teacher == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
@@ -54,7 +55,7 @@ public class TeacherService implements ITeacherService {
     @Override
     public void updateTeacher() {
         System.out.println("Mời bạn nhập ID cần cập nhật ");
-        Teacher teacherFinded = this.findTeacher();
+        Teacher teacherFinded = this.findIDTeacherSimple();
         if (teacherFinded == null) {
             System.out.println("Không tìm thấy đối tượng cần cập nhật");
         } else {
@@ -70,20 +71,69 @@ public class TeacherService implements ITeacherService {
         }
     }
 
-    public Teacher findTeacher() {
-        int id = Integer.parseInt(scanner.nextLine());
+    @Override
+    public void findTeacherByID() {
+        System.out.println("Mời bạn nhập ID cần tìm: ");
+        Teacher teacher = this.findIDTeacherSimple();
+        if (teacher == null) {
+            System.out.println("Không tìm thấy học viên với ID cần tìm");
+        } else {
+            System.out.println("Thông tin học viên mà bạn cần tìm: ");
+            System.out.println(teacher.toString2());
+        }
+    }
+
+    public Teacher findIDTeacherSimple() {
+        int iD = Integer.parseInt(scanner.nextLine());
         int i;
         for (i = 0; i < teachers.size(); i++) {
-            if (teachers.get(i).getID() == id) {
+            if (teachers.get(i).getID() == iD) {
                 return teachers.get(i);
             }
         }
         return null;
     }
+    @Override
+    public void findTeacherByName() {
+        System.out.println("Mời bạn nhập tên cần tìm: ");
+        Teacher teacher = this.findNameSimple();
+        if (teacher == null) {
+            System.out.println("Không tìm thấy học viên với tên cần tìm");
+        } else {
+            System.out.println("Thông tin học viên mà bạn cần tìm: ");
+            System.out.println(teacher.toString2());
+        }
+    }
+
+    public Teacher findNameSimple() {
+        String nameInput = scanner.nextLine();
+        for (Teacher teacher : teachers) {
+            if (teacher.getName().contains(nameInput)) {
+                return teacher;
+            }
+        }
+        return null;
+    }
+    public int inputPositiveID() {
+        int iD;
+        boolean isInvalidID;
+        do {
+            isInvalidID = true;
+            iD = Integer.parseInt(scanner.nextLine());
+            for (Teacher teacher : teachers) {
+                if (iD == teacher.getID()) {
+                    isInvalidID = false;
+                    System.out.print("Bạn đã nhập trùng ID.\n Vui lòng nhập lại ID: ");
+                    break;
+                }
+            }
+        } while (!isInvalidID);
+        return iD;
+    }
 
     public Teacher addInfoTeacher() {
         System.out.print("Mời bạn nhập ID: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = this.inputPositiveID();
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
@@ -92,7 +142,6 @@ public class TeacherService implements ITeacherService {
         String position = scanner.nextLine();
         System.out.print("Mời bạn nhập mức lương (đơn vị: triệu VND): ");
         double salary = Double.parseDouble(scanner.nextLine());
-        Teacher teacher = new Teacher(id, name, dateOfBirth, position, salary);
-        return teacher;
+        return new Teacher(id, name, dateOfBirth, position, salary);
     }
 }

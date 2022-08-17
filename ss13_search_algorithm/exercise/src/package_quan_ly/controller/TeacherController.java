@@ -20,7 +20,9 @@ public class TeacherController {
             System.out.println("2. Thêm mới giảng viên");
             System.out.println("3. Cập nhật thông tin giảng viên");
             System.out.println("4. Xóa giảng viên");
-            System.out.println("5. Quay trở lại menu trước. ");
+            System.out.println("5. Tìm giảng viên bằng ID ");
+            System.out.println("6. Tìm giảng viên bằng tên");
+            System.out.println("7. Quay trở lại menu trước. ");
             System.out.print("Mời bạn nhập chức năng 1->5: ");
             i++;
             int choice = Integer.parseInt(scanner.nextLine());
@@ -39,6 +41,12 @@ public class TeacherController {
                     teacherService.removeTeacher();
                     break;
                 case 5:
+                    teacherService.findTeacherByID();
+                    break;
+                case 6:
+                    teacherService.findTeacherByName();
+                    break;
+                case 7:
                     memberController.menuMainController();
                     break;
                 default:

@@ -12,15 +12,23 @@ public class Teacher extends Person {
     @Override
     public String toString() {
         ++MainController.numericalOrder;
-        return "Teacher"+ MainController.numericalOrder+"{" + super.toString()+
+        return "Teacher" + MainController.numericalOrder + "{" + super.toString() +
                 ", position= '" + position + '\'' +
-                ", salary= " + salary + " million VND "+
+                ", salary= " + salary + " million VND " +
+                '}';
+    }
+
+    public String toString2() {
+        ++MainController.numericalOrder;
+        return "Teacher {" + super.toString() +
+                ", position= '" + position + '\'' +
+                ", salary= " + salary + " million VND " +
                 '}';
     }
 
     public Teacher(int id, String name, String dateOfBirth, String position, double salary) {
         super(id, name, dateOfBirth);
         this.position = position;
-        this.salary= salary;
+        this.salary = salary;
     }
 }

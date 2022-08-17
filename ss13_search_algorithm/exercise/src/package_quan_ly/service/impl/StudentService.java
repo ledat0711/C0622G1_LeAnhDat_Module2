@@ -7,6 +7,7 @@ import package_quan_ly.service.IStudentService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
@@ -71,27 +72,15 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void findProductByName() {
-        System.out.print("Mời bạn nhập vào tên sản phẩm cần tìm: ");
-        Student product = this.findNameSimple();
-        if (product == null) {
-            System.out.println("Không tìm thấy sản phẩm với tên cần tìm");
+    public void findStudentByID() {
+        System.out.println("Mời bạn nhập ID cần tìm: ");
+        Student student = this.findIDSimple();
+        if (student == null) {
+            System.out.println("Không tìm thấy học viên với ID cần tìm");
         } else {
-            System.out.println("Sản phẩm của bạn cần tìm: ");
-            System.out.println(product.toString());
+            System.out.println("Thông tin học viên mà bạn cần tìm: ");
+            System.out.println(student.toString2());
         }
-    }
-
-    public Student findNameSimple() {
-        String name = scanner.nextLine();
-        int i;
-        for (i = 0; i < students.size(); i++) {
-            Student studentIn = new Student(name);
-            if (students.contains(studentIn)) {
-                return students.get(i);
-            }
-        }
-        return null;
     }
 
     public Student findIDSimple() {
@@ -105,9 +94,47 @@ public class StudentService implements IStudentService {
         return null;
     }
 
+    @Override
+    public void findStudentByName() {
+        System.out.println("Mời bạn nhập tên cần tìm: ");
+        Student student = this.findNameSimple();
+        if (student == null) {
+            System.out.println("Không tìm thấy học viên với tên cần tìm");
+        } else {
+            System.out.println("Thông tin học viên mà bạn cần tìm: ");
+            System.out.println(student.toString2());
+        }
+    }
+
+    public Student findNameSimple() {
+        String nameInput = scanner.nextLine();
+        int i;
+        for(Student student : students){
+            if(student.getName().contains(nameInput)){
+                return student;
+            }
+        }
+        return null;
+    }
+    public int inputPositiveID() {
+        int iD;
+        boolean isInvalidID;
+        do {
+            isInvalidID = true;
+            iD = Integer.parseInt(scanner.nextLine());
+            for (Student student : students) {
+                if (iD == student.getID()) {
+                    isInvalidID = false;
+                    System.out.print("Bạn đã nhập trùng ID.\n Vui lòng nhập lại ID:");
+                    break;
+                }
+            }
+        } while (!isInvalidID);
+        return iD;
+    }
     public Student addInfoStudent() {
         System.out.print("Mời bạn nhập ID: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = this.inputPositiveID();
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
@@ -116,7 +143,7 @@ public class StudentService implements IStudentService {
         double point = Double.parseDouble(scanner.nextLine());
         System.out.print("Mời bạn nhập tên lớp: ");
         String nameClass = scanner.nextLine();
-        Student student = new Student(id, name, dateOfBirth, point, nameClass);
-        return student;
+        return new Student(id, name, dateOfBirth, point, nameClass);
     }
+
 }

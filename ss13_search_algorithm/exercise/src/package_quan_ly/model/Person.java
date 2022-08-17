@@ -12,13 +12,6 @@ public abstract class Person {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return " id=" + id +
-                ", name='" + name + '\'' +
-                ", birth day='" + dateOfBirth + '\''
-                ;
-    }
 
     public Person(String name, String dateOfBirth) {
         this.name = name;
@@ -53,5 +46,13 @@ public abstract class Person {
 
     public void setDateOfBirth(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    @Override
+    public String toString() {
+        return " id=" + id +
+                ", name='" + name + '\'' +
+                ", birth day='" + dateOfBirth + '\''
+                ;
     }
 }
