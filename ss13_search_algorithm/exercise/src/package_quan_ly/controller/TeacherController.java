@@ -16,14 +16,14 @@ public class TeacherController {
         while (i < 10) {
             System.out.println("-------------------------------------------");
             System.out.println("Quản lý danh sách giảng viên.");
-            System.out.println("1. Hiển thị danh sách giảng viên");
-            System.out.println("2. Thêm mới giảng viên");
-            System.out.println("3. Cập nhật thông tin giảng viên");
-            System.out.println("4. Xóa giảng viên");
-            System.out.println("5. Tìm giảng viên bằng ID ");
-            System.out.println("6. Tìm giảng viên bằng tên");
+            System.out.println("1. Hiển thị danh sách giảng viên.");
+            System.out.println("2. Thêm mới giảng viên.");
+            System.out.println("3. Cập nhật thông tin giảng viên.");
+            System.out.println("4. Xóa giảng viên.");
+            System.out.println("5. Tìm giảng viên bằng ID.");
+            System.out.println("6. Tìm giảng viên bằng tên.");
             System.out.println("7. Quay trở lại menu trước. ");
-            System.out.print("Mời bạn nhập chức năng 1->5: ");
+            System.out.print("Mời bạn nhập chức năng: ");
             i++;
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {

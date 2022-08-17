@@ -125,7 +125,7 @@ public class StudentService implements IStudentService {
             for (Student student : students) {
                 if (iD == student.getID()) {
                     isInvalidID = false;
-                    System.out.print("Bạn đã nhập trùng ID.\n Vui lòng nhập lại ID:");
+                    System.out.print("Bạn đã nhập trùng ID.\nVui lòng nhập lại ID:");
                     break;
                 }
             }

@@ -18,14 +18,14 @@ public class StudentController {
         while (i < 10) {
             System.out.println("-------------------------------------------");
             System.out.println("Quản lý danh sách học viên.");
-            System.out.println("1. Hiển thị danh sách học viên");
-            System.out.println("2. Thêm mới học viên");
-            System.out.println("3. Cập nhật thông tin học viên");
-            System.out.println("4. Xóa học viên");
-            System.out.println("5. Tìm học viên bằng ID ");
-            System.out.println("6. Tìm học viên bằng tên");
+            System.out.println("1. Hiển thị danh sách học viên.");
+            System.out.println("2. Thêm mới học viên.");
+            System.out.println("3. Cập nhật thông tin học viên.");
+            System.out.println("4. Xóa học viên.");
+            System.out.println("5. Tìm học viên bằng ID. ");
+            System.out.println("6. Tìm học viên bằng tên.");
             System.out.println("7. Quay trở lại menu trước. ");
-            System.out.print("Mời bạn nhập chức năng 1->5: ");
+            System.out.print("Mời bạn nhập chức năng: ");
             i++;
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {

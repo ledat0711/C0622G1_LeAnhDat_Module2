@@ -123,7 +123,7 @@ public class TeacherService implements ITeacherService {
             for (Teacher teacher : teachers) {
                 if (iD == teacher.getID()) {
                     isInvalidID = false;
-                    System.out.print("Bạn đã nhập trùng ID.\n Vui lòng nhập lại ID: ");
+                    System.out.print("Bạn đã nhập trùng ID.\nVui lòng nhập lại ID: ");
                     break;
                 }
             }

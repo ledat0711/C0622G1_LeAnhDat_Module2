@@ -32,7 +32,6 @@ public class Student extends Person {
     }
 
     public String toString2() {
-        ++MainController.numericalOrder;
         return "Student {" + super.toString() +
                 ", point=" + point +
                 ", nameClass= '" + nameClass + '\''

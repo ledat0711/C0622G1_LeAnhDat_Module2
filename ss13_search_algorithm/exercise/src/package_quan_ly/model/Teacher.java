@@ -19,7 +19,6 @@ public class Teacher extends Person {
     }
 
     public String toString2() {
-        ++MainController.numericalOrder;
         return "Teacher {" + super.toString() +
                 ", position= '" + position + '\'' +
                 ", salary= " + salary + " million VND " +
