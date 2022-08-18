@@ -1,6 +1,7 @@
 package package_quan_ly.service.impl;
 
 import package_quan_ly.controller.MainController;
+import package_quan_ly.model.Student;
 import package_quan_ly.model.Teacher;
 import package_quan_ly.service.ITeacherService;
 
@@ -13,8 +14,9 @@ public class TeacherService implements ITeacherService {
     private static List<Teacher> teachers = new ArrayList<>();
 
     static {
-        teachers.add(new Teacher(15, "Anh H", "06/07/1991", "Tutor", 30));
-        teachers.add(new Teacher(26, "Anh C", "24/07/1990", "Instructor", 20));
+        teachers.add(new Teacher(15, "Truong Le", "06/07/1991", "Tutor", 30));
+        teachers.add(new Teacher(26, "Binh Nguyen", "24/07/1990", "Instructor", 20));
+        teachers.add(new Teacher(78, "An Tran", "27/09/1996", "Instructor", 25));
     }
 
     @Override
@@ -104,6 +106,7 @@ public class TeacherService implements ITeacherService {
         }
     }
 
+
     public Teacher findNameSimple() {
         String nameInput = scanner.nextLine();
         for (Teacher teacher : teachers) {
@@ -143,5 +146,18 @@ public class TeacherService implements ITeacherService {
         System.out.print("Mời bạn nhập mức lương (đơn vị: triệu VND): ");
         double salary = Double.parseDouble(scanner.nextLine());
         return new Teacher(id, name, dateOfBirth, position, salary);
+    }
+
+    @Override
+    public void sortTeacherByName() {
+        for (int i = 1; i < teachers.size(); i++) {
+            Teacher tempVariable = teachers.get(i);
+            int j;
+            for (j = i - 1; j >= 0 && tempVariable.getName().compareTo(teachers.get(j).getName()) < 0; j--) {
+                teachers.set(j + 1, teachers.get(j));
+            }
+            teachers.set(j + 1, tempVariable);
+        }
+        this.displayAllTeacher();
     }
 }

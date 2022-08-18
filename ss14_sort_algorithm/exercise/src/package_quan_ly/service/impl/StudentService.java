@@ -5,6 +5,7 @@ import package_quan_ly.model.Student;
 import package_quan_ly.service.IStudentService;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,11 +14,11 @@ public class StudentService implements IStudentService {
     private static List<Student> students = new ArrayList<>();
 
     static {
-        students.add(new Student(455, "Nguyen Lam", "12/12/1998", 4, "C06"));
-        students.add(new Student(881, "Tran Ngoc", "12/12/1997", 14, "C07"));
-        students.add(new Student(684, "Le Minh", "12/12/1997", 17, "C08"));
-        students.add(new Student(334, "Phan Tuan", "12/12/1997", 21, "c09"));
-        students.add(new Student(571, "Nguyen Duong", "12/12/1997", 26, "c004"));
+        students.add(new Student(455, "An Nguyen", "12/12/1998", 4, "C06"));
+        students.add(new Student(881, "Ngoc Tran", "06/07/1995", 14, "C07"));
+        students.add(new Student(684, "Minh Le", "25/08/2999", 17, "C08"));
+        students.add(new Student(334, "Tuan Phan", "11/09/2000", 21, "c09"));
+        students.add(new Student(571, "Duong Hoang", "19/09/1996", 26, "c004"));
     }
 
     @Override
@@ -109,7 +110,6 @@ public class StudentService implements IStudentService {
 
     public Student findNameSimple() {
         String nameInput = scanner.nextLine();
-        int i;
         for(Student student : students){
             if(student.getName().contains(nameInput)){
                 return student;
@@ -147,11 +147,16 @@ public class StudentService implements IStudentService {
         return new Student(id, name, dateOfBirth, point, nameClass);
     }
 
-    private static void sortSimple(){
-        
-    }
     @Override
-    public void sortByName(){
+    public void sortStudentByName(){
+        for (int i = 1; i < students.size(); i++) {
+            Student tempVariable = students.get(i);
+            int j;
+            for (j = i - 1; j >= 0 && tempVariable.getName().compareTo(students.get(j).getName()) < 0; j--) {
+                students.set(j + 1, students.get(j));
+            }
+            students.set(j + 1, tempVariable);
+        }
+        this.displayAllStudent();
     }
-
 }

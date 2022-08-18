@@ -24,7 +24,8 @@ public class StudentController {
             System.out.println("4. Xóa học viên.");
             System.out.println("5. Tìm học viên bằng ID. ");
             System.out.println("6. Tìm học viên bằng tên.");
-            System.out.println("7. Quay trở lại menu trước. ");
+            System.out.println("7. Sắp xếp danh sách học viên theo tên và hiển thị. ");
+            System.out.println("8. Quay trở lại menu trước. ");
             System.out.print("Mời bạn nhập chức năng: ");
             i++;
             int choice = Integer.parseInt(scanner.nextLine());
@@ -49,6 +50,9 @@ public class StudentController {
                     studentService.findStudentByName();
                     break;
                 case 7:
+                    studentService.sortStudentByName();
+                    break;
+                case 8:
                     memberController.menuMainController();
                     break;
                 default:

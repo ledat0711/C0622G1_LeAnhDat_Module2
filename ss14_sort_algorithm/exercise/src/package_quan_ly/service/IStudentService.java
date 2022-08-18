@@ -13,5 +13,5 @@ public interface IStudentService {
 
     void findStudentByName();
 
-    void sortByName();
+    void sortStudentByName();
 }
