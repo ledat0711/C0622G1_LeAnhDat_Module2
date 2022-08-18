@@ -14,7 +14,10 @@ public class StudentService implements IStudentService {
 
     static {
         students.add(new Student(455, "Nguyen Lam", "12/12/1998", 4, "C06"));
-        students.add(new Student(56, "Tran Ngoc", "12/12/1997", 9, "C07"));
+        students.add(new Student(881, "Tran Ngoc", "12/12/1997", 14, "C07"));
+        students.add(new Student(684, "Le Minh", "12/12/1997", 17, "C08"));
+        students.add(new Student(334, "Phan Tuan", "12/12/1997", 21, "c09"));
+        students.add(new Student(571, "Nguyen Duong", "12/12/1997", 26, "c004"));
     }
 
     @Override
@@ -142,6 +145,13 @@ public class StudentService implements IStudentService {
         System.out.print("Mời bạn nhập tên lớp: ");
         String nameClass = scanner.nextLine();
         return new Student(id, name, dateOfBirth, point, nameClass);
+    }
+
+    private static void sortSimple(){
+        
+    }
+    @Override
+    public void sortByName(){
     }
 
 }
