@@ -97,11 +97,11 @@ public class TeacherService implements ITeacherService {
                 }
                 break;
             } catch (NumberFormatException n) {
-                System.err.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+                System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
             } catch (InvalidException p) {
-                System.err.println(p.getMessage());
+                System.out.println(p.getMessage());
             } catch (Exception e) {
-                System.err.println("Thông tin bạn nhập đã bị lỗi");
+                System.out.println("Thông tin bạn nhập đã bị lỗi");
             }
             System.out.println("Vui lòng nhập lại thông tin");
         } while (j < 10);
@@ -175,7 +175,7 @@ public class TeacherService implements ITeacherService {
             } catch (InvalidException ie) {
                 System.out.println(ie.getMessage());
             } catch (NumberFormatException n) {
-                System.err.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+                System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
             } catch (Exception e) {
                 System.out.println("\nBạn đã nhập bị lỗi.");
             }
