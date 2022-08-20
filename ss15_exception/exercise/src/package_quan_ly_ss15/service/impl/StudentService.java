@@ -166,7 +166,27 @@ public class StudentService implements IStudentService {
         }
         return iD;
     }
-
+    public double inputValidPoint(){
+        double point=0;
+        int i=0;
+        while (i<10){
+            i++;
+            try {
+                point = Double.parseDouble(scanner.nextLine());
+                if(point<0 || point >30){
+                    throw new InvalidException("Bạn đã nhập điểm vượt quá phạm vi." +
+                            "\n(Trong khoảng 0-30 điểm)");
+                }
+                break;
+            }catch (InvalidException ie){
+                System.out.println(ie.getMessage());
+            }catch (NumberFormatException n){
+                System.out.println("Bạn đã dữ liệu không phải là số");
+            }
+            System.out.print("Vui lòng nhập lại điểm: ");
+        }
+        return point;
+    }
     public Student addInfoStudent() {
         System.out.print("Mời bạn nhập ID: ");
         int iD = inputValidID();
@@ -175,7 +195,7 @@ public class StudentService implements IStudentService {
         System.out.print("Mời bạn nhập ngày sinh: ");
         String dateOfBirth = scanner.nextLine();
         System.out.print("Mời bạn nhập điểm: ");
-        double point = Double.parseDouble(scanner.nextLine());
+        double point = inputValidPoint();
         System.out.print("Mời bạn nhập tên lớp: ");
         String nameClass = scanner.nextLine();
         return new Student(iD, name, dateOfBirth, point, nameClass);
