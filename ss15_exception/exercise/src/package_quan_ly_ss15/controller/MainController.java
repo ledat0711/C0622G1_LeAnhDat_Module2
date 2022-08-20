@@ -34,7 +34,6 @@ public class MainController {
     }
 
     public void menuMainController() throws Exception {
-        int j = 0;
         int i = 0;
         int choice;
         while (i < 10) {

@@ -39,8 +39,7 @@ public class StudentController {
 
     public static void menuManagementStudent() throws Exception {
         int i = 0;
-        int j = 0;
-        int choice = 0;
+        int choice;
         while (i < 10) {
             System.out.println("-------------------------------------------");
             System.out.println("Quản lý danh sách học viên.");

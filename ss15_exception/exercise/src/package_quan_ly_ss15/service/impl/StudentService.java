@@ -21,7 +21,7 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void addStudent() throws Exception {
+    public void addStudent() {
         Student student = this.addInfoStudent();
         students.add(student);
         System.out.println("Thêm mới học sinh thành công");
