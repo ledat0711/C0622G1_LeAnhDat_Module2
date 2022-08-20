@@ -90,7 +90,7 @@ public class TeacherService implements ITeacherService {
         int iD = 0;
         int j = 0;
         int i;
-        do {
+        while (j < 10){
             j++;
             try {
                 iD = Integer.parseInt(scanner.nextLine());
@@ -106,7 +106,7 @@ public class TeacherService implements ITeacherService {
                 System.out.println("Thông tin bạn nhập đã bị lỗi");
             }
             System.out.println("Vui lòng nhập lại thông tin");
-        } while (j < 10);
+        }
         for (i = 0; i < teachers.size(); i++) {
             if (teachers.get(i).getID() == iD) {
                 return teachers.get(i);

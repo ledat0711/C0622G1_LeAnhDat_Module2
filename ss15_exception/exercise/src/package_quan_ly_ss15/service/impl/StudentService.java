@@ -89,7 +89,7 @@ public class StudentService implements IStudentService {
         int i;
         int j = 0;
         int iD = 0;
-        do {
+        while (j < 10){
             j++;
             try {
                 iD = Integer.parseInt(scanner.nextLine());
@@ -105,7 +105,7 @@ public class StudentService implements IStudentService {
                 System.out.println("Thông tin bạn nhập đã bị lỗi");
             }
             System.out.println("Vui lòng nhập lại thông tin");
-        } while (j < 10);
+        }
         for (i = 0; i < students.size(); i++) {
             if (students.get(i).getID() == iD) {
                 return students.get(i);
@@ -167,6 +167,7 @@ public class StudentService implements IStudentService {
         }
         return iD;
     }
+
     public double inputValidPoint(){
         double point=0;
         int i=0;
@@ -190,6 +191,7 @@ public class StudentService implements IStudentService {
         }
         return point;
     }
+
     public Student addInfoStudent() {
         System.out.print("Mời bạn nhập ID: ");
         int iD = inputValidID();
