@@ -49,9 +49,9 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return " id=" + id +
-                ", name='" + name + '\'' +
-                ", birth day='" + dateOfBirth + '\''
+        return " Mã số ID=" + id +
+                ", tên='" + name + '\'' +
+                ", ngày sinh='" + dateOfBirth + '\''
                 ;
     }
 }

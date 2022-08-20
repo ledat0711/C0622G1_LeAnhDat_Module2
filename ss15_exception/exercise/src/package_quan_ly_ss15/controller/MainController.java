@@ -10,10 +10,33 @@ public class MainController {
 
     public static int numericalOrder = 0;
 
+    public int inputValidChoice() {
+        int choice = 0;
+        int j = 0;
+        while (j < 10) {
+            j++;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice > 2 || choice < 1) {
+                    throw new InvalidException("\nBạn đã nhập giá trị ngoài phạm vi.");
+                }
+                break;
+            } catch (NumberFormatException n) {
+                System.out.println("\nBạn đã nhập kiểu dữ liệu không phải là số.");
+            } catch (InvalidException p) {
+                System.out.println(p.getMessage());
+            } catch (Exception e) {
+                System.out.println("\nThông tin bạn nhập đã bị lỗi");
+            }
+            System.out.print("Vui lòng nhập lại lựa chọn: ");
+        }
+        return choice;
+    }
+
     public void menuMainController() throws Exception {
         int j = 0;
         int i = 0;
-        int choice = 0;
+        int choice;
         while (i < 10) {
             i++;
             System.out.println("-------------------------------------------");
@@ -21,23 +44,7 @@ public class MainController {
             System.out.println("1. Quản lý học viên.");
             System.out.println("2. Quản lý giảng viên");
             System.out.print("Mời bạn nhập lựa chọn: ");
-            do {
-                j++;
-                try {
-                    choice = Integer.parseInt(scanner.nextLine());
-                    if (choice > 2 || choice < 1) {
-                        throw new InvalidException("Bạn đã ngoài phạm vi giá trị.");
-                    }
-                    break;
-                } catch (NumberFormatException n) {
-                    System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
-                } catch (InvalidException p) {
-                    System.out.println(p.getMessage());
-                } catch (Exception e) {
-                    System.out.println("Thông tin bạn nhập đã bị lỗi");
-                }
-                System.out.print("Vui lòng nhập lại lựa chọn:");
-            } while (j < 10);
+            choice = this.inputValidChoice();
             switch (choice) {
                 case 1:
                     StudentController.menuManagementStudent();

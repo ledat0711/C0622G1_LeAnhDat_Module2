@@ -30,6 +30,7 @@ public class StudentService implements IStudentService {
     @Override
     public void displayAllStudent() {
         MainController.numericalOrder = 0;
+        System.out.println("****Danh sách học viên****");
         for (Student student : students) {
             System.out.println(student);
         }
@@ -121,6 +122,7 @@ public class StudentService implements IStudentService {
             System.out.println("Không tìm thấy học viên với tên cần tìm");
         } else {
             System.out.println("Thông tin mà bạn cần tìm: ");
+            MainController.numericalOrder=0;
             for (Object student : foundStudentList) {
                 System.out.println(student);
             }
@@ -133,7 +135,6 @@ public class StudentService implements IStudentService {
         for (Student student : students) {
             if (student.getName().contains(nameInput)) {
                 foundStudentList.add(student);
-                ;
             }
         }
         return foundStudentList;
@@ -148,19 +149,19 @@ public class StudentService implements IStudentService {
                 iD = Integer.parseInt(scanner.nextLine());
                 for (Student student : students) {
                     if (iD == student.getID()) {
-                        throw new InvalidException("Bạn đã nhập trùng ID.");
+                        throw new InvalidException("\nBạn đã nhập trùng ID.");
                     }
                 }
                 if (iD < 0) {
-                    throw new InvalidException("Bạn đã nhập số âm.");
+                    throw new InvalidException("\nBạn đã nhập số âm.");
                 }
                 break;
             } catch (InvalidException ie) {
                 System.out.println(ie.getMessage());
             } catch (NumberFormatException n) {
-                System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+                System.out.println("\nBạn đã nhập kiểu dữ liệu không phải là số.");
             } catch (Exception e) {
-                System.out.println("\nBạn đã nhập bị lỗi.");
+                System.out.println("\nThông tin bạn đã nhập bị lỗi.");
             }
             System.out.print("Vui lòng nhập lại ID: ");
         }
@@ -174,14 +175,16 @@ public class StudentService implements IStudentService {
             try {
                 point = Double.parseDouble(scanner.nextLine());
                 if(point<0 || point >30){
-                    throw new InvalidException("Bạn đã nhập điểm vượt quá phạm vi." +
+                    throw new InvalidException("\nBạn đã nhập điểm vượt quá phạm vi." +
                             "\n(Trong khoảng 0-30 điểm)");
                 }
                 break;
             }catch (InvalidException ie){
                 System.out.println(ie.getMessage());
             }catch (NumberFormatException n){
-                System.out.println("Bạn đã dữ liệu không phải là số");
+                System.out.println("\nBạn đã dữ liệu không phải là số");
+            }catch (Exception e){
+                System.out.println("\nBạn đã nhập bị lỗi.");
             }
             System.out.print("Vui lòng nhập lại điểm: ");
         }

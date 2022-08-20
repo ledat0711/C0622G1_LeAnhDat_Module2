@@ -22,18 +22,16 @@ public class Student extends Person {
     @Override
     public String toString() {
         ++MainController.numericalOrder;
-        return "Student " + MainController.numericalOrder + " {" + super.toString() +
-                ", point=" + point +
-                ", nameClass= '" + nameClass + '\''
-                +
+        return "Học viên  " + MainController.numericalOrder + " {" + super.toString() +
+                ", điểm: " + point +
+                ", lớp:  '" + nameClass + '\'' +
                 "} ";
     }
 
     public String toString2() {
-        return "Student { " + super.toString() +
-                ", point=" + point +
-                ", nameClass= '" + nameClass + '\''
-                +
+        return "Học viên { " + super.toString() +
+                ", điểm: " + point +
+                ", lớp: '" + nameClass + '\'' +
                 "} ";
     }
 }

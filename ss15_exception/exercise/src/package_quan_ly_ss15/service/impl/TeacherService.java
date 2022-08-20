@@ -18,6 +18,7 @@ public class TeacherService implements ITeacherService {
         teachers.add(new Teacher(15, "Truong Le", "06/07/1991", "Tutor", 30));
         teachers.add(new Teacher(26, "Binh Nguyen", "24/07/1990", "Instructor", 20));
         teachers.add(new Teacher(78, "An Tran", "27/09/1996", "Instructor", 25));
+        teachers.add(new Teacher(18, "An Nguyen", "14/06/1993", "Tutor", 23));
     }
 
     @Override
@@ -30,6 +31,7 @@ public class TeacherService implements ITeacherService {
     @Override
     public void displayAllTeacher() {
         MainController.numericalOrder = 0;
+        System.out.println("**** Danh sách giảng viên ****");
         for (Teacher teacher : teachers) {
             System.out.println(teacher);
         }
@@ -121,6 +123,7 @@ public class TeacherService implements ITeacherService {
             System.out.println("Không tìm thấy giảng viên với tên cần tìm");
         } else {
             System.out.println("Thông tin giảng viên mà bạn cần tìm: ");
+            MainController.numericalOrder=0;
             for (Object teacher : foundTeacherList) {
                 System.out.println(teacher);
             }
@@ -133,27 +136,9 @@ public class TeacherService implements ITeacherService {
         for (Teacher teacher : teachers) {
             if (teacher.getName().contains(nameInput)) {
                 foundTeachersList.add(teacher);
-                ;
             }
         }
         return foundTeachersList;
-    }
-
-    public int inputPositiveID() {
-        int iD;
-        boolean isInvalidID;
-        do {
-            isInvalidID = true;
-            iD = Integer.parseInt(scanner.nextLine());
-            for (Teacher teacher : teachers) {
-                if (iD == teacher.getID()) {
-                    isInvalidID = false;
-                    System.out.print("Bạn đã nhập trùng ID.\nVui lòng nhập lại ID: ");
-                    break;
-                }
-            }
-        } while (!isInvalidID);
-        return iD;
     }
 
     public int inputValidID() {
@@ -165,23 +150,45 @@ public class TeacherService implements ITeacherService {
                 iD = Integer.parseInt(scanner.nextLine());
                 for (Teacher teacher : teachers) {
                     if (iD == teacher.getID()) {
-                        throw new InvalidException("Bạn đã nhập trùng ID.");
+                        throw new InvalidException("\nBạn đã nhập trùng ID.");
                     }
                 }
                 if (iD < 0) {
-                    throw new InvalidException("Bạn đã nhập số âm.");
+                    throw new InvalidException("\nBạn đã nhập số âm.");
                 }
                 break;
             } catch (InvalidException ie) {
                 System.out.println(ie.getMessage());
             } catch (NumberFormatException n) {
-                System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+                System.out.println("\nBạn đã nhập kiểu dữ liệu không phải là số.");
             } catch (Exception e) {
-                System.out.println("\nBạn đã nhập bị lỗi.");
+                System.out.println("\nThông tin bạn đã nhập bị lỗi.");
             }
             System.out.print("Vui lòng nhập lại ID: ");
         }
         return iD;
+    }
+    public double inputValidSalary(){
+        double salary=0;
+        int i=0;
+        while (i<10){
+            i++;
+            try {
+                salary = Double.parseDouble(scanner.nextLine());
+                if(salary<0){
+                    throw new InvalidException("\nBạn đã nhập số âm.");
+                }
+                break;
+            }catch (InvalidException ie){
+                System.out.println(ie.getMessage());
+            }catch (NumberFormatException n){
+                System.out.println("\nBạn đã dữ liệu không phải là số");
+            }catch (Exception e){
+                System.out.println("\nBạn đã nhập bị lỗi.");
+            }
+            System.out.print("Vui lòng nhập lại mức lương: ");
+        }
+        return salary;
     }
 
     public Teacher addInfoTeacher() {
@@ -194,7 +201,7 @@ public class TeacherService implements ITeacherService {
         System.out.print("Mời bạn nhập vị trí công tác: ");
         String position = scanner.nextLine();
         System.out.print("Mời bạn nhập mức lương (đơn vị: triệu VND): ");
-        double salary = Double.parseDouble(scanner.nextLine());
+        double salary = inputValidSalary();
         return new Teacher(id, name, dateOfBirth, position, salary);
     }
 

@@ -14,6 +14,29 @@ public class TeacherController {
     private static ITeacherService teacherService = new TeacherService();
     private static MainController memberController = new MainController();
 
+    public static int inputValidChoice() {
+        int choice = 0;
+        int j = 0;
+        while (j < 10) {
+            j++;
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                if (choice > 8 || choice < 1) {
+                    throw new InvalidException("\nBạn đã nhập giá trị ngoài phạm vi.");
+                }
+                break;
+            } catch (NumberFormatException n) {
+                System.out.println("\nBạn đã nhập kiểu dữ liệu không phải là số.");
+            } catch (InvalidException p) {
+                System.out.println(p.getMessage());
+            } catch (Exception e) {
+                System.out.println("\nThông tin bạn nhập đã bị lỗi");
+            }
+            System.out.print("Vui lòng nhập lại lựa chọn: ");
+        }
+        return choice;
+    }
+
     public static void menuManagementTeacher() throws Exception {
         int i = 0;
         int j = 0;
@@ -31,23 +54,7 @@ public class TeacherController {
             System.out.println("8. Quay trở lại menu trước.");
             System.out.print("Mời bạn nhập chức năng: ");
             i++;
-            do {
-                j++;
-                try {
-                    choice = Integer.parseInt(scanner.nextLine());
-                    if (choice > 8 || choice < 0) {
-                        throw new InvalidException("Bạn đã ngoài phạm vi giá trị.");
-                    }
-                    break;
-                } catch (NumberFormatException n) {
-                    System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
-                } catch (InvalidException p) {
-                    System.out.println(p.getMessage());
-                } catch (Exception e) {
-                    System.out.println("Thông tin bạn nhập đã bị lỗi");
-                }
-                System.out.print("Vui lòng nhập lại lựa chọn: ");
-            } while (j < 10);
+            choice = inputValidChoice();
             switch (choice) {
                 case 1:
                     teacherService.displayAllTeacher();
