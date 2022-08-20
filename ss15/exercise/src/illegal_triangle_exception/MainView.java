@@ -7,6 +7,8 @@ Kiểm tra nếu giá trị nhập vào là số âm hoặc tổng 2 cạnh khô
 Sử dụng IllegalTriangleException để sinh lỗi khi kiểm tra tam giác.
 */
 package illegal_triangle_exception;
+import illegal_triangle_exception.utils.exception.IllegalTriangleException;
+
 import java.util.Scanner;
 public class MainView {
     public static void main(String[] args) {

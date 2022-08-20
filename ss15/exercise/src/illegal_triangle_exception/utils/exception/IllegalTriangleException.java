@@ -1,4 +1,4 @@
-package illegal_triangle_exception;
+package illegal_triangle_exception.utils.exception;
 
 public class IllegalTriangleException extends Exception {
     public IllegalTriangleException(String message) {
