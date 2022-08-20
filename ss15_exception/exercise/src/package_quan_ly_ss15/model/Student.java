@@ -22,7 +22,7 @@ public class Student extends Person {
     @Override
     public String toString() {
         ++MainController.numericalOrder;
-        return "Student " + MainController.numericalOrder + "{" + super.toString() +
+        return "Student " + MainController.numericalOrder + " {" + super.toString() +
                 ", point=" + point +
                 ", nameClass= '" + nameClass + '\''
                 +
@@ -30,7 +30,7 @@ public class Student extends Person {
     }
 
     public String toString2() {
-        return "Student {" + super.toString() +
+        return "Student { " + super.toString() +
                 ", point=" + point +
                 ", nameClass= '" + nameClass + '\''
                 +

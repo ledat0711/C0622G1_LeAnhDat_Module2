@@ -2,6 +2,7 @@ package package_quan_ly_ss15.controller;
 
 import package_quan_ly_ss15.service.ITeacherService;
 import package_quan_ly_ss15.service.impl.TeacherService;
+import package_quan_ly_ss15.utils.exception.InvalidException;
 
 import java.util.Scanner;
 
@@ -13,8 +14,10 @@ public class TeacherController {
     private static ITeacherService teacherService = new TeacherService();
     private static MainController memberController = new MainController();
 
-    public static void menuManagementTeacher() {
+    public static void menuManagementTeacher() throws Exception {
         int i = 0;
+        int j = 0;
+        int choice = 0;
         while (i < 10) {
             System.out.println("-------------------------------------------");
             System.out.println("Quản lý danh sách giảng viên.");
@@ -28,7 +31,23 @@ public class TeacherController {
             System.out.println("8. Quay trở lại menu trước.");
             System.out.print("Mời bạn nhập chức năng: ");
             i++;
-            int choice = Integer.parseInt(scanner.nextLine());
+            do {
+                j++;
+                try {
+                    choice = Integer.parseInt(scanner.nextLine());
+                    if (choice > 8 || choice < 0) {
+                        throw new InvalidException("Bạn đã ngoài phạm vi giá trị.");
+                    }
+                    break;
+                } catch (NumberFormatException n) {
+                    System.err.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+                } catch (InvalidException p) {
+                    System.err.println(p.getMessage());
+                } catch (Exception e) {
+                    System.err.println("Thông tin bạn nhập đã bị lỗi");
+                }
+                System.out.println("Vui lòng nhập lại thông tin");
+            } while (j < 10);
             switch (choice) {
                 case 1:
                     teacherService.displayAllTeacher();

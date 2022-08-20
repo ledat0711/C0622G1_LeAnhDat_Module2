@@ -1,8 +1,10 @@
 package package_quan_ly_ss15.service.impl;
 
 import package_quan_ly_ss15.controller.MainController;
+import package_quan_ly_ss15.model.Student;
 import package_quan_ly_ss15.model.Teacher;
 import package_quan_ly_ss15.service.ITeacherService;
+import package_quan_ly_ss15.utils.exception.InvalidException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -83,8 +85,26 @@ public class TeacherService implements ITeacherService {
     }
 
     public Teacher findIDTeacherSimple() {
-        int iD = Integer.parseInt(scanner.nextLine());
+        int iD = 0;
+        int j = 0;
         int i;
+        do {
+            j++;
+            try {
+                iD = Integer.parseInt(scanner.nextLine());
+                if (iD < 0) {
+                    throw new InvalidException("Bạn đã nhập số âm.");
+                }
+                break;
+            } catch (NumberFormatException n) {
+                System.err.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+            } catch (InvalidException p) {
+                System.err.println(p.getMessage());
+            } catch (Exception e) {
+                System.err.println("Thông tin bạn nhập đã bị lỗi");
+            }
+            System.out.println("Vui lòng nhập lại thông tin");
+        } while (j < 10);
         for (i = 0; i < teachers.size(); i++) {
             if (teachers.get(i).getID() == iD) {
                 return teachers.get(i);
@@ -101,7 +121,7 @@ public class TeacherService implements ITeacherService {
             System.out.println("Không tìm thấy giảng viên với tên cần tìm");
         } else {
             System.out.println("Thông tin giảng viên mà bạn cần tìm: ");
-            for(Object teacher: foundTeacherList){
+            for (Object teacher : foundTeacherList) {
                 System.out.println(teacher);
             }
         }
@@ -110,9 +130,10 @@ public class TeacherService implements ITeacherService {
     public List<Teacher> findNameSimple() {
         String nameInput = scanner.nextLine();
         List<Teacher> foundTeachersList = new ArrayList<>();
-        for(Teacher teacher : teachers){
-            if(teacher.getName().contains(nameInput)){
-                foundTeachersList.add(teacher); ;
+        for (Teacher teacher : teachers) {
+            if (teacher.getName().contains(nameInput)) {
+                foundTeachersList.add(teacher);
+                ;
             }
         }
         return foundTeachersList;
@@ -135,9 +156,37 @@ public class TeacherService implements ITeacherService {
         return iD;
     }
 
+    public int inputValidID() {
+        int iD = 0;
+        int i = 0;
+        while (i < 10) {
+            i++;
+            try {
+                iD = Integer.parseInt(scanner.nextLine());
+                for (Teacher teacher : teachers) {
+                    if (iD == teacher.getID()) {
+                        throw new InvalidException("Bạn đã nhập trùng ID.");
+                    }
+                }
+                if (iD < 0) {
+                    throw new InvalidException("Bạn đã nhập số âm.");
+                }
+                break;
+            } catch (InvalidException ie) {
+                System.out.println(ie.getMessage());
+            } catch (NumberFormatException n) {
+                System.err.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+            } catch (Exception e) {
+                System.out.println("\nBạn đã nhập bị lỗi.");
+            }
+            System.out.print("Vui lòng nhập lại ID: ");
+        }
+        return iD;
+    }
+
     public Teacher addInfoTeacher() {
         System.out.print("Mời bạn nhập ID: ");
-        int id = this.inputPositiveID();
+        int id = this.inputValidID();
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");

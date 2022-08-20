@@ -12,14 +12,14 @@ public class Teacher extends Person {
     @Override
     public String toString() {
         ++MainController.numericalOrder;
-        return "Teacher" + MainController.numericalOrder + "{" + super.toString() +
+        return "Teacher" + MainController.numericalOrder + " {" + super.toString() +
                 ", position= '" + position + '\'' +
                 ", salary= " + salary + " million VND " +
                 '}';
     }
 
     public String toString2() {
-        return "Teacher {" + super.toString() +
+        return "Teacher { " + super.toString() +
                 ", position= '" + position + '\'' +
                 ", salary= " + salary + " million VND " +
                 '}';

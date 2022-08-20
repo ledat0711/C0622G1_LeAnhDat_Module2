@@ -3,6 +3,7 @@ package package_quan_ly_ss15.service.impl;
 import package_quan_ly_ss15.controller.MainController;
 import package_quan_ly_ss15.model.Student;
 import package_quan_ly_ss15.service.IStudentService;
+import package_quan_ly_ss15.utils.exception.InvalidException;
 
 import java.util.*;
 
@@ -20,7 +21,7 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void addStudent() {
+    public void addStudent() throws Exception {
         Student student = this.addInfoStudent();
         students.add(student);
         System.out.println("Thêm mới học sinh thành công");
@@ -84,8 +85,26 @@ public class StudentService implements IStudentService {
     }
 
     public Student findIDSimple() {
-        int iD = Integer.parseInt(scanner.nextLine());
         int i;
+        int j = 0;
+        int iD = 0;
+        do {
+            j++;
+            try {
+                iD = Integer.parseInt(scanner.nextLine());
+                if (iD < 0) {
+                    throw new InvalidException("Bạn đã nhập số âm.");
+                }
+                break;
+            } catch (NumberFormatException n) {
+                System.err.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+            } catch (InvalidException p) {
+                System.err.println(p.getMessage());
+            } catch (Exception e) {
+                System.err.println("Thông tin bạn nhập đã bị lỗi");
+            }
+            System.out.println("Vui lòng nhập lại thông tin");
+        } while (j < 10);
         for (i = 0; i < students.size(); i++) {
             if (students.get(i).getID() == iD) {
                 return students.get(i);
@@ -102,7 +121,7 @@ public class StudentService implements IStudentService {
             System.out.println("Không tìm thấy học viên với tên cần tìm");
         } else {
             System.out.println("Thông tin mà bạn cần tìm: ");
-            for (Object student : foundStudentList){
+            for (Object student : foundStudentList) {
                 System.out.println(student);
             }
         }
@@ -111,33 +130,46 @@ public class StudentService implements IStudentService {
     public List<Object> findNameSimple() {
         String nameInput = scanner.nextLine();
         List<Object> foundStudentList = new ArrayList<>();
-        for(Student student : students){
-            if(student.getName().contains(nameInput)){
-                foundStudentList.add(student); ;
+        for (Student student : students) {
+            if (student.getName().contains(nameInput)) {
+                foundStudentList.add(student);
+                ;
             }
         }
         return foundStudentList;
     }
 
-    public int inputPositiveID() {
-        int iD;
-        boolean isInvalidID;
-        do {
-            isInvalidID = true;
-            iD = Integer.parseInt(scanner.nextLine());
-            for (Student student : students) {
-                if (iD == student.getID()) {
-                    isInvalidID = false;
-                    System.out.print("Bạn đã nhập trùng ID.\nVui lòng nhập lại ID:");
-                    break;
+    public int inputValidID() {
+        int iD = 0;
+        int i = 0;
+        while (i < 10) {
+            i++;
+            try {
+                iD = Integer.parseInt(scanner.nextLine());
+                for (Student student : students) {
+                    if (iD == student.getID()) {
+                        throw new InvalidException("Bạn đã nhập trùng ID.");
+                    }
                 }
+                if (iD < 0) {
+                    throw new InvalidException("Bạn đã nhập số âm.");
+                }
+                break;
+            } catch (InvalidException ie) {
+                System.out.println(ie.getMessage());
+            } catch (NumberFormatException n) {
+                System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
+            } catch (Exception e) {
+                System.out.println("\nBạn đã nhập bị lỗi.");
             }
-        } while (!isInvalidID);
+            System.out.print("Vui lòng nhập lại ID: ");
+        }
         return iD;
     }
+
     public Student addInfoStudent() {
         System.out.print("Mời bạn nhập ID: ");
-        int id = this.inputPositiveID();
+        int iD = inputValidID();
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
@@ -146,11 +178,11 @@ public class StudentService implements IStudentService {
         double point = Double.parseDouble(scanner.nextLine());
         System.out.print("Mời bạn nhập tên lớp: ");
         String nameClass = scanner.nextLine();
-        return new Student(id, name, dateOfBirth, point, nameClass);
+        return new Student(iD, name, dateOfBirth, point, nameClass);
     }
 
     @Override
-    public void sortStudentByName(){
+    public void sortStudentByName() {
         for (int i = 1; i < students.size(); i++) {
             Student tempVariable = students.get(i);
             int j;

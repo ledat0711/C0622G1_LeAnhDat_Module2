@@ -1,13 +1,13 @@
 package package_quan_ly_ss15.service;
 
 public interface IStudentService {
-    void addStudent();
+    void addStudent() throws Exception;
 
     void displayAllStudent();
 
     void removeStudent();
 
-    void updateStudent();
+    void updateStudent() throws Exception;
 
     void findStudentByID();
 
