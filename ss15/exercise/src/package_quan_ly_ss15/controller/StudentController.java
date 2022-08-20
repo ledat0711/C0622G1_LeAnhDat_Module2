@@ -1,7 +1,7 @@
-package package_quan_ly.controller;
+package package_quan_ly_ss15.controller;
 
-import package_quan_ly.service.IStudentService;
-import package_quan_ly.service.impl.StudentService;
+import package_quan_ly_ss15.service.IStudentService;
+import package_quan_ly_ss15.service.impl.StudentService;
 
 import java.util.Scanner;
 

@@ -1,8 +1,8 @@
-package package_quan_ly.service.impl;
+package package_quan_ly_ss15.service.impl;
 
-import package_quan_ly.controller.MainController;
-import package_quan_ly.model.Teacher;
-import package_quan_ly.service.ITeacherService;
+import package_quan_ly_ss15.controller.MainController;
+import package_quan_ly_ss15.model.Teacher;
+import package_quan_ly_ss15.service.ITeacherService;
 
 import java.util.ArrayList;
 import java.util.List;

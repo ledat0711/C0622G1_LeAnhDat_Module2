@@ -1,8 +1,8 @@
-package package_quan_ly.service.impl;
+package package_quan_ly_ss15.service.impl;
 
-import package_quan_ly.controller.MainController;
-import package_quan_ly.model.Student;
-import package_quan_ly.service.IStudentService;
+import package_quan_ly_ss15.controller.MainController;
+import package_quan_ly_ss15.model.Student;
+import package_quan_ly_ss15.service.IStudentService;
 
 import java.util.*;
 

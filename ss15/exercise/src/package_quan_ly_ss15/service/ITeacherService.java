@@ -1,4 +1,4 @@
-package package_quan_ly.service;
+package package_quan_ly_ss15.service;
 
 public interface ITeacherService {
     void addTeacher();

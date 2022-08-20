@@ -1,4 +1,5 @@
-package package_quan_ly.controller;
+//Bài tập thêm HaiTT ( phần ngoại lệ)
+package package_quan_ly_ss15.controller;
 
 import java.util.Scanner;
 

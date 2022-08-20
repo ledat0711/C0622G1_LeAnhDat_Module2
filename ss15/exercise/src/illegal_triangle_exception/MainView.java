@@ -39,6 +39,8 @@ public class MainView {
                 System.err.println(e.getMessage());
             } catch (NumberFormatException n) {
                 System.err.println("Bạn đã nhập giá trị không phải là một số.");
+            }catch (Exception e){
+                System.out.println("Thông tin bạn đã nhập bị lỗi.");
             }
             System.out.println("--------------------------------");
             System.out.println("Mời bạn lại các giá trị");

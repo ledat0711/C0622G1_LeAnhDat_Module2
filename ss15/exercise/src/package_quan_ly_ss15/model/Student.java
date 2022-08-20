@@ -1,6 +1,6 @@
-package package_quan_ly.model;
+package package_quan_ly_ss15.model;
 
-import package_quan_ly.controller.MainController;
+import package_quan_ly_ss15.controller.MainController;
 
 public class Student extends Person {
     private double point;
