@@ -17,6 +17,7 @@ public class MainController {
             System.out.println("1. Quản lý học viên.");
             System.out.println("2. Quản lý giảng viên");
             System.out.print("Mời bạn nhập lựa chọn: ");
+            try{
             int choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
