@@ -1,26 +1,44 @@
 package package_quan_ly_ss16.view;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import package_quan_ly_ss16.controller.MainController;
 import package_quan_ly_ss16.model.Student;
 import read_file_csv.model.Country;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainViewReadAndWrite2 {
+public class MainViewReadAndWrite {
     public static void main(String[] args) throws IOException {
+        add();
         displayInfo();
     }
 
     public static void displayInfo() throws IOException {
         List<Student> students = readFile();
-        Country.numericalOrder = 0;
+        MainController.numericalOrder = 0;
+        System.out.println("Bạn đã nhập những thông tin sau vào file destination_student_list_file:");
         for (Student student : students) {
             System.out.println(student);
         }
+    }
+
+    private static void add() throws IOException {
+        List<Student> students = readFile();
+        writeFile(students);
+    }
+
+    private static void writeFile(List<Student> students) throws IOException {
+        File file = new File("src\\package_quan_ly_ss16\\data\\destination_student_list_file.csv");
+        FileWriter fileWriter = new FileWriter(file);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        for (Student student : students) {
+            bufferedWriter.write(student.toString());
+            bufferedWriter.newLine();
+        }
+        bufferedWriter.close();
     }
 
     public static List<Student> readFile() throws IOException {

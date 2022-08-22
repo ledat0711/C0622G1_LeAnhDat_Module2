@@ -19,7 +19,7 @@ public class MainView {
     }
 
     private static void writeFile(List<String> strings) throws IOException {
-        File file = new File("src\\copy_file_text\\data\\destination_file.csv");
+        File file = new File("src\\copy_file_text\\data\\destination_student_list_file.csv");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         for (String str : strings) {
