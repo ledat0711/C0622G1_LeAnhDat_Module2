@@ -9,6 +9,7 @@ Chương trình nên cảnh báo người dùng nếu tệp nguồn không tồn
 bạn nên sử dụng luồng đầu vào để đọc ký tự từ tệp nguồn và luồng đầu ra để gửi byte đến tệp tin đích,
 bất kể nội dung của tệp.*/
 package copy_file_text;
+
 import java.io.*;
 import java.util.*;
 
@@ -32,7 +33,6 @@ public class MainView {
         List<String> strings = readFile();
         writeFile(strings);
     }
-
     private static List<String> readFile() throws IOException {
         File file = new File("src\\copy_file_text\\data\\source.csv");
         FileReader fileReader = new FileReader(file);
@@ -47,7 +47,9 @@ public class MainView {
             lengthAllChar += line.length();
             stringAndLengths.add(line);
         }
-        System.out.println("Số ký tự trong tệp: "+ lengthAllChar);
+        System.out.println("Số ký tự trong tệp: " + lengthAllChar);
         return stringAndLengths;
     }
+
+
 }
