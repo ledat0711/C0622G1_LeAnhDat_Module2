@@ -33,11 +33,12 @@ public class MainView {
         List<String> strings = readFile();
         writeFile(strings);
     }
+
     private static List<String> readFile() throws IOException {
         File file = new File("src\\copy_file_text\\data\\source_file.csv");
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
-        List<String> stringAndLengths = new ArrayList<>();
+        List<String> stringArrayList = new ArrayList<>();
         String line;
         int lengthAllChar = 0;
         while ((line = bufferedReader.readLine()) != null) {
@@ -45,9 +46,9 @@ public class MainView {
                 continue;
             }
             lengthAllChar += line.length();
-            stringAndLengths.add(line);
+            stringArrayList.add(line);
         }
         System.out.println("Số ký tự trong tệp: " + lengthAllChar);
-        return stringAndLengths;
+        return stringArrayList;
     }
 }
