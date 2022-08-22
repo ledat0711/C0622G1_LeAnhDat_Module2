@@ -15,7 +15,7 @@ import java.util.Scanner;
 public class MainView {
     static Scanner scanner = new Scanner(System.in);
 
-    public static double inputValidEdge1(String stringInput) {
+    public static double checkInputValidEdge1(String stringInput) {
         System.out.printf("Cạnh %s: ", stringInput);
         double edge = 0;
         int i = 0;
@@ -39,39 +39,43 @@ public class MainView {
         return edge;
     }
 
-    public static boolean inputValidEdge2(double firstEdge, double secondEdge, double thirdEdge) {
-        boolean isValid = true;
-        try {
-            if ((firstEdge + secondEdge) <= thirdEdge ||
-                    (firstEdge + thirdEdge) <= secondEdge ||
-                    (secondEdge + thirdEdge) <= firstEdge) {
-                isValid = false;
-                throw new IllegalTriangleException("\nBạn đã nhập vào các giá trị không thỏa mãn: " +
-                        "Tổng 2 cạnh phải lớn hơn cạnh còn lại.");
-            }
-        } catch (IllegalTriangleException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println("Bạn đã nhập thông tin bị lỗi.");
-        }
-        return isValid;
-    }
+//    Đây là cách thứ 2: Dùng hàm này để gọi các class ngoại lệ để sinh lỗi ( nếu không muốn dùng if ):
+//    public static boolean CheckInputValidEdge2(double firstEdge, double secondEdge, double thirdEdge) {
+//        boolean isValid = true;
+//        try {
+//            if ((firstEdge + secondEdge) <= thirdEdge ||
+//                    (firstEdge + thirdEdge) <= secondEdge ||
+//                    (secondEdge + thirdEdge) <= firstEdge) {
+//                isValid = false;
+//                throw new IllegalTriangleException("\nBạn đã nhập vào các giá trị không thỏa mãn: " +
+//                        "Tổng 2 cạnh phải lớn hơn cạnh còn lại.");
+//            }
+//        } catch (IllegalTriangleException e) {
+//            System.out.println(e.getMessage());
+//        } catch (Exception e) {
+//            System.out.println("Bạn đã nhập thông tin bị lỗi.");
+//        }
+//        return isValid;
+//    }
 
     public static void main(String[] args) {
         int i = 0;
         double firstEdge = 0;
         double secondEdge = 0;
         double thirdEdge = 0;
-        System.out.println("Mời bạn nhập chiều dài các cạnh a, b, c của tam giác. ");
         while (i < 10) {
             i++;
-            firstEdge = inputValidEdge1("a");
-            secondEdge = inputValidEdge1("b");
-            thirdEdge = inputValidEdge1("c");
-            if (inputValidEdge2(firstEdge, secondEdge, thirdEdge)) {
-                break;
+            System.out.println("Mời bạn nhập chiều dài các cạnh a, b, c của tam giác. ");
+            firstEdge = checkInputValidEdge1("a");
+            secondEdge = checkInputValidEdge1("b");
+            thirdEdge = checkInputValidEdge1("c");
+            if ((firstEdge + secondEdge) <= thirdEdge ||
+                    (firstEdge + thirdEdge) <= secondEdge ||
+                    (secondEdge + thirdEdge) <= firstEdge) {
+                System.out.println("\nBạn đã nhập vào các giá trị không thỏa mãn: " +
+                        "Tổng 2 cạnh phải lớn hơn cạnh còn lại.");
             } else {
-                System.out.println("Mời bạn lại giá trị các cạnh a,b,c của tam giác: ");
+                break;
             }
         }
         if (i == 10) {
