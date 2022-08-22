@@ -1,10 +1,7 @@
 //Bài tập thêm HaiTT ( phần ngoại lệ)
-package package_quan_ly_ss15.controller;
-
-import package_quan_ly_ss15.utils.exception.InvalidException;
-
+package package_quan_ly_ss16.controller;
+import package_quan_ly_ss16.utils.exception.InvalidException;
 import java.util.Scanner;
-
 public class MainController {
     private static Scanner scanner = new Scanner(System.in);
 

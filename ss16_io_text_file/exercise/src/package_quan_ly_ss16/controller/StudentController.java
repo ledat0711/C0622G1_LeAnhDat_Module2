@@ -1,8 +1,8 @@
-package package_quan_ly_ss15.controller;
+package package_quan_ly_ss16.controller;
 
-import package_quan_ly_ss15.service.IStudentService;
-import package_quan_ly_ss15.service.impl.StudentService;
-import package_quan_ly_ss15.utils.exception.InvalidException;
+import package_quan_ly_ss16.service.IStudentService;
+import package_quan_ly_ss16.service.impl.StudentService;
+import package_quan_ly_ss16.utils.exception.InvalidException;
 
 import java.util.Scanner;
 

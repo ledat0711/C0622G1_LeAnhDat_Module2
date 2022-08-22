@@ -1,6 +1,6 @@
-package package_quan_ly_ss15.view;
+package package_quan_ly_ss16.view;
 
-import package_quan_ly_ss15.controller.MainController;
+import package_quan_ly_ss16.controller.MainController;
 
 public class MainView {
     public static void main(String[] args) throws Exception {

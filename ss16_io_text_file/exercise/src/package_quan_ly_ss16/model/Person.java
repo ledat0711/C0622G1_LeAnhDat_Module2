@@ -1,4 +1,4 @@
-package package_quan_ly_ss15.model;
+package package_quan_ly_ss16.model;
 
 public abstract class Person {
     private int id;

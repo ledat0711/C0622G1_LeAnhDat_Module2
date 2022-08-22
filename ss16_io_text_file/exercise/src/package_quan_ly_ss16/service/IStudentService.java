@@ -1,4 +1,4 @@
-package package_quan_ly_ss15.service;
+package package_quan_ly_ss16.service;
 
 public interface IStudentService {
     void addStudent() throws Exception;

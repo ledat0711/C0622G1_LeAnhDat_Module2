@@ -1,6 +1,6 @@
-package package_quan_ly_ss15.model;
+package package_quan_ly_ss16.model;
 
-import package_quan_ly_ss15.controller.MainController;
+import package_quan_ly_ss16.controller.MainController;
 
 public class Teacher extends Person {
     private String position;
