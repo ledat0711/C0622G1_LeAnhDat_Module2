@@ -9,7 +9,6 @@ Sử dụng IllegalTriangleException để sinh lỗi khi kiểm tra tam giác.
 package illegal_triangle_exception;
 
 import illegal_triangle_exception.utils.exception.IllegalTriangleException;
-import package_quan_ly_ss15.utils.exception.InvalidException;
 
 import java.util.Scanner;
 
@@ -19,7 +18,6 @@ public class MainView {
     public static double inputValidEdge1(String stringInput) {
         System.out.printf("Cạnh %s: ", stringInput);
         double edge = 0;
-        double point = 0;
         int i = 0;
         while (i < 10) {
             i++;
@@ -42,12 +40,12 @@ public class MainView {
     }
 
     public static boolean inputValidEdge2(double firstEdge, double secondEdge, double thirdEdge) {
-        boolean isValid=true;
+        boolean isValid = true;
         try {
             if ((firstEdge + secondEdge) <= thirdEdge ||
                     (firstEdge + thirdEdge) <= secondEdge ||
                     (secondEdge + thirdEdge) <= firstEdge) {
-                isValid=false;
+                isValid = false;
                 throw new IllegalTriangleException("\nBạn đã nhập vào các giá trị không thỏa mãn: " +
                         "Tổng 2 cạnh phải lớn hơn cạnh còn lại.");
             }
@@ -70,11 +68,11 @@ public class MainView {
             firstEdge = inputValidEdge1("a");
             secondEdge = inputValidEdge1("b");
             thirdEdge = inputValidEdge1("c");
-            if(inputValidEdge2(firstEdge, secondEdge, thirdEdge)){
+            if (inputValidEdge2(firstEdge, secondEdge, thirdEdge)) {
                 break;
-            }else {
+            } else {
                 System.out.println("Mời bạn lại giá trị các cạnh a,b,c của tam giác: ");
-            };
+            }
         }
         if (i == 10) {
             System.out.println("Press Run To Continue ^^!");
