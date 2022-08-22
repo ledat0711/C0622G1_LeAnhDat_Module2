@@ -53,9 +53,7 @@ public class Student extends Person {
     }
 
     public String toString2() {
-        return "Học viên { " + super.toString() +
-                ", điểm: " + point +
-                ", lớp: '" + nameClass + '\'' +
-                "} ";
+        return String.format("|%-6d|%-15s|%-10s|%-9s|%-7s|%-5.2f|",this.getID(), this.getName(), this.getDateOfBirth(),
+                this.getGender(), this.getNameClass(), this.getPoint());
     }
 }

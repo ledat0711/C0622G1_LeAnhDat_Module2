@@ -17,10 +17,9 @@ public class MainViewReadAndWrite {
 
     public static void displayInfo() throws IOException {
         List<Student> students = readFile();
-        MainController.numericalOrder = 0;
         System.out.println("Bạn đã nhập những thông tin sau vào file destination_student_list_file:");
         for (Student student : students) {
-            System.out.println(student);
+            System.out.println(student.toString2());
         }
     }
 
@@ -35,7 +34,7 @@ public class MainViewReadAndWrite {
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
         for (Student student : students) {
-            bufferedWriter.write(student.toString());
+            bufferedWriter.write(student.toString2());
             bufferedWriter.newLine();
         }
         bufferedWriter.close();
