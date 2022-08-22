@@ -34,7 +34,7 @@ public class MainView {
         writeFile(strings);
     }
     private static List<String> readFile() throws IOException {
-        File file = new File("src\\copy_file_text\\data\\source.csv");
+        File file = new File("src\\copy_file_text\\data\\source_file.csv");
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         List<String> stringAndLengths = new ArrayList<>();
