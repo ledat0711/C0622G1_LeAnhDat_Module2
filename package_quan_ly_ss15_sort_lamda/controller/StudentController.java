@@ -21,7 +21,7 @@ public class StudentController {
             j++;
             try {
                 choice = Integer.parseInt(scanner.nextLine());
-                if (choice > 11 || choice < 1) {
+                if (choice > 8 || choice < 1) {
                     throw new InvalidException("\nBạn đã nhập giá trị ngoài phạm vi.");
                 }
                 break;
@@ -49,17 +49,13 @@ public class StudentController {
             System.out.println("4. Xóa học viên.");
             System.out.println("5. Tìm học viên bằng ID. ");
             System.out.println("6. Tìm học viên bằng tên.");
-            System.out.println("7. Sắp xếp danh sách học viên theo TÊN TĂNG dần và hiển thị. ");
-            System.out.println("8. Sắp xếp danh sách học viên theo TÊN GIẢM dần và hiển thị. ");
-            System.out.println("9. Sắp xếp danh sách học viên theo ĐIỂM TĂNG dần và hiển thị. ");
-            System.out.println("10. Sắp xếp danh sách học viên theo ĐIỂM GIẢM dần và hiển thị. ");
-            System.out.println("11. Quay trở lại menu trước. ");
+            System.out.println("7. Sắp xếp danh sách học viên theo tên và hiển thị. ");
+            System.out.println("8. Quay trở lại menu trước. ");
             System.out.print("Mời bạn nhập chức năng: ");
             i++;
             choice = inputValidChoice();
             switch (choice) {
                 case 1:
-                    System.out.println("****Danh sách học viên****");
                     studentService.displayAllStudent();
                     break;
                 case 2:
@@ -79,18 +75,9 @@ public class StudentController {
                     studentService.findStudentByName();
                     break;
                 case 7:
-                    studentService.sortStudentByNameUseLambda1();
+                    studentService.sortStudentByName();
                     break;
                 case 8:
-                    studentService.sortStudentByNameUseLambda2();
-                    break;
-                case 9:
-                    studentService.sortStudentByPointUseLambda1();
-                    break;
-                case 10:
-                    studentService.sortStudentByPointUseLambda2();
-                    break;
-                case 11:
                     memberController.menuMainController();
                     break;
                 default:

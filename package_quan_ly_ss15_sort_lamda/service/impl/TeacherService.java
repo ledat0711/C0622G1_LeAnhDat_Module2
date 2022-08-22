@@ -15,10 +15,10 @@ public class TeacherService implements ITeacherService {
     private static List<Teacher> teachers = new ArrayList<>();
 
     static {
-        teachers.add(new Teacher(15, "Truong Le", "06/07/1991","Nam", "Tutor", 30));
-        teachers.add(new Teacher(26, "Binh Nguyen", "24/07/1990","Nam", "Instructor", 20));
-        teachers.add(new Teacher(78, "An Tran", "27/09/1996","Nữ", "Instructor", 25));
-        teachers.add(new Teacher(18, "An Nguyen", "14/06/1993","Nữ", "Tutor", 23));
+        teachers.add(new Teacher(15, "Truong Le", "06/07/1991", "Tutor", 30));
+        teachers.add(new Teacher(26, "Binh Nguyen", "24/07/1990", "Instructor", 20));
+        teachers.add(new Teacher(78, "An Tran", "27/09/1996", "Instructor", 25));
+        teachers.add(new Teacher(18, "An Nguyen", "14/06/1993", "Tutor", 23));
     }
 
     @Override
@@ -198,13 +198,11 @@ public class TeacherService implements ITeacherService {
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
         String dateOfBirth = scanner.nextLine();
-        System.out.println("Mời bạn nhập giới tính: ");
-        String gender = scanner.nextLine();
         System.out.print("Mời bạn nhập vị trí công tác: ");
         String position = scanner.nextLine();
         System.out.print("Mời bạn nhập mức lương (đơn vị: triệu VND): ");
         double salary = inputValidSalary();
-        return new Teacher(id, name, dateOfBirth,gender, position, salary);
+        return new Teacher(id, name, dateOfBirth, position, salary);
     }
 
     @Override

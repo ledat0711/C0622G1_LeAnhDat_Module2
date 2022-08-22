@@ -13,11 +13,5 @@ public interface IStudentService {
 
     void findStudentByName();
 
-    void sortStudentByNameUseLambda1();
-
-    void sortStudentByNameUseLambda2();
-
-    void sortStudentByPointUseLambda1();
-
-    void sortStudentByPointUseLambda2();
+    void sortStudentByName();
 }

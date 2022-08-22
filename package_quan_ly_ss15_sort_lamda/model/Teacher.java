@@ -9,8 +9,8 @@ public class Teacher extends Person {
     public Teacher() {
     }
 
-    public Teacher(int id, String name, String dateOfBirth,String gender, String position, double salary) {
-        super(id, name, dateOfBirth,gender);
+    public Teacher(int id, String name, String dateOfBirth, String position, double salary) {
+        super(id, name, dateOfBirth);
         this.position = position;
         this.salary = salary;
     }

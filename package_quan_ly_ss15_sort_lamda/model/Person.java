@@ -4,7 +4,6 @@ public abstract class Person {
     private int id;
     private String name;
     private String dateOfBirth;
-    private String gender;
 
     public Person() {
     }
@@ -18,11 +17,10 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Person(int id, String name,String dateOfBirth, String gender) {
+    public Person(int id, String name, String dateOfBirth) {
         this.id = id;
         this.name = name;
         this.dateOfBirth = dateOfBirth;
-        this.gender=gender;
     }
 
     public int getID() {
@@ -49,20 +47,11 @@ public abstract class Person {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     @Override
     public String toString() {
-        return " Mã số ID:" + id +
-                ", tên: '" + name + '\'' +
-                ", ngày sinh: '" + dateOfBirth + '\'' +
-                ", giới tính: " + gender + '\''
+        return " Mã số ID=" + id +
+                ", tên='" + name + '\'' +
+                ", ngày sinh='" + dateOfBirth + '\''
                 ;
     }
 }
