@@ -29,10 +29,11 @@ public class MainViewReadAndWrite {
     }
 
     private static void writeFile(List<Student> students) throws IOException {
-        File file = new File("src\\package_quan_ly_ss16\\data\\destination_student_list_file.csv");
+        File file = new File("src\\package_quan_ly_ss16\\data\\destination_students.csv");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-
+        bufferedWriter.write(String.format("|%-6s|%-15s|%-13s|%-9s|%-7s|%-5s|\n",
+                "Mã ID", "Tên", "Ngày sinh", "Giới tính", "Lớp", "Điểm"));
         for (Student student : students) {
             bufferedWriter.write(student.toString2());
             bufferedWriter.newLine();
@@ -41,7 +42,7 @@ public class MainViewReadAndWrite {
     }
 
     public static List<Student> readFile() throws IOException {
-        File file = new File("src\\package_quan_ly_ss16\\data\\source_file.csv");
+        File file = new File("src\\package_quan_ly_ss16\\data\\source_students.csv");
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         List<Student> students = new ArrayList<>();

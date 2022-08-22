@@ -19,7 +19,7 @@ public class MainView {
     }
 
     private static void writeFile(List<String> strings) throws IOException {
-        File file = new File("src\\copy_file_text\\data\\destination_student_list_file.csv");
+        File file = new File("src\\copy_file_text\\data\\destination_students.csv");
         FileWriter fileWriter = new FileWriter(file);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
         for (String str : strings) {
@@ -35,7 +35,7 @@ public class MainView {
     }
 
     private static List<String> readFile() throws IOException {
-        File file = new File("src\\copy_file_text\\data\\source_file.csv");
+        File file = new File("src\\copy_file_text\\data\\source_students.csv");
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         List<String> stringArrayList = new ArrayList<>();

@@ -11,6 +11,7 @@ import java.util.*;
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> students = new ArrayList<>();
+    private static final String SOURCE_INFO_STUDENT = "src\\package_quan_ly_ss16\\data\\source_students.csv";
 
     static {
         students.add(new Student(455, "An Nguyen", "12/12/1998", "Nam", 4, "C06"));
