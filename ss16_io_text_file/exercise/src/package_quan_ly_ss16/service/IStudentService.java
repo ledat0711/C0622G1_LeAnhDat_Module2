@@ -1,11 +1,13 @@
 package package_quan_ly_ss16.service;
 
+import java.io.IOException;
+
 public interface IStudentService {
     void addStudent() throws Exception;
 
-    void displayAllStudent();
+    void writeNewAndDisplayAllStudent() throws IOException;
 
-    void removeStudent();
+    void removeStudent() throws IOException;
 
     void updateStudent() throws Exception;
 
@@ -13,11 +15,11 @@ public interface IStudentService {
 
     void findStudentByName();
 
-    void sortStudentByNameUseLambda1();
+    void sortStudentByNameUseLambda1() throws IOException;
 
-    void sortStudentByNameUseLambda2();
+    void sortStudentByNameUseLambda2() throws IOException;
 
-    void sortStudentByPointUseLambda1();
+    void sortStudentByPointUseLambda1() throws IOException;
 
-    void sortStudentByPointUseLambda2();
+    void sortStudentByPointUseLambda2() throws IOException;
 }

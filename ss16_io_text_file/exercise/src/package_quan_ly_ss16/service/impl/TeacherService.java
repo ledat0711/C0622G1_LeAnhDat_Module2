@@ -198,7 +198,7 @@ public class TeacherService implements ITeacherService {
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
         String dateOfBirth = scanner.nextLine();
-        System.out.println("Mời bạn nhập giới tính: ");
+        System.out.print("Mời bạn nhập giới tính: ");
         String gender = scanner.nextLine();
         System.out.print("Mời bạn nhập vị trí công tác: ");
         String position = scanner.nextLine();

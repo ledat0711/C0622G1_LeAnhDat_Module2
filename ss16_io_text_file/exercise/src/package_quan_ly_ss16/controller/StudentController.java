@@ -43,7 +43,7 @@ public class StudentController {
         while (i < 10) {
             System.out.println("-------------------------------------------");
             System.out.println("Quản lý danh sách học viên.");
-            System.out.println("1. Hiển thị danh sách học viên.");
+            System.out.println("1. Ghi mới vào file students_destionation.csv và hiển thị danh sách học viên.");
             System.out.println("2. Thêm mới học viên.");
             System.out.println("3. Cập nhật thông tin học viên.");
             System.out.println("4. Xóa học viên.");
@@ -60,13 +60,13 @@ public class StudentController {
             switch (choice) {
                 case 1:
                     System.out.println("****Danh sách học viên****");
-                    studentService.displayAllStudent();
+                    studentService.writeNewAndDisplayAllStudent();
                     break;
                 case 2:
                     studentService.addStudent();
                     break;
                 case 3:
-                    studentService.displayAllStudent();
+                    studentService.writeNewAndDisplayAllStudent();
                     studentService.updateStudent();
                     break;
                 case 4:

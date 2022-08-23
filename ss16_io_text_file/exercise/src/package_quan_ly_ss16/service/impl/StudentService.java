@@ -1,46 +1,47 @@
 package package_quan_ly_ss16.service.impl;
 
 import package_quan_ly_ss16.controller.MainController;
-import package_quan_ly_ss16.model.Person;
 import package_quan_ly_ss16.model.Student;
 import package_quan_ly_ss16.service.IStudentService;
 import package_quan_ly_ss16.utils.exception.InvalidException;
+import package_quan_ly_ss16.utils.read_write.WriteFile;
 
+import java.io.IOException;
 import java.util.*;
 
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> students = new ArrayList<>();
-    private static final String SOURCE_INFO_STUDENT = "src\\package_quan_ly_ss16\\data\\source_students.csv";
+    private static final String SOURCE_INFO_STUDENT = "src\\package_quan_ly_ss16\\data\\students_source.csv";
 
     static {
         students.add(new Student(455, "An Nguyen", "12/12/1998", "Nam", 4, "C06"));
         students.add(new Student(881, "Ngoc Tran", "06/07/1995", "Nữ", 14, "C07"));
         students.add(new Student(684, "Minh Le", "25/08/2999", "Nam", 17, "C08"));
-        students.add(new Student(334, "Tuan Phan", "11/09/2000", "Nam", 21, "c09"));
-        students.add(new Student(571, "Duong Hoang", "19/09/1996", "Nữ", 26, "c04"));
-        students.add(new Student(656, "Ngoc Le", "18/04/1990", "Nữ", 26, "c04"));
+        students.add(new Student(334, "Tuan Phan", "11/09/2000", "Nam", 21, "C09"));
+        students.add(new Student(571, "Duong Hoang", "19/09/1996", "Nữ", 26, "C04"));
+        students.add(new Student(656, "Ngoc Le", "18/04/1990", "Nữ", 26, "C04"));
     }
 
     @Override
-    public void addStudent() {
+    public void addStudent() throws IOException {
         Student student = this.addInfoStudent();
         students.add(student);
+        WriteFile.writeFile(students, false);
         System.out.println("Thêm mới học sinh thành công");
     }
 
     @Override
-    public void displayAllStudent() {
+    public void writeNewAndDisplayAllStudent() throws IOException {
         MainController.numericalOrder = 0;
-        System.out.printf("|%-5s|%-6s|%-15s|%-10s|%-9s|%-7s|%-5s|\n",
-                "STT", "Mã ID", "Tên", "Ngày sinh", "Giới tính", "Lớp", "Điểm");
+        WriteFile.writeFile(students, false);
         for (Student student : students) {
             System.out.println(student);
         }
     }
 
     @Override
-    public void removeStudent() {
+    public void removeStudent() throws IOException {
         System.out.print("Mời bạn nhập vào ID cần xóa: ");
         Student student = this.findIDSimple();
         if (student == null) {
@@ -53,6 +54,7 @@ public class StudentService implements IStudentService {
             if (choice == 1) {
                 students.remove(student);
                 System.out.println("Xóa thành công!");
+                WriteFile.writeFile(students, false);
             } else {
                 System.out.println("Bạn chưa thực hiện xóa thông tin.");
             }
@@ -86,8 +88,6 @@ public class StudentService implements IStudentService {
             System.out.println("Không tìm thấy học viên với ID cần tìm");
         } else {
             System.out.println("Thông tin học viên mà bạn cần tìm: ");
-            System.out.printf("|%-5s|%-6s|%-15s|%-10s|%-9s|%-7s|%-5s|\n",
-                    "STT", "Mã ID", "Tên", "Ngày sinh", "Giới tính", "Lớp", "Điểm");
             MainController.numericalOrder = 0;
             System.out.println(student);
         }
@@ -131,8 +131,6 @@ public class StudentService implements IStudentService {
         } else {
             System.out.println("Thông tin mà bạn cần tìm: ");
             MainController.numericalOrder = 0;
-            System.out.printf("|%-5s|%-6s|%-15s|%-10s|%-9s|%-7s|%-5s|\n",
-                    "STT", "Mã ID", "Tên", "Ngày sinh", "Giới tính", "Lớp", "Điểm");
             for (Object student : foundStudentList) {
                 System.out.println(student);
             }
@@ -208,8 +206,8 @@ public class StudentService implements IStudentService {
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
-        String dateOfBirth = scanner.nextLine();
-        System.out.println("Mời bạn nhập giới tính: ");
+        String dateOfBirth = CheckValid.checkAndEnterDate();
+        System.out.print("Mời bạn nhập giới tính: ");
         String gender = scanner.nextLine();
         System.out.print("Mời bạn nhập điểm: ");
         double point = inputValidPoint();
@@ -219,26 +217,26 @@ public class StudentService implements IStudentService {
     }
 
     @Override
-    public void sortStudentByNameUseLambda1() {
+    public void sortStudentByNameUseLambda1() throws IOException {
         students.sort(Comparator.comparing(Student::getName));
-        displayAllStudent();
+        writeNewAndDisplayAllStudent();
     }
 
     @Override
-    public void sortStudentByNameUseLambda2() {
+    public void sortStudentByNameUseLambda2() throws IOException {
         students.sort((a, b) -> b.getName().compareTo(a.getName()));
-        displayAllStudent();
+        writeNewAndDisplayAllStudent();
     }
 
     @Override
-    public void sortStudentByPointUseLambda1() {
+    public void sortStudentByPointUseLambda1() throws IOException {
         students.sort(Comparator.comparingDouble(Student::getPoint));
-        displayAllStudent();
+        writeNewAndDisplayAllStudent();
     }
 
     @Override
-    public void sortStudentByPointUseLambda2() {
+    public void sortStudentByPointUseLambda2() throws IOException {
         students.sort((p1, p2) -> Double.compare(p2.getPoint(), p1.getPoint()));
-        displayAllStudent();
+        writeNewAndDisplayAllStudent();
     }
 }

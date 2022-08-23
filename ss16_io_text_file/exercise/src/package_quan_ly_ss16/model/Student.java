@@ -2,6 +2,8 @@ package package_quan_ly_ss16.model;
 
 import package_quan_ly_ss16.controller.MainController;
 
+import java.util.Locale;
+
 public class Student extends Person {
     private double point;
     private String nameClass;
@@ -34,26 +36,16 @@ public class Student extends Person {
     public void setNameClass(String nameClass) {
         this.nameClass = nameClass;
     }
-//    @Override
-//    public String toString() {
-//        ++MainController.numericalOrder;
-//        return "Học viên  " + MainController.numericalOrder + " {" + super.toString() +
-//                ", điểm: " + point +
-//                ", lớp:  '" + nameClass + '\'' +
-//                "} ";
-//    }
-
 
     @Override
     public String toString() {
         ++MainController.numericalOrder;
-        return String.format("|%-5d|%-6d|%-15s|%-10s|%-9s|%-7s|%-5.2f|",
-                MainController.numericalOrder, this.getID(), this.getName(), this.getDateOfBirth(),
-                this.getGender(), this.getNameClass(), this.getPoint());
+        return String.format(Locale.ROOT,"STT: %-5d,ID: %-6d, Tên: %-15s, Ngày sinh: %-10s, Giới tính: %-9s, Lớp: %-7s, Điểm: %-5.2f",
+                MainController.numericalOrder, this.getID(), this.getName(), this.getDateOfBirth(), this.getGender(), this.getNameClass(), this.getPoint());
     }
 
     public String toString2() {
-        return String.format("|%-6d|%-15s|%-10s|%-9s|%-7s|%-5.2f|",this.getID(), this.getName(), this.getDateOfBirth(),
-                this.getGender(), this.getNameClass(), this.getPoint());
+        return String.format(Locale.ROOT,"ID: %-6d, Tên: %-15s, Ngày sinh: %-10s, Giới tính: %-9s, Lớp: %-7s, Điểm: %-5.2f",
+                this.getID(), this.getName(), this.getDateOfBirth(), this.getGender(), this.getNameClass(), this.getPoint());
     }
 }

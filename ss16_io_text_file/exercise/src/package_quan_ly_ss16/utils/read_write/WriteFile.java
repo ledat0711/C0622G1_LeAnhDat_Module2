@@ -1,4 +1,4 @@
-package package_quan_ly_ss16.view;
+package package_quan_ly_ss16.utils.read_write;
 
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import package_quan_ly_ss16.controller.MainController;
@@ -9,7 +9,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainViewReadAndWrite {
+public class WriteFile {
     public static void main(String[] args) throws IOException {
         add();
         displayInfo();
@@ -23,17 +23,15 @@ public class MainViewReadAndWrite {
         }
     }
 
-    private static void add() throws IOException {
+    public static void add() throws IOException {
         List<Student> students = readFile();
-        writeFile(students);
+        writeFile(students, true);
     }
 
-    private static void writeFile(List<Student> students) throws IOException {
-        File file = new File("src\\package_quan_ly_ss16\\data\\destination_students.csv");
-        FileWriter fileWriter = new FileWriter(file);
+    public static void writeFile(List<Student> students, boolean appendValue) throws IOException {
+        File file = new File("src\\package_quan_ly_ss16\\data\\students_destionation.csv");
+        FileWriter fileWriter = new FileWriter(file, appendValue);
         BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-        bufferedWriter.write(String.format("|%-6s|%-15s|%-13s|%-9s|%-7s|%-5s|\n",
-                "Mã ID", "Tên", "Ngày sinh", "Giới tính", "Lớp", "Điểm"));
         for (Student student : students) {
             bufferedWriter.write(student.toString2());
             bufferedWriter.newLine();
@@ -42,7 +40,7 @@ public class MainViewReadAndWrite {
     }
 
     public static List<Student> readFile() throws IOException {
-        File file = new File("src\\package_quan_ly_ss16\\data\\source_students.csv");
+        File file = new File("src\\package_quan_ly_ss16\\data\\students_source.csv");
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         List<Student> students = new ArrayList<>();
