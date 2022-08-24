@@ -29,9 +29,9 @@ public class CopyBinaryFile {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        int j = 0;
+    public static void main(String[] args)  {
         int i = 0;
+        int j = 0;
         Scanner in = new Scanner(System.in);
         while (i < 10) {
             i++;
