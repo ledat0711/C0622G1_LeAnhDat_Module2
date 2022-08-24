@@ -5,4 +5,5 @@ public interface IProductService {
     void display();
     void find();
     void remove();
+    void readDestinationFileAndPrint();
 }

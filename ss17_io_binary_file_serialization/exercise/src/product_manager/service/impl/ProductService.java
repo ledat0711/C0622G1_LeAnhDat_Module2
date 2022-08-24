@@ -78,4 +78,11 @@ public class ProductService implements IProductService {
             }
         }
     }
+    @Override
+    public void readDestinationFileAndPrint(){
+        List<Product> productListFromData = InputStream.readDataFromFile(DESTINATION_FILE);
+        for(Product product:productListFromData){
+            System.out.println(product);
+        }
+    }
 }

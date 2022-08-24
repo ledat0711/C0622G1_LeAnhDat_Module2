@@ -9,16 +9,16 @@ import java.util.List;
 
 public class InputStream {
     public static List<Product> readDataFromFile(String path){
-        List<Product> students = new ArrayList<>();
+        List<Product> products = new ArrayList<>();
         try{
             FileInputStream fis = new FileInputStream(path);
             ObjectInputStream ois = new ObjectInputStream(fis);
-            students = (List<Product>) ois.readObject();
+            products = (List<Product>) ois.readObject();
             fis.close();
             ois.close();
         }catch(Exception ex){
             ex.printStackTrace();
         }
-        return students;
+        return products;
     }
 }

@@ -1,7 +1,6 @@
 package product_manager.service.impl;
 
 import product_manager.model.Product;
-import product_manager.utils.exception.InvalidException;
 
 import java.util.List;
 import java.util.Scanner;
