@@ -43,7 +43,7 @@ public class ProductController {
             System.out.println("2. Hiển thị thông tin sản phẩm");
             System.out.println("3. Tìm kiếm thông tin sản phẩm");
             System.out.println("4. Xóa thông tin sản phẩm");
-            System.out.println("5. Đọc từ file destination.txt và in ra màn hình.");
+            System.out.println("5. Đọc từ file data_product.txt và in ra màn hình.");
             System.out.print("Mời bạn nhập lựa chọn: ");
             i++;
             choice = inputValidChoice();

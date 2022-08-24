@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class ProductService implements IProductService {
     private static final Scanner scanner = new Scanner(System.in);
     private static final List<Product> products = new ArrayList<>();
-    private static final String DESTINATION_FILE = "src\\product_manager\\data\\destination.txt";
+    private static final String DESTINATION_FILE = "src\\product_manager\\data\\data_product.txt";
     static {
         products.add(new Product("A12", "Product FX", "Apple", 200000));
         products.add(new Product("BA1", "Product ALP", "Yamaha", 800000));
