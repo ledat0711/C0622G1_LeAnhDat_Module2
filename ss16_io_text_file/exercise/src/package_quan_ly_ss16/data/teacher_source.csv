@@ -1,4 +1,4 @@
-26, "Binh Nguyen", "24/07/1990","Nam", "Tutor", 20
-56, "Hoang Nguyen", "27/08/1990","Nam", "Instructor", 15
-99, "Lam Ha", "22/05/1990","Nam", "Tutor", 18
-56, "Toan Le", "06/11/1990","Nam", "Instructor", 19
+ID: 15    , Tên: Truong Le      , Ngày sinh: 06/07/1991, Giới tính: Nam      , Vị trí: Tutor  , Mức lương: 30.0  triệu.
+ID: 26    , Tên: Binh Nguyen    , Ngày sinh: 24/07/1990, Giới tính: Nam      , Vị trí: Instructor, Mức lương: 20.0  triệu.
+ID: 78    , Tên: An Tran        , Ngày sinh: 27/09/1996, Giới tính: Nữ       , Vị trí: Instructor, Mức lương: 25.0  triệu.
+ID: 18    , Tên: An Nguyen      , Ngày sinh: 14/06/1993, Giới tính: Nữ       , Vị trí: Tutor  , Mức lương: 23.0  triệu.

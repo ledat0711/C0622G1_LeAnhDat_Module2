@@ -4,7 +4,7 @@ import package_quan_ly_ss16.controller.MainController;
 import package_quan_ly_ss16.model.Student;
 import package_quan_ly_ss16.service.IStudentService;
 import package_quan_ly_ss16.utils.exception.InvalidException;
-import package_quan_ly_ss16.utils.read_write.WriteFile;
+import package_quan_ly_ss16.utils.read_write.WriteFileUtil;
 
 import java.io.IOException;
 import java.util.*;
@@ -12,7 +12,8 @@ import java.util.*;
 public class StudentService implements IStudentService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Student> students = new ArrayList<>();
-    private static final String SOURCE_INFO_STUDENT = "src\\package_quan_ly_ss16\\data\\students_source.csv";
+    private static final String SRC_DATA_STUDENTS = "src\\package_quan_ly_ss16\\data\\students_source.csv";
+    private static final String DES_LIST_STUDENTS = "src\\package_quan_ly_ss16\\data\\students_destionation.csv";
 
     static {
         students.add(new Student(455, "An Nguyen", "12/12/1998", "Nam", 4, "C06"));
@@ -27,14 +28,14 @@ public class StudentService implements IStudentService {
     public void addStudent() throws IOException {
         Student student = this.addInfoStudent();
         students.add(student);
-        WriteFile.writeFile(students, false);
+        WriteFileUtil.writeStudentFile(DES_LIST_STUDENTS, students);
         System.out.println("Thêm mới học sinh thành công");
     }
 
     @Override
     public void writeNewAndDisplayAllStudent() throws IOException {
         MainController.numericalOrder = 0;
-        WriteFile.writeFile(students, false);
+        WriteFileUtil.writeStudentFile(DES_LIST_STUDENTS, students);
         for (Student student : students) {
             System.out.println(student);
         }
@@ -43,7 +44,7 @@ public class StudentService implements IStudentService {
     @Override
     public void removeStudent() throws IOException {
         System.out.print("Mời bạn nhập vào ID cần xóa: ");
-        Student student = this.findIDSimple();
+        Student student = (Student) CheckAndEnter.enterIDToFindUpdateRemove(students);
         if (student == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
@@ -54,7 +55,7 @@ public class StudentService implements IStudentService {
             if (choice == 1) {
                 students.remove(student);
                 System.out.println("Xóa thành công!");
-                WriteFile.writeFile(students, false);
+                WriteFileUtil.writeStudentFile(SRC_DATA_STUDENTS, students);
             } else {
                 System.out.println("Bạn chưa thực hiện xóa thông tin.");
             }
@@ -64,7 +65,7 @@ public class StudentService implements IStudentService {
     @Override
     public void updateStudent() {
         System.out.println("Mời bạn nhập ID cần cập nhật ");
-        Student studentFinded = this.findIDSimple();
+        Student studentFinded = (Student) CheckAndEnter.enterIDToFindUpdateRemove(students);
         if (studentFinded == null) {
             System.out.println("Không tìm thấy đối tượng cần cập nhật");
         } else {
@@ -83,7 +84,7 @@ public class StudentService implements IStudentService {
     @Override
     public void findStudentByID() {
         System.out.println("Mời bạn nhập ID cần tìm: ");
-        Student student = this.findIDSimple();
+        Student student = (Student) CheckAndEnter.enterIDToFindUpdateRemove(students);
         if (student == null) {
             System.out.println("Không tìm thấy học viên với ID cần tìm");
         } else {
@@ -93,34 +94,6 @@ public class StudentService implements IStudentService {
         }
     }
 
-    public Student findIDSimple() {
-        int i;
-        int j = 0;
-        int iD = 0;
-        while (j < 10) {
-            j++;
-            try {
-                iD = Integer.parseInt(scanner.nextLine());
-                if (iD < 0) {
-                    throw new InvalidException("Bạn đã nhập số âm.");
-                }
-                break;
-            } catch (NumberFormatException n) {
-                System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
-            } catch (InvalidException p) {
-                System.out.println(p.getMessage());
-            } catch (Exception e) {
-                System.out.println("Thông tin bạn nhập đã bị lỗi");
-            }
-            System.out.println("Vui lòng nhập lại thông tin");
-        }
-        for (i = 0; i < students.size(); i++) {
-            if (students.get(i).getID() == iD) {
-                return students.get(i);
-            }
-        }
-        return null;
-    }
 
     @Override
     public void findStudentByName() {
@@ -146,34 +119,6 @@ public class StudentService implements IStudentService {
             }
         }
         return foundStudentList;
-    }
-
-    public int inputValidID() {
-        int iD = 0;
-        int i = 0;
-        while (i < 10) {
-            i++;
-            try {
-                iD = Integer.parseInt(scanner.nextLine());
-                for (Student student : students) {
-                    if (iD == student.getID()) {
-                        throw new InvalidException("\nBạn đã nhập trùng ID.");
-                    }
-                }
-                if (iD < 0) {
-                    throw new InvalidException("\nBạn đã nhập số âm.");
-                }
-                break;
-            } catch (InvalidException ie) {
-                System.out.println(ie.getMessage());
-            } catch (NumberFormatException n) {
-                System.out.println("\nBạn đã nhập kiểu dữ liệu không phải là số.");
-            } catch (Exception e) {
-                System.out.println("\nThông tin bạn đã nhập bị lỗi.");
-            }
-            System.out.print("Vui lòng nhập lại ID: ");
-        }
-        return iD;
     }
 
     public double inputValidPoint() {
@@ -202,11 +147,11 @@ public class StudentService implements IStudentService {
 
     public Student addInfoStudent() {
         System.out.print("Mời bạn nhập ID: ");
-        int iD = inputValidID();
+        int iD = CheckAndEnter.enterIDToAddObject(students);
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
-        String dateOfBirth = CheckValid.checkAndEnterDate();
+        String dateOfBirth = CheckAndEnter.checkAndEnterDate();
         System.out.print("Mời bạn nhập giới tính: ");
         String gender = scanner.nextLine();
         System.out.print("Mời bạn nhập điểm: ");

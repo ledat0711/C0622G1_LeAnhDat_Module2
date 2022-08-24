@@ -2,6 +2,8 @@ package package_quan_ly_ss16.model;
 
 import package_quan_ly_ss16.controller.MainController;
 
+import java.util.Locale;
+
 public class Teacher extends Person {
     private String position;
     private double salary;
@@ -9,26 +11,32 @@ public class Teacher extends Person {
     public Teacher() {
     }
 
-    public Teacher(int id, String name, String dateOfBirth,String gender, String position, double salary) {
-        super(id, name, dateOfBirth,gender);
+    public Teacher(int id, String name, String dateOfBirth, String gender, String position, double salary) {
+        super(id, name, dateOfBirth, gender);
         this.position = position;
+        this.salary = salary;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
     @Override
     public String toString() {
         ++MainController.numericalOrder;
-        return "Giảng viên: " + MainController.numericalOrder + " {" + super.toString() +
-                ", vị trí: '" + position + '\'' +
-                ", mức lương:  " + salary + " triệu VND " +
-                '}';
+        return String.format(Locale.ROOT, "ID: %-6d, Tên: %-15s, Ngày sinh: %-10s, Giới tính: %-9s, Vị trí: %-7s, Mức lương: %-5s triệu.",
+                this.getID(), this.getName(), this.getDateOfBirth(), this.getGender(), this.getPosition(), this.getSalary());
     }
-
-    public String toString2() {
-        return "Giảng viên { " + super.toString() +
-                ", vị trí: '" + position + '\'' +
-                ", mức lương: " + salary + " triệu VND " +
-                '}';
-    }
-
 }

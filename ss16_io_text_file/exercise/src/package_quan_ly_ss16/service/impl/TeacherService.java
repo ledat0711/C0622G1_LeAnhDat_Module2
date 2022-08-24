@@ -1,18 +1,25 @@
 package package_quan_ly_ss16.service.impl;
 
 import package_quan_ly_ss16.controller.MainController;
-import package_quan_ly_ss16.model.Student;
+import package_quan_ly_ss16.model.Person;
 import package_quan_ly_ss16.model.Teacher;
 import package_quan_ly_ss16.service.ITeacherService;
 import package_quan_ly_ss16.utils.exception.InvalidException;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+
+import static package_quan_ly_ss16.service.impl.CheckAndEnter.checkAndEnterDate;
+import static package_quan_ly_ss16.utils.read_write.WriteFileUtil.writeTeacherFile;
 
 public class TeacherService implements ITeacherService {
     private static Scanner scanner = new Scanner(System.in);
     private static List<Teacher> teachers = new ArrayList<>();
+    private static final String SRC_DATA_TEACHERS =  "src\\package_quan_ly_ss16\\data\\teacher_source.csv";
+    private static final String DES_LIST_TEACHERS =  "src\\package_quan_ly_ss16\\data\\teacher_source.csv";
 
     static {
         teachers.add(new Teacher(15, "Truong Le", "06/07/1991","Nam", "Tutor", 30));
@@ -29,8 +36,9 @@ public class TeacherService implements ITeacherService {
     }
 
     @Override
-    public void displayAllTeacher() {
+    public void writeNewAndDisplayAllTeacher() throws IOException {
         MainController.numericalOrder = 0;
+        writeTeacherFile(DES_LIST_TEACHERS, teachers);
         System.out.println("**** Danh sách giảng viên ****");
         for (Teacher teacher : teachers) {
             System.out.println(teacher);
@@ -38,9 +46,9 @@ public class TeacherService implements ITeacherService {
     }
 
     @Override
-    public void removeTeacher() {
+    public void removeTeacher() throws IOException {
         System.out.println("Mời bạn nhập vào ID cần xóa");
-        Teacher teacher = this.findIDTeacherSimple();
+        Teacher teacher = (Teacher)CheckAndEnter.enterIDToFindUpdateRemove(teachers);
         if (teacher == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa");
         } else {
@@ -53,12 +61,13 @@ public class TeacherService implements ITeacherService {
                 System.out.println("Xóa thành công!");
             }
         }
+        writeTeacherFile(DES_LIST_TEACHERS, teachers);
     }
 
     @Override
-    public void updateTeacher() {
+    public void updateTeacher() throws IOException {
         System.out.println("Mời bạn nhập ID cần cập nhật ");
-        Teacher teacherFinded = this.findIDTeacherSimple();
+        Teacher teacherFinded = (Teacher)CheckAndEnter.enterIDToFindUpdateRemove(teachers);
         if (teacherFinded == null) {
             System.out.println("Không tìm thấy đối tượng cần cập nhật");
         } else {
@@ -72,65 +81,37 @@ public class TeacherService implements ITeacherService {
                 }
             }
         }
+        writeTeacherFile(DES_LIST_TEACHERS, teachers);
     }
 
     @Override
     public void findTeacherByID() {
         System.out.println("Mời bạn nhập ID cần tìm: ");
-        Teacher teacher = this.findIDTeacherSimple();
+        Teacher teacher = (Teacher)CheckAndEnter.enterIDToFindUpdateRemove(teachers);
         if (teacher == null) {
             System.out.println("Không tìm thấy giảng viên với ID cần tìm");
         } else {
             System.out.println("Thông tin giảng viên mà bạn cần tìm: ");
-            System.out.println(teacher.toString2());
+            System.out.println(teacher.toString());
         }
-    }
-
-    public Teacher findIDTeacherSimple() {
-        int iD = 0;
-        int j = 0;
-        int i;
-        while (j < 10){
-            j++;
-            try {
-                iD = Integer.parseInt(scanner.nextLine());
-                if (iD < 0) {
-                    throw new InvalidException("Bạn đã nhập số âm.");
-                }
-                break;
-            } catch (NumberFormatException n) {
-                System.out.println("Bạn đã nhập kiểu dữ liệu không phải là số.");
-            } catch (InvalidException p) {
-                System.out.println(p.getMessage());
-            } catch (Exception e) {
-                System.out.println("Thông tin bạn nhập đã bị lỗi");
-            }
-            System.out.println("Vui lòng nhập lại thông tin");
-        }
-        for (i = 0; i < teachers.size(); i++) {
-            if (teachers.get(i).getID() == iD) {
-                return teachers.get(i);
-            }
-        }
-        return null;
     }
 
     @Override
-    public void findTeacherByName() {
+    public void printResultTeacherFoundByName() {
         System.out.println("Mời bạn nhập tên cần tìm: ");
-        List<Teacher> foundTeacherList = this.findNameSimple();
+        List<Teacher> foundTeacherList = enterNameToFindTeacher();
         if (foundTeacherList == null) {
             System.out.println("Không tìm thấy giảng viên với tên cần tìm");
         } else {
             System.out.println("Thông tin giảng viên mà bạn cần tìm: ");
             MainController.numericalOrder=0;
-            for (Object teacher : foundTeacherList) {
+            for (Teacher teacher : foundTeacherList) {
                 System.out.println(teacher);
             }
         }
     }
 
-    public List<Teacher> findNameSimple() {
+    public List<Teacher> enterNameToFindTeacher() {
         String nameInput = scanner.nextLine();
         List<Teacher> foundTeachersList = new ArrayList<>();
         for (Teacher teacher : teachers) {
@@ -141,33 +122,6 @@ public class TeacherService implements ITeacherService {
         return foundTeachersList;
     }
 
-    public int inputValidID() {
-        int iD = 0;
-        int i = 0;
-        while (i < 10) {
-            i++;
-            try {
-                iD = Integer.parseInt(scanner.nextLine());
-                for (Teacher teacher : teachers) {
-                    if (iD == teacher.getID()) {
-                        throw new InvalidException("\nBạn đã nhập trùng ID.");
-                    }
-                }
-                if (iD < 0) {
-                    throw new InvalidException("\nBạn đã nhập số âm.");
-                }
-                break;
-            } catch (InvalidException ie) {
-                System.out.println(ie.getMessage());
-            } catch (NumberFormatException n) {
-                System.out.println("\nBạn đã nhập kiểu dữ liệu không phải là số.");
-            } catch (Exception e) {
-                System.out.println("\nThông tin bạn đã nhập bị lỗi.");
-            }
-            System.out.print("Vui lòng nhập lại ID: ");
-        }
-        return iD;
-    }
     public double inputValidSalary(){
         double salary=0;
         int i=0;
@@ -193,11 +147,11 @@ public class TeacherService implements ITeacherService {
 
     public Teacher addInfoTeacher() {
         System.out.print("Mời bạn nhập ID: ");
-        int id = this.inputValidID();
+        int id = CheckAndEnter.enterIDToAddObject(teachers);
         System.out.print("Mời bạn nhập tên: ");
         String name = scanner.nextLine();
         System.out.print("Mời bạn nhập ngày sinh: ");
-        String dateOfBirth = scanner.nextLine();
+        String dateOfBirth = checkAndEnterDate();
         System.out.print("Mời bạn nhập giới tính: ");
         String gender = scanner.nextLine();
         System.out.print("Mời bạn nhập vị trí công tác: ");
@@ -208,17 +162,8 @@ public class TeacherService implements ITeacherService {
     }
 
     @Override
-    public void sortTeacherByName() {
-        for (int i = 1; i < teachers.size(); i++) {
-            Teacher tempVariable = teachers.get(i);
-            int j;
-            for (j = i - 1; j >= 0 && tempVariable.getName().compareTo(teachers.get(j).getName()) < 0; j--) {
-                teachers.set(j + 1, teachers.get(j));
-            }
-            teachers.set(j + 1, tempVariable);
-        }
-        this.displayAllTeacher();
+    public void sortTeacherByNameAscending() throws IOException {
+        teachers.sort(Comparator.comparing(Teacher::getName));
+        writeNewAndDisplayAllTeacher();
     }
-
-
 }

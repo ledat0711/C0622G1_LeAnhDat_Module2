@@ -1,18 +1,19 @@
 package package_quan_ly_ss16.service;
 
+import java.io.IOException;
+
 public interface ITeacherService {
     void addTeacher();
 
-    void displayAllTeacher();
+    void writeNewAndDisplayAllTeacher() throws IOException;
 
-    void removeTeacher();
+    void removeTeacher() throws IOException;
 
-    void updateTeacher();
+    void updateTeacher() throws IOException;
 
     void findTeacherByID();
 
-    void findTeacherByName();
+    void printResultTeacherFoundByName();
 
-    void sortTeacherByName();
-
+    void sortTeacherByNameAscending() throws IOException;
 }

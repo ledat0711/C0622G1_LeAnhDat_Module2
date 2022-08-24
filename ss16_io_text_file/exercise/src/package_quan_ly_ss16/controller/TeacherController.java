@@ -49,20 +49,20 @@ public class TeacherController {
             System.out.println("4. Xóa giảng viên.");
             System.out.println("5. Tìm giảng viên bằng ID.");
             System.out.println("6. Tìm giảng viên bằng tên.");
-            System.out.println("7. Sắp xếp danh sách giảng viên theo tên và hiển thị.");
+            System.out.println("7. Sắp xếp danh sách giảng viên theo tên tăng dần và hiển thị.");
             System.out.println("8. Quay trở lại menu trước.");
             System.out.print("Mời bạn nhập chức năng: ");
             i++;
             choice = inputValidChoice();
             switch (choice) {
                 case 1:
-                    teacherService.displayAllTeacher();
+                    teacherService.writeNewAndDisplayAllTeacher();
                     break;
                 case 2:
                     teacherService.addTeacher();
                     break;
                 case 3:
-                    teacherService.displayAllTeacher();
+                    teacherService.writeNewAndDisplayAllTeacher();
                     teacherService.updateTeacher();
                     break;
                 case 4:
@@ -72,10 +72,10 @@ public class TeacherController {
                     teacherService.findTeacherByID();
                     break;
                 case 6:
-                    teacherService.findTeacherByName();
+                    teacherService.printResultTeacherFoundByName();
                     break;
                 case 7:
-                    teacherService.sortTeacherByName();
+                    teacherService.sortTeacherByNameAscending();
                     break;
                 case 8:
                     memberController.menuMainController();
