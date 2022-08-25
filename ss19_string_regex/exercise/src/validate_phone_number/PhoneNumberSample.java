@@ -1,7 +1,7 @@
 package validate_phone_number;
 
 public class PhoneNumberSample {
-    private static final String PHONE_NUMBER_FORMAT = "[(][0-9]{2}[)][-][(][0][0-9]{9}[)]";
+    private static final String PHONE_NUMBER_FORMAT = "^[(][0-9]{2}[)][-][(][0][0-9]{9}[)]$";
 
     public PhoneNumberSample() {
     }
