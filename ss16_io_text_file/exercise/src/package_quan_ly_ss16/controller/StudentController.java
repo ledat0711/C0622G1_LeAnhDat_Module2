@@ -91,7 +91,7 @@ public class StudentController {
                     studentService.sortStudentByPointUseLambda2();
                     break;
                 case 11:
-                    memberController.menuMainController();
+                    memberController.displayMenuMainController();
                     break;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

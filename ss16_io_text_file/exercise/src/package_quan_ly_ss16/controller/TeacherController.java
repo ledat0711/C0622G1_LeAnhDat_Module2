@@ -78,7 +78,7 @@ public class TeacherController {
                     teacherService.sortTeacherByNameAscending();
                     break;
                 case 8:
-                    memberController.menuMainController();
+                    memberController.displayMenuMainController();
                     break;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

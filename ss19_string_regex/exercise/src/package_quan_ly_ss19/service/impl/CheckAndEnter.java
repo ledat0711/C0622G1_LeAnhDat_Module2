@@ -96,4 +96,22 @@ public class CheckAndEnter {
         }
         return null;
     }
+    public static String checkEnterName() {
+        int i = 0;
+        String name = "";
+        final String VALID_FORMAT = "^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]" +
+                "[a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*" +
+                "(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ]" +
+                "[a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$";
+        while (i < 10) {
+            i++;
+            name = scanner.nextLine();
+            if (name.matches(VALID_FORMAT)) {
+                break;
+            } else {
+                System.out.print("Bạn đã nhập tên không hợp lệ. vui lòng nhập lại tên: ");
+            }
+        }
+        return name;
+    }
 }

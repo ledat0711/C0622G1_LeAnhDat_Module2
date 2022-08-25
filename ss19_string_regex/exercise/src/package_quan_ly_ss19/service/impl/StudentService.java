@@ -149,7 +149,7 @@ public class StudentService implements IStudentService {
         System.out.print("Mời bạn nhập ID (ID hợp lệ là một dãy 5 chữ số): ");
         int iD = CheckAndEnter.enterIDToAddObject(students);
         System.out.print("Mời bạn nhập tên: ");
-        String name = scanner.nextLine();
+        String name = CheckAndEnter.checkEnterName();
         System.out.print("Mời bạn nhập ngày sinh: ");
         String dateOfBirth = CheckAndEnter.checkAndEnterDate();
         System.out.print("Mời bạn nhập giới tính: ");

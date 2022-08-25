@@ -30,7 +30,7 @@ public class MainController {
         return choice;
     }
 
-    public void menuMainController() throws Exception {
+    public void displayMenuMainController() throws Exception {
         int i = 0;
         int choice;
         while (i < 10) {
