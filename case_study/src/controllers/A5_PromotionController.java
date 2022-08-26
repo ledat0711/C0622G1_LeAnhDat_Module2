@@ -8,11 +8,11 @@ public class A5_PromotionController {
         int choice;
         while (i < 10) {
             i++;
-            System.out.println("-------------------------------------------");
-            System.out.println("1. Display list customers use service.");
-            System.out.println("2. Display list customers get voucher.");
-            System.out.println("3. Return main menu.");
-            System.out.print("Mời bạn nhập lựa chọn: ");
+            System.out.println("-------------------------------------------" +
+                    "\n1. Display list customers use service." +
+                    "\n2. Display list customers get voucher." +
+                    "\n3. Return main menu." +
+                    "\nMời bạn nhập lựa chọn: ");
             choice = Integer.parseInt(A0_FuramaController.inputValidChoice("[1-3]"));
             switch (choice) {
                 case 1:

@@ -8,14 +8,15 @@ public class A4_BookingController {
         int choice;
         while (i < 10) {
             i++;
-            System.out.println("-------------------------------------------");
-            System.out.println("1. Add new booking.");
-            System.out.println("2. Display list booking.");
-            System.out.println("3. Create new contract");
-            System.out.println("4. Display list contracts");
-            System.out.println("5. Edit contracts");
-            System.out.println("6. Return main menu");
-            System.out.print("Mời bạn nhập lựa chọn: ");
+            System.out.println(
+                    "-------------------------------------------" +
+                    "\n1. Add new booking." +
+                    "\n2. Display list booking." +
+                    "\n3. Create new contract" +
+                    "\n4. Display list contracts" +
+                    "\n5. Edit contracts" +
+                    "\n6. Return main menu" +
+                    "\nMời bạn nhập lựa chọn: ");
             choice = Integer.parseInt(A0_FuramaController.inputValidChoice("[1-6]"));
             switch (choice) {
                 case 1:

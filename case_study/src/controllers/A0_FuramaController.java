@@ -22,15 +22,17 @@ public class A0_FuramaController {
         int choice;
         while (i < 10) {
             i++;
-            System.out.println("-------------------------------------------");
-            System.out.println("Wellcome. This is the Furama Resort Management App.");
-            System.out.println("1. Empoyee Management.");
-            System.out.println("2. Customer Management.");
-            System.out.println("3. Facility Management.");
-            System.out.println("4. Booking Management.");
-            System.out.println("5. Promotion Management.");
-            System.out.println("6. Exit");
-            System.out.print("Mời bạn nhập lựa chọn: ");
+            System.out.println(
+                    "-------------------------------------------" +
+                            "\nChào bạn. Đây là ứng dụng quản lý khu nghỉ dưỡng Furama." +
+                            "\n1. Empoyee Management." +
+                            "\n2. Customer Management." +
+                            "\n3. Facility Management." +
+                            "\n4. Booking Management." +
+                            "\n5. Promotion Management." +
+                            "\n6. Exit" +
+                            "\nMời bạn nhập lựa chọn: "
+            );
             choice = Integer.parseInt(inputValidChoice("[1-6]"));
             switch (choice) {
                 case 1:
