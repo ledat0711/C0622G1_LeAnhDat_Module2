@@ -1,9 +1,9 @@
 package view;
 
-import controllers.FuramaController;
+import controllers.A0_FuramaController;
 
 public class MainView {
-    public static void main(String[] args) throws Exception {
-        FuramaController.displayMainMenu();
+    public static void main(String[] args) {
+        A0_FuramaController.displayMainMenu();
     }
 }

@@ -148,7 +148,7 @@ public class TeacherService implements ITeacherService {
         System.out.print("Mời bạn nhập ID: ");
         int id = CheckAndEnter.enterIDToAddObject(teachers);
         System.out.print("Mời bạn nhập tên: ");
-        String name = scanner.nextLine();
+        String name = CheckAndEnter.checkEnterName();
         System.out.print("Mời bạn nhập ngày sinh: ");
         String dateOfBirth = checkAndEnterDate();
         System.out.print("Mời bạn nhập giới tính: ");

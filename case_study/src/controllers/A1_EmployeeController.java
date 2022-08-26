@@ -1,19 +1,20 @@
 package controllers;
 
-public class FuramaController {
-    public static void displayMainMenu() throws Exception {
+import static controllers.A0_FuramaController.displayMainMenu;
+
+public class A1_EmployeeController {
+    public static void displayEmployeeManagementMenu() {
         int i = 0;
-        int choice = 0;
+        int choice;
         while (i < 10) {
-            System.out.println("-------------------------------------------");
-            System.out.println("1. Empoyee Management.");
-            System.out.println("2. Customer Management.");
-            System.out.println("3. Facility Management.");
-            System.out.println("4. Booking Management.");
-            System.out.println("5. Promotion Management.");
-            System.out.println("6. Exit");
-            System.out.print("Mời bạn nhập lựa chọn: ");
             i++;
+            System.out.println("-------------------------------------------");
+            System.out.println("1. Display list employees.");
+            System.out.println("2. Add new employee");
+            System.out.println("3. Edit employee");
+            System.out.println("4. Return main menu.");
+            System.out.print("Mời bạn nhập lựa chọn: ");
+            choice = Integer.parseInt(A0_FuramaController.inputValidChoice("[1-4]"));
             switch (choice) {
                 case 1:
                     break;
@@ -22,8 +23,7 @@ public class FuramaController {
                 case 3:
                     break;
                 case 4:
-                    break;
-                case 5:
+                    displayMainMenu();
                     break;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

@@ -1,42 +1,50 @@
-package utils.impl;
+package utils.check_enter;
 
 import utils.exception.InvalidException;
 
-import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class CheckAndEnter {
     public static Scanner scanner = new Scanner(System.in);
 
-    public static String checkAndEnterDate() {
+    public static String checkAndFormatName() {
+        String serviceName = checkEnterName();
+        String[] arr = serviceName.toLowerCase().trim().split("");
+        StringBuilder str = new StringBuilder().append(arr[0].toUpperCase());
+        for (int i = 1; i < arr.length; i++) {
+            if (!arr[i].equals(" ")) {
+                if (arr[i - 1].equals(" ")) {
+                    str.append(arr[i].toUpperCase());
+                } else {
+                    str.append(arr[i]);
+                }
+            } else if (!arr[i + 1].equals(" ")) {
+                str.append(arr[i]);
+            }
+        }
+        return str.toString();
+    }
+
+    public static String checkEnterName() {
         int i = 0;
-        boolean isValidDate = false;
-        String inputDate = "";
-        String trueFormat = "^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|" +
-                "(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))" +
-                "(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)" +
-                "?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|" +
-                "^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$";
+        String name = "";
+        final String VALID_FORMAT = "^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ" +
+                "a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]" +
+                "[a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*" +
+                "(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ" +
+                "a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]" +
+                "[a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$";
         while (i < 10) {
             i++;
-            try {
-                inputDate = scanner.nextLine();
-                isValidDate = Pattern.matches(trueFormat, inputDate);
-                if (!isValidDate) {
-                    throw new InvalidException("Bạn đã nhập ngày sinh chưa hợp lệ.\n" +
-                            "Định dạng ngày sinh chúng tôi thiết lập là: dd/mm/yyyy\n" +
-                            "Ngoài ra, chú ý giá trị giới hạn của ngày và tháng.");
-                }
+            name = scanner.nextLine();
+            if (name.matches(VALID_FORMAT)) {
                 break;
-            } catch (InvalidException ie) {
-                System.out.println(ie.getMessage());
-            } catch (Exception e) {
-                System.out.println("Bạn đã nhập lỗi. Vui lòng nhập lại.");
+            } else {
+                System.out.print("Bạn đã nhập tên không hợp lệ. vui lòng nhập lại tên: ");
             }
-            System.out.print("Vui lòng nhập lại ngày sinh: ");
         }
-        return inputDate;
+        return name;
     }
 
 //    public static int enterIDToAddObject(List<? extends Person> personList) {
