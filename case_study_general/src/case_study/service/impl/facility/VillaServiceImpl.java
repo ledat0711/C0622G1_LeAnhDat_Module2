@@ -1,6 +1,6 @@
-package service.impl.facility;
+package case_study.service.impl.facility;
 
-import service.IFacilityService;
+import case_study.service.IFacilityService;
 
 public class VillaServiceImpl implements IFacilityService {
     @Override

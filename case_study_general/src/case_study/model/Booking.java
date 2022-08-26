@@ -1,6 +1,6 @@
 package case_study.model;
 
-import service.IBookingService;
+import case_study.service.IBookingService;
 
 public class Booking {
     private String bookingID;

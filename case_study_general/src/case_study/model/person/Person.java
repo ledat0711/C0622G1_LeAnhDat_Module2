@@ -1,4 +1,4 @@
-package model.person;
+package case_study.model.person;
 
 public abstract class Person {
     private String name;

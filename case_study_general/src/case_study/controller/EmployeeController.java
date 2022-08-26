@@ -1,7 +1,7 @@
 package case_study.controller;
 
-import service.IEmployeeService;
-import service.impl.people.EmployeeServiceImpl;
+import case_study.service.IEmployeeService;
+import case_study.service.impl.people.EmployeeServiceImpl;
 
 import static case_study.controller.FuramaController.displayMainMenu;
 

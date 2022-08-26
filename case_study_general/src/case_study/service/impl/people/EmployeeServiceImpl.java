@@ -3,10 +3,10 @@
             System.out.println("2. Add new employee");
             System.out.println("3. Edit employee");
             */
-package service.impl.people;
+package case_study.service.impl.people;
 
-import model.person.Employee;
-import service.IEmployeeService;
+import case_study.model.person.Employee;
+import case_study.service.IEmployeeService;
 
 import java.util.ArrayList;
 import java.util.List;

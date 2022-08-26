@@ -1,6 +1,6 @@
-package service.impl;
+package case_study.service.impl;
 
-import service.IContractService;
+import case_study.service.IContractService;
 
 public class ContractServiceImpl implements IContractService {
     @Override

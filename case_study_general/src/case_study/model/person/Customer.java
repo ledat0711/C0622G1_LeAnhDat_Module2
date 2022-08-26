@@ -1,4 +1,4 @@
-package model.person;
+package case_study.model.person;
 
 public class Customer extends Person {
     private String customerID;

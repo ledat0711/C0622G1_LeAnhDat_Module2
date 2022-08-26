@@ -1,6 +1,6 @@
-package service.impl.people;
+package case_study.service.impl.people;
 
-import service.ICustomerService;
+import case_study.service.ICustomerService;
 
 public class CustomerServiceImpl implements ICustomerService {
     @Override
