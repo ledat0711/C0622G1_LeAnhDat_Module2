@@ -2,7 +2,6 @@ package model.person;
 
 public abstract class Person {
     private String name;
-    private String address;
     private String dateOfBirth;
     private String gender;
     private String id;
@@ -12,9 +11,8 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, String address, String dateOfBirth, String gender, String id, long phoneNumber, String email) {
+    public Person(String name, String dateOfBirth, String gender, String id, long phoneNumber, String email) {
         this.name = name;
-        this.address = address;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.id = id;
@@ -28,14 +26,6 @@ public abstract class Person {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getDateOfBirth() {
@@ -81,7 +71,6 @@ public abstract class Person {
     @Override
     public String toString() {
         return "Tên: '" + name + '\'' +
-                ", Địa chỉ: '" + address + '\'' +
                 ", Ngày sinh: '" + dateOfBirth + '\'' +
                 ", Giới tính: '" + gender + '\'' +
                 ", Số CMND/CCCD: '" + id + '\'' +

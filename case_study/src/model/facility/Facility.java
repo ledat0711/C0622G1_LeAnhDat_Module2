@@ -1,39 +1,39 @@
 package model.facility;
 
 public abstract class Facility {
-    private String typeName;
-    private String address;
+    private String serviceID;
+    private String serviceName;
     private double area;
     private double rentalPrice;
-    private int maxGuests;
+    private int maxPeople;
     private String typeOfRental;
 
     public Facility() {
     }
 
-    public Facility(String typeName, String address, double area, double rentalPrice, int maxGuests, String typeOfRental) {
-        this.typeName = typeName;
-        this.address = address;
+    public Facility(String serviceID, String serviceName, double area, double rentalPrice, int maxPeople, String typeOfRental) {
+        this.serviceID = serviceID;
+        this.serviceName = serviceName;
         this.area = area;
         this.rentalPrice = rentalPrice;
-        this.maxGuests = maxGuests;
+        this.maxPeople = maxPeople;
         this.typeOfRental = typeOfRental;
     }
 
-    public String getTypeName() {
-        return typeName;
+    public String getServiceID() {
+        return serviceID;
     }
 
-    public void setTypeName(String typeName) {
-        this.typeName = typeName;
+    public void setServiceID(String serviceID) {
+        this.serviceID = serviceID;
     }
 
-    public String getAddress() {
-        return address;
+    public String getServiceName() {
+        return serviceName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setServiceName(String serviceName) {
+        this.serviceName = serviceName;
     }
 
     public double getArea() {
@@ -52,12 +52,12 @@ public abstract class Facility {
         this.rentalPrice = rentalPrice;
     }
 
-    public int getMaxGuests() {
-        return maxGuests;
+    public int getMaxPeople() {
+        return maxPeople;
     }
 
-    public void setMaxGuests(int maxGuests) {
-        this.maxGuests = maxGuests;
+    public void setMaxPeople(int maxPeople) {
+        this.maxPeople = maxPeople;
     }
 
     public String getTypeOfRental() {
@@ -71,11 +71,11 @@ public abstract class Facility {
     @Override
     public String toString() {
         return "Facility{" +
-                ", Tên:'" + typeName + '\'' +
-                ", Địa chỉ'" + address + '\'' +
+                ", Mã dịch vụ: '" + serviceID + '\'' +
+                ", Tên:'" + serviceName + '\'' +
                 ", Diện tích:" + area +
-                ", Giá cho thuê: " + rentalPrice +
-                ", Lương khách tối đa: " + maxGuests +
+                ", Chi phí thuê: " + rentalPrice +
+                ", Số lượng người tối đa: " + maxPeople +
                 ", Kiểu cho thuê: '" + typeOfRental + '\'' +
                 '}';
     }

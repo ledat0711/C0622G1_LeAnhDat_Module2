@@ -1,5 +1,6 @@
 package model.facility;
 
 public class House extends Facility{
-    private int floor;
+    private String roomStandard;
+    private int floorNumber;
 }

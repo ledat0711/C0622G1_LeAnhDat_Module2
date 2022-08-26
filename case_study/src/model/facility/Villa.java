@@ -1,6 +1,7 @@
 package model.facility;
 
 public class Villa extends Facility {
-    private int floor;
+    private String roomStandard;
     private double poolArea;
+    private int floor;
 }

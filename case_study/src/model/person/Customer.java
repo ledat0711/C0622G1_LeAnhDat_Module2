@@ -3,19 +3,22 @@ package model.person;
 public class Customer extends Person {
     private String customerID;
     private String customerType;
+    private String address;
 
     public Customer() {
     }
 
-    public Customer(String customerID, String customerType) {
+    public Customer(String customerID, String customerType, String address) {
         this.customerID = customerID;
         this.customerType = customerType;
+        this.address = address;
     }
 
-    public Customer(String name, String address, String dateOfBirth, String gender, String id, long phoneNumber, String email, String customerID, String customerType) {
-        super(name, address, dateOfBirth, gender, id, phoneNumber, email);
+    public Customer(String name, String dateOfBirth, String gender, String id, long phoneNumber, String email, String customerID, String customerType, String address) {
+        super(name, dateOfBirth, gender, id, phoneNumber, email);
         this.customerID = customerID;
         this.customerType = customerType;
+        this.address = address;
     }
 
     public String getCustomerID() {
@@ -36,10 +39,9 @@ public class Customer extends Person {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "customerID='" + customerID + '\'' +
-                ", customerType='" + customerType + '\'' +
-                '}';
+        return "Mã khách hàng: '" + customerID + '\'' +
+                ", Loại khách: '" + customerType + '\'' +
+                ", Địa chỉ: '" + address + '\'';
     }
 }
 
