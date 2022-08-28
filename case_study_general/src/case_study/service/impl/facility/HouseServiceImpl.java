@@ -14,7 +14,7 @@ public class HouseServiceImpl implements IFacilityService {
     }
 
     @Override
-    public void update() {
+    public void edit() {
 
     }
 }

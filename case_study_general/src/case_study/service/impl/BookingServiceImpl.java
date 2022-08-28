@@ -15,7 +15,7 @@ public class BookingServiceImpl implements IBookingService {
     }
 
     @Override
-    public void update() {
+    public void edit() {
 
     }
 }

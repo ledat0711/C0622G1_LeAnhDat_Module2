@@ -25,7 +25,7 @@ public class FuramaController {
         int choice;
         while (i < 10) {
             i++;
-            System.out.println(
+            System.out.print(
                     "-------------------------------------------" +
                             "\nChào bạn. Đây là ứng dụng quản lý khu nghỉ dưỡng Furama." +
                             "\n1. Empoyee Management." +

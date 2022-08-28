@@ -14,7 +14,7 @@ public class VillaServiceImpl implements IFacilityService {
     }
 
     @Override
-    public void update() {
+    public void edit() {
 
     }
 }

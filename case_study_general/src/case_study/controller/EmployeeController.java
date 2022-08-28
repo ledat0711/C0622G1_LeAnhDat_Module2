@@ -3,8 +3,6 @@ package case_study.controller;
 import case_study.service.IEmployeeService;
 import case_study.service.impl.people.EmployeeServiceImpl;
 
-import static case_study.controller.FuramaController.displayMainMenu;
-
 public class EmployeeController {
     private static IEmployeeService employeeService = new EmployeeServiceImpl();
     public static void displayEmployeeManagementMenu() {
@@ -12,7 +10,7 @@ public class EmployeeController {
         int choice;
         while (i < 10) {
             i++;
-            System.out.println(
+            System.out.print(
                     "-------------------------------------------" +
                     "\n1. Display list employees." +
                     "\n2. Add new employee" +
@@ -29,10 +27,10 @@ public class EmployeeController {
                     employeeService.add();
                     break;
                 case 3:
-                    employeeService.update();
+                    employeeService.edit();
                     break;
                 case 4:
-                    displayMainMenu();
+                    FuramaController.displayMainMenu();
                     break;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");
