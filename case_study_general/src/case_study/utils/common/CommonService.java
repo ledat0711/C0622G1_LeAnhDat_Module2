@@ -86,7 +86,7 @@ public class CommonService {
         return null;
     }
 
-    public static String enterGenderCommonProcess() {
+    public static String enterGender() {
         String[] genderArray = {"", "Nam", "Nữ", "Khác"};
         String selection = "";
         while (true) {

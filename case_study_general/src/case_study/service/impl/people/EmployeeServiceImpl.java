@@ -44,9 +44,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public void add() {
         System.out.println("-------------------------------------------" +
                 "\nBạn đang sử dụng chức năng thêm thông tin nhân viên. ");
-        Employee employee = this.addInfoEmployee();
-        EMPLOYEE_LIST.add(employee);
-        System.out.println("Thêm mới thông tin nhân viên thành công");
+        Employee employeeAdding = this.addInfoEmployee();
+        EMPLOYEE_LIST.add(employeeAdding);
+        System.out.println("Thêm mới thành công!");
     }
 
 
@@ -100,7 +100,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
             System.out.println("9. Vị trí");
             System.out.println("10. Mức lương");
             System.out.println("11. Quay lại menu quản lý nhân viên.");
-            System.out.println("Lựa chọn của bạn (Nhập lựa chọn từ số 1 - 10): ");
+            System.out.println("Lựa chọn của bạn (Nhập lựa chọn từ số 1 - 11): ");
             selection = SCANNER.nextLine();
             switch (selection) {
                 case "1":
@@ -113,7 +113,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                     break;
                 case "3":
                     System.out.println("Mời bạn nhập giới tính mới:");
-                    employeeFound.setGender(CommonService.enterGenderCommonProcess());
+                    employeeFound.setGender(CommonService.enterGender());
                     break;
                 case "4":
                     System.out.println("Mời bạn nhập số CMND/CCCD mới:");
