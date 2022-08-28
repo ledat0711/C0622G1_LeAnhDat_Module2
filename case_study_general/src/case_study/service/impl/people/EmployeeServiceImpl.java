@@ -52,11 +52,11 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     public Employee addInfoEmployee() {
         System.out.print("Mời bạn nhập tên : ");
-        String name = CommonService.checkAndFormatName();
+        String name = CommonService.formatAndReturnName();
         System.out.print("Mời bạn nhập ngày sinh : ");
         String dateOfBirth = SCANNER.nextLine();
         System.out.print("Mời bạn nhập giới tính: ");
-        String gender = SCANNER.nextLine();
+        String gender = CommonService.enterGender();
         System.out.print("Mời bạn nhập số CMND/CCCD: ");
         String id = SCANNER.nextLine();
         System.out.print("Mời bạn nhập số điện thoại : ");
@@ -105,7 +105,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
             switch (selection) {
                 case "1":
                     System.out.println("Mời bạn nhập tên mới:");
-                    employeeFound.setName(CommonService.checkAndFormatName());
+                    employeeFound.setName(CommonService.formatAndReturnName());
                     break;
                 case "2":
                     System.out.println("Mời bạn nhập ngày sinh mới:");

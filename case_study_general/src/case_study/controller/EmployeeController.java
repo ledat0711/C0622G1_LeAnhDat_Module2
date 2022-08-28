@@ -6,6 +6,7 @@ import case_study.utils.common.*;
 public class EmployeeController {
     private static IEmployeeService employeeService = new EmployeeServiceImpl();
     public static void displayEmployeeManagementMenu() {
+        FuramaController furamaController = new FuramaController();
         int i = 0;
         int choice;
         while (i < 10) {
@@ -16,7 +17,7 @@ public class EmployeeController {
                     "\n2. Add new employee" +
                     "\n3. Edit employee" +
                     "\n4. Return main menu." +
-                    "'\nMời bạn nhập lựa chọn: "
+                    "\nMời bạn nhập lựa chọn: "
             );
             choice = Integer.parseInt(CommonController.inputValidChoice("[1-4]"));
             switch (choice) {
@@ -30,8 +31,8 @@ public class EmployeeController {
                     employeeService.edit();
                     break;
                 case 4:
-                    FuramaController.displayMainMenu();
-                    break;
+                    furamaController.displayMainMenu();
+                    return;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");
             }

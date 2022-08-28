@@ -1,11 +1,11 @@
 package case_study.controller;
+
 import case_study.utils.common.*;
-import java.util.Scanner;
 
 public class FuramaController {
-    public static void displayMainMenu() {
+    public void displayMainMenu() {
         int i = 0;
-        int choice;
+        String selection;
         while (i < 10) {
             i++;
             System.out.print(
@@ -19,29 +19,28 @@ public class FuramaController {
                             "\n6. Exit" +
                             "\nMời bạn nhập lựa chọn: "
             );
-            choice = Integer.parseInt(CommonController.inputValidChoice("[1-6]"));
-            switch (choice) {
-                case 1:
+            selection = CommonController.inputValidChoice("[1-6]");
+            switch (selection) {
+                case "1":
                     EmployeeController.displayEmployeeManagementMenu();
                     break;
-                case 2:
+                case "2":
                     CustomerController.displayCustomerManagementMenu();
                     break;
-                case 3:
+                case "3":
                     FacilityController.displayFacilityManagementMenu();
                     break;
-                case 4:
+                case "4":
                     BookingController.displayBookingManagementMenu();
                     break;
-                case 5:
+                case "5":
                     PromotionController.displayPromotionManagementMenu();
                     break;
-                case 6:
-                    System.out.println(
-                            "\nĐã kết thúc chương trình." +
+                case "6":
+                    System.out.println("\nĐã kết thúc chương trình." +
                             "\nCảm ơn bạn đã sử dụng." +
                             "\nHẹn gặp lại.");
-                    return;
+                    System.exit(0);
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");
             }

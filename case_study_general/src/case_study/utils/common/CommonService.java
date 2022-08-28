@@ -1,18 +1,16 @@
 package case_study.utils.common;
 
 import case_study.model.person.*;
-import case_study.model.person.Person;
 import case_study.utils.exception.WrongInformationException;
 
-import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Scanner;
 
 public class CommonService {
-    public static Scanner scanner = new Scanner(System.in);
+    private static Scanner SCANNER = new Scanner(System.in);
 
-    public static String checkAndFormatName() {
-        String serviceName = checkEnterName();
+    public static String formatAndReturnName() {
+        String serviceName = checkAndReturnName();
         String[] arr = serviceName.toLowerCase().trim().split("");
         StringBuilder str = new StringBuilder().append(arr[0].toUpperCase());
         for (int i = 1; i < arr.length; i++) {
@@ -29,7 +27,7 @@ public class CommonService {
         return str.toString();
     }
 
-    public static String checkEnterName() {
+    public static String checkAndReturnName() {
         int i = 0;
         String name = "";
         final String VALID_FORMAT = "^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ" +
@@ -40,7 +38,7 @@ public class CommonService {
                 "[a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$";
         while (i < 10) {
             i++;
-            name = scanner.nextLine();
+            name = SCANNER.nextLine();
             if (name.matches(VALID_FORMAT)) {
                 break;
             } else {
@@ -57,7 +55,7 @@ public class CommonService {
             i++;
             try {
                 System.out.printf("Mời bạn nhập ID của %s cần cập nhật: ", stringInside);
-                id = scanner.nextLine();
+                id = SCANNER.nextLine();
                 if (id.isEmpty()) {
                     throw new WrongInformationException("Bạn chưa nhập thông tin.\nHãy nhập lại.");
                 }
@@ -90,9 +88,9 @@ public class CommonService {
         String[] genderArray = {"", "Nam", "Nữ", "Khác"};
         String selection = "";
         while (true) {
-            System.out.println("Để nhập giới tính. Điền từ số 1 đến số 3: ");
-            System.out.printf("%s-%s\n%s-%s\n%s-%s", 1, "Nam", 2, "Nữ", 3, "Khác");
-            selection = scanner.nextLine();
+            System.out.printf("\n%s-%s\n%s-%s\n%s-%s", 1, "Nam", 2, "Nữ", 3, "Khác");
+            System.out.print("\nLựa chọn của bạn (Nhập một con số trong khoảng từ 1 đến 3): ");
+            selection = SCANNER.nextLine();
             switch (selection) {
                 case "1":
                     return genderArray[1];

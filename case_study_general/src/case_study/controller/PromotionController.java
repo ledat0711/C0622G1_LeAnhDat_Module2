@@ -1,9 +1,9 @@
 package case_study.controller;
 import case_study.utils.common.*;
-import static case_study.controller.FuramaController.displayMainMenu;
 
 public class PromotionController {
     public static void displayPromotionManagementMenu(){
+        FuramaController furamaController = new FuramaController();
         int i = 0;
         int choice;
         while (i < 10) {
@@ -20,8 +20,8 @@ public class PromotionController {
                 case 2:
                     break;
                 case 3:
-                    displayMainMenu();
-                    break;
+                    furamaController.displayMainMenu();
+                    return;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");
             }

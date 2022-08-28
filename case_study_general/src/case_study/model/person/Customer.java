@@ -56,6 +56,7 @@ public class Customer extends Person {
     @Override
     public String toString() {
         return "Mã khách hàng: '" + customerID + '\'' +
+                super.toString() + "," +
                 ", Loại khách: '" + customerType + '\'' +
                 ", Địa chỉ: '" + address + '\'';
     }
