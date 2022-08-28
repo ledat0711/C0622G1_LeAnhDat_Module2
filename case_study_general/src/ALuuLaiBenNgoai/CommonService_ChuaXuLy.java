@@ -1,14 +1,13 @@
-package case_study.utils.common;
+package ALuuLaiBenNgoai;
 
-import case_study.model.person.*;
-import case_study.model.person.Person;
+import case_study.model.person.Customer;
+import case_study.model.person.Employee;
 import case_study.utils.exception.WrongInformationException;
 
-import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Scanner;
 
-public class CommonService {
+public class CommonService_ChuaXuLy {
     public static Scanner scanner = new Scanner(System.in);
 
     public static String checkAndFormatName() {
@@ -49,6 +48,51 @@ public class CommonService {
         }
         return name;
     }
+
+    //    public static int enterIDToAddObject(List<? extends Person> personList) {
+//        int iD = 0;
+//        int i = 0;
+//        while (i < 10) {
+//            i++;
+//            try {
+//                iD = Integer.parseInt(scanner.nextLine());
+//                for (Person person : personList) {
+//                    if (iD == person.getID()) {
+//                        throw new InvalidException("\nBạn đã nhập trùng ID.");
+//                    }
+//                }
+//                if (iD < 0) {
+//                    throw new InvalidException("\nBạn đã nhập số âm.");
+//                }
+//                break;
+//            } catch (InvalidException ie) {
+//                System.out.println(ie.getMessage());
+//            } catch (NumberFormatException n) {
+//                System.out.println("\nBạn đã nhập kiểu dữ liệu không phải là số.");
+//            } catch (Exception e) {
+//                System.out.println("\nThông tin bạn đã nhập bị lỗi.");
+//            }
+//            System.out.print("Vui lòng nhập lại ID: ");
+//        }
+//        return iD;
+//    }
+//
+
+//    public static Person enterIDToFindUpdateRemove(List<? extends Person> personList) {
+//        int i;
+//        int j = 0;
+//        String iD;
+//        while (j < 10) {
+//            j++;
+//            iD = scanner.nextLine();
+//            for (i = 0; i < personList.size(); i++) {
+//                if (personList.get(i).getID().equals(iD)) {
+//                    return personList.get(i);
+//                }
+//            }
+//        }
+//        return null;
+//    }
 
     public static Object checkIDReturnObject(List<?> objectList, String stringInside) {
         String id = null;

@@ -4,7 +4,7 @@
             System.out.println("3. Edit employee");
             */
 package case_study.service.impl.people;
-
+import case_study.utils.common.*;
 import case_study.model.person.Employee;
 import case_study.service.IEmployeeService;
 
@@ -52,7 +52,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     public Employee addInfoEmployee() {
         System.out.print("Mời bạn nhập tên : ");
-        String name = CommonProcess.checkAndFormatName();
+        String name = CommonService.checkAndFormatName();
         System.out.print("Mời bạn nhập ngày sinh : ");
         String dateOfBirth = SCANNER.nextLine();
         System.out.print("Mời bạn nhập giới tính: ");
@@ -76,7 +76,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
     @Override
     public void edit() {
-        Employee employeeFound = (Employee) CommonProcess.checkIDReturnObject(EMPLOYEE_LIST, "nhân viên");
+        Employee employeeFound = (Employee) CommonService.checkIDReturnObject(EMPLOYEE_LIST, "nhân viên");
         if (employeeFound == null) {
             System.out.println("Không tồn tại nhân viên với ID đã nhập.");
             return;
@@ -105,7 +105,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
             switch (selection) {
                 case "1":
                     System.out.println("Mời bạn nhập tên mới:");
-                    employeeFound.setName(CommonProcess.checkAndFormatName());
+                    employeeFound.setName(CommonService.checkAndFormatName());
                     break;
                 case "2":
                     System.out.println("Mời bạn nhập ngày sinh mới:");
@@ -113,7 +113,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
                     break;
                 case "3":
                     System.out.println("Mời bạn nhập giới tính mới:");
-                    employeeFound.setGender(CommonProcess.enterGenderCommonProcess());
+                    employeeFound.setGender(CommonService.enterGenderCommonProcess());
                     break;
                 case "4":
                     System.out.println("Mời bạn nhập số CMND/CCCD mới:");
