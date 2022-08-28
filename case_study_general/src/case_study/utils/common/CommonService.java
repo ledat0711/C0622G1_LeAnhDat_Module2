@@ -8,7 +8,7 @@ import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Scanner;
 
-public class CommonProcess {
+public class CommonService {
     public static Scanner scanner = new Scanner(System.in);
 
     public static String checkAndFormatName() {

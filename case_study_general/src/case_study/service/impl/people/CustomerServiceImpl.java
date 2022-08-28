@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class CustomerServiceImpl implements ICustomerService {
     private static final Scanner SCANNER = new Scanner(System.in);
-    private List<Customer> customerList = new LinkedList<>();
+    private static final List<Customer> CUSTOMER_LIST = new LinkedList<>();
 
     static {
 

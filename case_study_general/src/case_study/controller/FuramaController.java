@@ -1,17 +1,14 @@
 package case_study.controller;
 
-import case_study.service.IEmployeeService;
-import case_study.service.impl.people.EmployeeServiceImpl;
-
 import java.util.Scanner;
 
 public class FuramaController {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static String inputValidChoice(String vailidFormatInput) {
+    public static String inputValidChoice(String regex) {
         while (true) {
             String choiceString = scanner.nextLine();
-            if (choiceString.matches(vailidFormatInput)) {
+            if (choiceString.matches(regex)) {
                 return choiceString;
             } else {
                 System.out.println("\nBạn đã nhập không hợp lệ.");
