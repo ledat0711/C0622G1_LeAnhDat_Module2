@@ -158,6 +158,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
             System.out.println("Nhấn bất kỳ phím khác để quay lại 'Menu Quản Lý Nhân Viên'.");
             System.out.print("Lựa chọn của bạn: ");
             selection = SCANNER.nextLine();
+            if (!selection.equals("1")) {
+                return;
+            }
             i++;
         } while (i < 10);
     }
