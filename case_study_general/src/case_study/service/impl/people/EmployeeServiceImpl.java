@@ -53,7 +53,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     public Employee addInfoEmployee() {
         System.out.print("Mời bạn nhập tên : ");
-        String name = SCANNER.nextLine();
+        String name = CommonProcess.checkAndFormatName();
         System.out.print("Mời bạn nhập ngày sinh : ");
         String dateOfBirth = SCANNER.nextLine();
         System.out.print("Mời bạn nhập giới tính: ");
@@ -106,7 +106,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
             switch (selection) {
                 case "1":
                     System.out.println("Mời bạn nhập tên mới:");
-                    employeeFound.setName(SCANNER.nextLine());
+                    employeeFound.setName(CommonProcess.checkAndFormatName());
                     break;
                 case "2":
                     System.out.println("Mời bạn nhập ngày sinh mới:");
@@ -155,13 +155,9 @@ public class EmployeeServiceImpl implements IEmployeeService {
             System.out.println(employeeFound);
             System.out.println("\nMời bạn lựa chọn thao tác tiếp theo:");
             System.out.println("Nhấn phím 1 để TIẾP TỤC.");
-            System.out.println("Nhấn bất kỳ phím nào khác phím 1 để KẾT THÚC.");
+            System.out.println("Nhấn bất kỳ phím khác để quay lại 'Menu Quản Lý Nhân Viên'.");
             System.out.print("Lựa chọn của bạn: ");
             selection = SCANNER.nextLine();
-            if (!selection.equals("1")) {
-                System.out.println("Quay lại menu");
-                return;
-            }
             i++;
         } while (i < 10);
     }

@@ -44,7 +44,7 @@ public class CommonProcess {
             if (name.matches(VALID_FORMAT)) {
                 break;
             } else {
-                System.out.print("Bạn đã nhập tên không hợp lệ. vui lòng nhập lại tên: ");
+                System.out.print("Bạn đã nhập tên không hợp lệ.\nVui lòng nhập lại tên: ");
             }
         }
         return name;
@@ -117,14 +117,14 @@ public class CommonProcess {
             List<Employee> employeeList = (List<Employee>) objectList;
             for (i = 0; i < employeeList.size(); i++) {
                 if (employeeList.get(i).getEmployeeID().equals(id)) {
-                    return objectList.get(i);
+                    return employeeList.get(i);
                 }
             }
         } else {
             List<Customer> customerList = (List<Customer>) objectList;
             for (i = 0; i < customerList.size(); i++) {
                 if (customerList.get(i).getCustomerID().equals(id)) {
-                    return objectList.get(i);
+                    return customerList.get(i);
                 }
             }
         }
