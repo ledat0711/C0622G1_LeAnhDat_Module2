@@ -1,5 +1,5 @@
 package case_study.controller;
-
+import case_study.utils.common.*;
 import static case_study.controller.FuramaController.displayMainMenu;
 
 public class CustomerController {
@@ -14,7 +14,7 @@ public class CustomerController {
                     "\n3. Edit customer" +
                     "\n4. Return main menu." +
                     "\nMời bạn nhập lựa chọn: ");
-            choice = Integer.parseInt(FuramaController.inputValidChoice("[1-4]"));
+            choice = Integer.parseInt(CommonController.inputValidChoice("[1-4]"));
             switch (choice) {
                 case 1:
                     break;

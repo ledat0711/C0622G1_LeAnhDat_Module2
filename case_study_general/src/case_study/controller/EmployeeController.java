@@ -2,7 +2,7 @@ package case_study.controller;
 
 import case_study.service.IEmployeeService;
 import case_study.service.impl.people.EmployeeServiceImpl;
-
+import case_study.utils.common.*;
 public class EmployeeController {
     private static IEmployeeService employeeService = new EmployeeServiceImpl();
     public static void displayEmployeeManagementMenu() {
@@ -18,7 +18,7 @@ public class EmployeeController {
                     "\n4. Return main menu." +
                     "'\nMời bạn nhập lựa chọn: "
             );
-            choice = Integer.parseInt(FuramaController.inputValidChoice("[1-4]"));
+            choice = Integer.parseInt(CommonController.inputValidChoice("[1-4]"));
             switch (choice) {
                 case 1:
                     employeeService.display();

@@ -1,22 +1,8 @@
 package case_study.controller;
-
+import case_study.utils.common.*;
 import java.util.Scanner;
 
 public class FuramaController {
-    private static final Scanner scanner = new Scanner(System.in);
-
-    public static String inputValidChoice(String regex) {
-        while (true) {
-            String choiceString = scanner.nextLine();
-            if (choiceString.matches(regex)) {
-                return choiceString;
-            } else {
-                System.out.println("\nBạn đã nhập không hợp lệ.");
-                System.out.print("Vui lòng nhập lại lựa chọn: ");
-            }
-        }
-    }
-
     public static void displayMainMenu() {
         int i = 0;
         int choice;
@@ -33,7 +19,7 @@ public class FuramaController {
                             "\n6. Exit" +
                             "\nMời bạn nhập lựa chọn: "
             );
-            choice = Integer.parseInt(inputValidChoice("[1-6]"));
+            choice = Integer.parseInt(CommonController.inputValidChoice("[1-6]"));
             switch (choice) {
                 case 1:
                     EmployeeController.displayEmployeeManagementMenu();
