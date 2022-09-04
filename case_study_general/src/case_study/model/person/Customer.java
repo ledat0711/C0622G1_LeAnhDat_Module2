@@ -1,5 +1,8 @@
 package case_study.model.person;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public class Customer extends Person {
     private String customerID;
     private String customerType;
@@ -15,15 +18,15 @@ public class Customer extends Person {
     }
 
     public Customer(String name,
-                    String dateOfBirth,
+                    LocalDate dateOfBirth,
                     String gender,
-                    String id,
+                    String personalID,
                     String phoneNumber,
                     String email,
                     String customerID,
                     String customerType,
                     String address) {
-        super(name, dateOfBirth, gender, id, phoneNumber, email);
+        super(name, dateOfBirth, gender, personalID, phoneNumber, email);
         this.customerID = customerID;
         this.customerType = customerType;
         this.address = address;
@@ -54,11 +57,33 @@ public class Customer extends Person {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(customerID, customer.customerID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customerID);
+    }
+
+    @Override
+    public String displayInfoToUser() {
+        return super.toString()+
+                ", Mã số khách hàng: " + customerID  +
+                ", Loại khách hàng" + customerType +
+                ", Địa chỉ: '" + address
+                ;
+    }
+
+    @Override
     public String toString() {
-        return "Mã khách hàng: '" + customerID + '\'' +
-                super.toString() + "," +
-                ", Loại khách: '" + customerType + '\'' +
-                ", Địa chỉ: '" + address + '\'';
+        return super.toString() + "," +
+                customerID + "," +
+                customerType + "," +
+                address;
     }
 }
 

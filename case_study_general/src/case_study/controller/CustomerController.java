@@ -1,24 +1,23 @@
 package case_study.controller;
 import case_study.service.ICustomerService;
-import case_study.service.impl.people.CustomerServiceImpl;
-import case_study.utils.common.*;
+import case_study.service.impl.people_impl.CustomerServiceImpl;
+import case_study.common.*;
 
 public class CustomerController {
     private static final ICustomerService customerService = new CustomerServiceImpl();
     public static void displayCustomerManagementMenu(){
         FuramaController furamaController = new FuramaController();
-        int i = 0;
-        String selection;
-        while (i < 10) {
-            i++;
-            System.out.println("-------------------------------------------" +
-                    "\n1. Display list customers." +
-                    "\n2. Add new customer" +
-                    "\n3. Edit customer" +
-                    "\n4. Return main menu." +
+        String choice;
+        while (true) {
+            System.out.println("--------------------------------------------------------" +
+                    "\n--------------MENU QUẢN LÝ KHÁCH HÀNG--------------" +
+                    "\n1. Hiển thị danh sách khách hàng." +
+                    "\n2. Thêm mới thông tin khách hàng" +
+                    "\n3. Chỉnh sửa thông tin khách hàng" +
+                    "\n4. Trở lại menu chính." +
                     "\nMời bạn nhập lựa chọn: ");
-            selection = CommonController.inputValidChoice("[1-4]");
-            switch (selection) {
+            choice = CommonController.inputValidChoice("[1-4]");
+            switch (choice) {
                 case "1":
                     customerService.display();
                     break;
@@ -29,7 +28,6 @@ public class CustomerController {
                     customerService.edit();
                     break;
                 case "4":
-                    furamaController.displayMainMenu();
                     return;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

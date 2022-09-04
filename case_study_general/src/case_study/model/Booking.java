@@ -2,10 +2,12 @@ package case_study.model;
 
 import case_study.service.IBookingService;
 
+import java.time.LocalDate;
+
 public class Booking {
     private String bookingID;
-    private String startDate;
-    private String endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
     private String customerID;
     private String serviceName;
     private String serviceType;
@@ -13,7 +15,12 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(String bookingID, String startDate, String endDate, String customerID, String serviceName, String serviceType) {
+    public Booking(String bookingID,
+                   LocalDate startDate,
+                   LocalDate endDate,
+                   String customerID,
+                   String serviceName,
+                   String serviceType) {
         this.bookingID = bookingID;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -30,19 +37,19 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public String getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
@@ -70,14 +77,23 @@ public class Booking {
         this.serviceType = serviceType;
     }
 
+    //    @Override
+//    public String toString() {
+//        return "Mã booking: '" + bookingID + '\'' +
+//                ", Ngày bắt đầu: '" + startDate + '\'' +
+//                ", Ngày kết thúc: '" + endDate + '\'' +
+//                ", Mã khách hàng: '" + customerID + '\'' +
+//                ", Tên dịch vụ: '" + serviceName + '\'' +
+//                ", Loại dịch vụ:  '" + serviceType + '\''
+//                ;
+//    }
     @Override
     public String toString() {
-        return "Mã booking: '" + bookingID + '\'' +
-                ", Ngày bắt đầu: '" + startDate + '\'' +
-                ", Ngày kết thúc: '" + endDate + '\'' +
-                ", Mã khách hàng: '" + customerID + '\'' +
-                ", Tên dịch vụ: '" + serviceName + '\'' +
-                ", Loại dịch vụ:  '" + serviceType + '\''
-                ;
+        return bookingID + "," +
+                startDate + "," +
+                endDate + "," +
+                customerID + "," +
+                serviceName + "," +
+                serviceType;
     }
 }

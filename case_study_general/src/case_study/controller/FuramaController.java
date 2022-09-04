@@ -1,26 +1,22 @@
 package case_study.controller;
 
-import case_study.utils.common.*;
-
+import case_study.common.*;
 public class FuramaController {
     public void displayMainMenu() {
-        int i = 0;
-        String selection;
-        while (i < 10) {
-            i++;
-            System.out.print(
-                    "-------------------------------------------" +
-                            "\nChào bạn. Đây là ứng dụng quản lý khu nghỉ dưỡng Furama." +
-                            "\n1. Empoyee Management." +
-                            "\n2. Customer Management." +
-                            "\n3. Facility Management." +
-                            "\n4. Booking Management." +
-                            "\n5. Promotion Management." +
-                            "\n6. Exit" +
+        String choice;
+        while (true) {
+            System.out.println(
+                    "--------------ỨNG DỤNG QUẢN LÝ KHU NGHỈ DƯỠNG FURAMA--------------" +
+                            "\n1. Quản lý nhân viên." +
+                            "\n2. Quản lý khách hàng." +
+                            "\n3. Quản lý cơ sở." +
+                            "\n4. Quản lý đặt chỗ." +
+                            "\n5. Quản lý Promotion." +
+                            "\n6. Thoát." +
                             "\nMời bạn nhập lựa chọn: "
             );
-            selection = CommonController.inputValidChoice("[1-6]");
-            switch (selection) {
+            choice = CommonController.inputValidChoice("[1-6]");
+            switch (choice) {
                 case "1":
                     EmployeeController.displayEmployeeManagementMenu();
                     break;
@@ -42,7 +38,7 @@ public class FuramaController {
                             "\nHẹn gặp lại.");
                     System.exit(0);
                 default:
-                    System.out.println("Lựa chọn bạn nhập không đúng!");
+                    System.err.println("Bạn đã nhập lỗi.");
             }
         }
     }

@@ -4,13 +4,17 @@ public class Contract {
     private String contractID;
     private String bookingID;
     private String depositMoney;
-    private long totalPayment;
+    private double totalPayment;
     private String customerID;
 
     public Contract() {
     }
 
-    public Contract(String contractID, String bookingID, String depositMoney, long totalPayment, String customerID) {
+    public Contract(String contractID,
+                    String bookingID,
+                    String depositMoney,
+                    double totalPayment,
+                    String customerID) {
         this.contractID = contractID;
         this.bookingID = bookingID;
         this.depositMoney = depositMoney;
@@ -42,11 +46,11 @@ public class Contract {
         this.depositMoney = depositMoney;
     }
 
-    public long getTotalPayment() {
+    public double getTotalPayment() {
         return totalPayment;
     }
 
-    public void setTotalPayment(long totalPayment) {
+    public void setTotalPayment(double totalPayment) {
         this.totalPayment = totalPayment;
     }
 
@@ -58,13 +62,22 @@ public class Contract {
         this.customerID = customerID;
     }
 
+//    @Override
+//    public String toString() {
+//        return "Số hợp đồng: '" + contractID + '\'' +
+//                ", Mã booking: '" + bookingID + '\'' +
+//                ", Số tiền cọc trước: '" + depositMoney + '\'' +
+//                ", Tổng thanh toán" + totalPayment +
+//                ", Mã khách hàng: '" + customerID + '\''
+//                ;
+//    }
+
     @Override
     public String toString() {
-        return "Số hợp đồng: '" + contractID + '\'' +
-                ", Mã booking: '" + bookingID + '\'' +
-                ", Số tiền cọc trước: '" + depositMoney + '\'' +
-                ", Tổng thanh toán" + totalPayment +
-                ", Mã khách hàng: '" + customerID + '\''
-                ;
+        return contractID + "," +
+                bookingID + "," +
+                depositMoney + "," +
+                totalPayment + "," +
+                customerID;
     }
 }

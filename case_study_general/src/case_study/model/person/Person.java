@@ -1,21 +1,24 @@
 package case_study.model.person;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public abstract class Person {
     private String name;
-    private String dateOfBirth;
+    private LocalDate dateOfBirth;
     private String gender;
-    private String id;
+    private String personalID;
     private String phoneNumber;
     private String email;
 
     public Person() {
     }
 
-    public Person(String name, String dateOfBirth, String gender, String id, String phoneNumber, String email) {
+    public Person(String name, LocalDate dateOfBirth, String gender, String personalID, String phoneNumber, String email) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
-        this.id = id;
+        this.personalID = personalID;
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
@@ -28,11 +31,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public String getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(String dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -44,12 +47,12 @@ public abstract class Person {
         this.gender = gender;
     }
 
-    public String getID() {
-        return id;
+    public String getPersonalID() {
+        return personalID;
     }
 
-    public void setID(String id) {
-        this.id = id;
+    public void setPersonalID(String personalID) {
+        this.personalID = personalID;
     }
 
     public String getPhoneNumber() {
@@ -69,13 +72,36 @@ public abstract class Person {
     }
 
     @Override
-    public String toString() {
-        return ", Tên: '" + name + '\'' +
-                ", Ngày sinh: '" + dateOfBirth + '\'' +
-                ", Giới tính: '" + gender + '\'' +
-                ", Số CMND/CCCD: '" + id + '\'' +
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) &&
+                Objects.equals(personalID, person.personalID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, personalID);
+    }
+
+    public String displayInfoToUser() {
+        return "Tên: " + name +
+                ", Ngày sinh: " + dateOfBirth +
+                ", Giới tính: " + gender +
+                ", Số CMND/CCCD: " + personalID +
                 ", Số điện thoại: " + phoneNumber +
-                ", Email: '" + email + '\''
+                ", Email: '" + email
                 ;
+    }
+
+    @Override
+    public String toString() {
+        return name + "," +
+                dateOfBirth + "," +
+                gender + "," +
+                personalID + "," +
+                phoneNumber + "," +
+                email;
     }
 }

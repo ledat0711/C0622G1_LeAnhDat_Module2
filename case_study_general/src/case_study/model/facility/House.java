@@ -7,14 +7,14 @@ public class House extends Facility {
     public House() {
     }
 
-    public House(String serviceID,String serviceName) {
+    public House(String serviceID, String serviceName) {
         super.setServiceID(serviceID);
         super.setServiceName(serviceName);
     }
 
     public House(String serviceID,
                  String serviceName,
-                 String area,
+                 double area,
                  double rentalPrice,
                  int maxPeople,
                  String typeOfRental,
@@ -42,11 +42,18 @@ public class House extends Facility {
     }
 
     @Override
-    public String toString() {
+    public String displayInfoToUser() {
         return "House{" +
-                super.toString() +
-                "roomStandard='" + roomStandard + '\'' +
-                ", floorNumber=" + floorNumber +
+                super.displayInfoToUser() +
+                ", Tiêu chuẩn phòng'" + roomStandard + '\'' +
+                ", Số tầng: " + floorNumber +
                 '}';
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "," +
+                roomStandard + "," +
+                floorNumber;
     }
 }

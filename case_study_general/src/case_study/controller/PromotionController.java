@@ -1,26 +1,27 @@
 package case_study.controller;
-import case_study.utils.common.*;
+
+import case_study.common.*;
 
 public class PromotionController {
-    public static void displayPromotionManagementMenu(){
+    public static void displayPromotionManagementMenu() {
         FuramaController furamaController = new FuramaController();
-        int i = 0;
-        int choice;
-        while (i < 10) {
-            i++;
-            System.out.println("-------------------------------------------" +
-                    "\n1. Display list customers use service." +
-                    "\n2. Display list customers get voucher." +
-                    "\n3. Return main menu." +
+        String choice;
+        while (true) {
+            System.out.println("----------------------------------------------------------" +
+                    "\n--------------------MENU QUẢN LÝ PROMOTION--------------------" +
+                    "\n1. Hiển thị danh sách khách hàng sử dụng dịch vụ." +
+                    "\n2. Hiển thị danh sách khách hàng nhận được voucher." +
+                    "\n3. Trở lại menu chính." +
                     "\nMời bạn nhập lựa chọn: ");
-            choice = Integer.parseInt(CommonController.inputValidChoice("[1-3]"));
+            choice = CommonController.inputValidChoice("[1-3]");
             switch (choice) {
-                case 1:
+                case "1":
+                    System.out.println("Hiển thị danh sách khách hàng sử dụng dịch vụ.");
                     break;
-                case 2:
+                case "2":
+                    System.out.println("Hiển thị danh sách khách hàng nhận được voucher.");
                     break;
-                case 3:
-                    furamaController.displayMainMenu();
+                case "3":
                     return;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

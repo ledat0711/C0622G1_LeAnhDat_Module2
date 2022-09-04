@@ -16,7 +16,7 @@ public class Room extends Facility {
 
     public Room(String serviceID,
                 String serviceName,
-                String area,
+                double area,
                 double rentalPrice,
                 int maxPeople,
                 String typeOfRental,
@@ -26,10 +26,16 @@ public class Room extends Facility {
     }
 
     @Override
-    public String toString() {
+    public String displayInfoToUser() {
         return "Room{" +
-                super.toString()+
-                "freeServices='" + freeServices + '\'' +
+                super.displayInfoToUser()+
+                ", Dịch vụ miễn phí: '" + freeServices + '\'' +
                 '}';
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "," +
+                freeServices;
     }
 }

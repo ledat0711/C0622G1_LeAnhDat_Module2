@@ -1,25 +1,28 @@
 package case_study.model.person;
 
+import java.time.LocalDate;
+import java.util.Objects;
+
 public class Employee extends Person {
     private String employeeID;
     private String academicLevel;
     private String jobPosition;
-    private long salary;
+    private double salary;
 
     public Employee() {
     }
 
     public Employee(String name,
-                    String dateOfBirth,
+                    LocalDate dateOfBirth,
                     String gender,
-                    String id,
+                    String personalID,
                     String phoneNumber,
                     String email,
                     String employeeID,
                     String academicLevel,
                     String jobPosition,
-                    long salary) {
-        super(name, dateOfBirth, gender, id, phoneNumber, email);
+                    double salary) {
+        super(name, dateOfBirth, gender, personalID, phoneNumber, email);
         this.employeeID = employeeID;
         this.academicLevel = academicLevel;
         this.jobPosition = jobPosition;
@@ -50,21 +53,44 @@ public class Employee extends Person {
         this.academicLevel = academicLevel;
     }
 
-    public long getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(long salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
     @Override
-    public String toString() {
-        return "Mã nhân viên: '" + employeeID + '\'' +
-                super.toString() + "," +
-                ", Trình độ: '" + academicLevel + '\'' +
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(employeeID, employee.employeeID);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employeeID);
+    }
+
+    @Override
+    public String displayInfoToUser() {
+        return super.toString()+
+                ", Mã số nhân viên: " + employeeID +
+                ", Trình độ học vấn'" + academicLevel + '\'' +
                 ", Vị trí: '" + jobPosition + '\'' +
-                ", Mức lương: " + salary
+                ", Mức lương" + salary
                 ;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "," +
+                employeeID + "," +
+                academicLevel + "," +
+                jobPosition + "," +
+                salary;
+    }
 }
+

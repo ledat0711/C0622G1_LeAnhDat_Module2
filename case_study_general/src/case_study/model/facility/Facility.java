@@ -3,7 +3,7 @@ package case_study.model.facility;
 public abstract class Facility {
     private String serviceID;
     private String serviceName;
-    private String area;
+    private double area;
     private double rentalPrice;
     private int maxPeople;
     private String typeOfRental;
@@ -13,7 +13,7 @@ public abstract class Facility {
 
     public Facility(String serviceID,
                     String serviceName,
-                    String area,
+                    double area,
                     double rentalPrice,
                     int maxPeople,
                     String typeOfRental) {
@@ -41,11 +41,11 @@ public abstract class Facility {
         this.serviceName = serviceName;
     }
 
-    public String getArea() {
+    public double getArea() {
         return area;
     }
 
-    public void setArea(String area) {
+    public void setArea(double area) {
         this.area = area;
     }
 
@@ -73,15 +73,21 @@ public abstract class Facility {
         this.typeOfRental = typeOfRental;
     }
 
-    @Override
-    public String toString() {
-        return "Facility{" +
-                ", Mã dịch vụ: '" + serviceID + '\'' +
+    public String displayInfoToUser() {
+        return ", Mã dịch vụ: '" + serviceID + '\'' +
                 ", Tên:'" + serviceName + '\'' +
                 ", Diện tích:" + area +
                 ", Chi phí thuê: " + rentalPrice +
                 ", Số lượng người tối đa: " + maxPeople +
-                ", Kiểu cho thuê: '" + typeOfRental + '\'' +
-                '}';
+                ", Kiểu cho thuê: '" + typeOfRental + '\'';
+    }
+
+    public String toString() {
+        return serviceID + "," +
+                serviceName + "," +
+                area + "," +
+                rentalPrice + "," +
+                maxPeople + "," +
+                typeOfRental;
     }
 }

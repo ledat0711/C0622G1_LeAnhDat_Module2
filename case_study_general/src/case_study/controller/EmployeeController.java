@@ -1,37 +1,38 @@
 package case_study.controller;
 
 import case_study.service.IEmployeeService;
-import case_study.service.impl.people.EmployeeServiceImpl;
-import case_study.utils.common.*;
+import case_study.service.impl.people_impl.EmployeeServiceImpl;
+import case_study.common.*;
+
 public class EmployeeController {
     private static IEmployeeService employeeService = new EmployeeServiceImpl();
+
     public static void displayEmployeeManagementMenu() {
         FuramaController furamaController = new FuramaController();
-        int i = 0;
-        int choice;
-        while (i < 10) {
-            i++;
-            System.out.print(
-                    "-------------------------------------------" +
-                    "\n1. Display list employees." +
-                    "\n2. Add new employee" +
-                    "\n3. Edit employee" +
-                    "\n4. Return main menu." +
+        String choice;
+        while (true) {
+            System.out.print("---------------------------------------------------------" +
+                    "\n---------------MENU QUẢN LÝ NHÂN VIÊN---------------" +
+                    "\n1. Hiển thị danh sách nhân viên." +
+                    "\n2. Thêm mới thông tin nhân viên" +
+                    "\n3. Chỉnh sửa thông tin nhân viên" +
+                    "\n4. Xóa thông tin nhân viên." +
+                    "\n5. Trở lại menu chính." +
                     "\nMời bạn nhập lựa chọn: "
             );
-            choice = Integer.parseInt(CommonController.inputValidChoice("[1-4]"));
+            choice = CommonController.inputValidChoice("[1-4]");
             switch (choice) {
-                case 1:
+                case "1":
                     employeeService.display();
                     break;
-                case 2:
+                case "2":
                     employeeService.add();
                     break;
-                case 3:
+                case "3":
                     employeeService.edit();
                     break;
-                case 4:
-                    furamaController.displayMainMenu();
+                case "4":
+                    EmployeeServiceImpl.remove();
                     return;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

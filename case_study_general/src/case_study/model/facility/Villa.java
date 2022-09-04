@@ -10,7 +10,7 @@ public class Villa extends Facility {
 
     public Villa(String serviceID,
                  String serviceName,
-                 String area,
+                 double area,
                  double rentalPrice,
                  int maxPeople,
                  String typeOfRental,
@@ -45,5 +45,22 @@ public class Villa extends Facility {
 
     public void setFloor(int floor) {
         this.floor = floor;
+    }
+
+    @Override
+    public String displayInfoToUser() {
+        return super.displayInfoToUser() + "," +
+                "Phòng tiêu chuẩn: '" + roomStandard + '\'' +
+                ", Diện tích hồ bơi: '" + poolArea + '\'' +
+                ", số tầng: " + floor +
+                '}';
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "," +
+                roomStandard + "," +
+                poolArea + "," +
+                floor;
     }
 }
