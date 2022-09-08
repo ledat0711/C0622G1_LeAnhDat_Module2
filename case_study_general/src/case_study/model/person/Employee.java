@@ -75,22 +75,13 @@ public class Employee extends Person {
     }
 
     @Override
-    public String displayInfoToUser() {
-        return super.toString()+
-                ", Mã số nhân viên: " + employeeID +
-                ", Trình độ học vấn'" + academicLevel + '\'' +
-                ", Vị trí: '" + jobPosition + '\'' +
-                ", Mức lương" + salary
-                ;
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",getName(),getDateOfBirth(),getGender(),getPersonalID(),getPhoneNumber(),getEmail(),getEmployeeID(),getAcademicLevel(),getJobPosition(),getSalary());
     }
 
     @Override
     public String toString() {
-        return super.toString() + "," +
-                employeeID + "," +
-                academicLevel + "," +
-                jobPosition + "," +
-                salary;
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s",getName(),getDateOfBirth(),getGender(),getPersonalID(),getPhoneNumber(),getEmail(),getEmployeeID(),getAcademicLevel(),getJobPosition(),getSalary());
     }
 }
 

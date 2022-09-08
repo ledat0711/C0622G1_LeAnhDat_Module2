@@ -12,6 +12,7 @@ public class StudentController {
      */
     private static Scanner scanner = new Scanner(System.in);
     private static IStudentService studentService = new StudentService();
+    private static StudentService studentService2 = new StudentService();
     private static MainController memberController = new MainController();
 
     public static int inputValidChoice() {
@@ -21,7 +22,7 @@ public class StudentController {
             j++;
             try {
                 choice = Integer.parseInt(scanner.nextLine());
-                if (choice > 11 || choice < 1) {
+                if (choice > 12 || choice < 1) {
                     throw new InvalidException("\nBạn đã nhập giá trị ngoài phạm vi.");
                 }
                 break;
@@ -38,9 +39,8 @@ public class StudentController {
     }
 
     public static void menuManagementStudent() throws Exception {
-        int i = 0;
         int choice;
-        while (i < 10) {
+        while (true) {
             System.out.println("-------------------------------------------");
             System.out.println("Quản lý danh sách học viên.");
             System.out.println("1. Hiển thị danh sách học viên.");
@@ -54,8 +54,8 @@ public class StudentController {
             System.out.println("9. Sắp xếp danh sách học viên theo ĐIỂM TĂNG dần và hiển thị. ");
             System.out.println("10. Sắp xếp danh sách học viên theo ĐIỂM GIẢM dần và hiển thị. ");
             System.out.println("11. Quay trở lại menu trước. ");
+            System.out.println("12. Sắp xếp theo tên chính cuối bên phải (tên của người Việt).");
             System.out.print("Mời bạn nhập chức năng: ");
-            i++;
             choice = inputValidChoice();
             switch (choice) {
                 case 1:
@@ -91,8 +91,9 @@ public class StudentController {
                     studentService.sortStudentByPointUseLambda2();
                     break;
                 case 11:
-                    memberController.menuMainController();
-                    break;
+                    return;
+                case 12:
+                    studentService2.sortByNameEndRight();
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");
             }

@@ -14,9 +14,10 @@ public class CustomerController {
                     "\n1. Hiển thị danh sách khách hàng." +
                     "\n2. Thêm mới thông tin khách hàng" +
                     "\n3. Chỉnh sửa thông tin khách hàng" +
-                    "\n4. Trở lại menu chính." +
+                    "\n4. Xóa thông tin khách hàng." +
+                    "\n5. Trở lại menu chính." +
                     "\nMời bạn nhập lựa chọn: ");
-            choice = CommonController.inputValidChoice("[1-4]");
+            choice = CommonController.inputValidChoice("[1-5]");
             switch (choice) {
                 case "1":
                     customerService.display();
@@ -28,6 +29,8 @@ public class CustomerController {
                     customerService.edit();
                     break;
                 case "4":
+                    CustomerServiceImpl.remove();
+                case "5":
                     return;
                 default:
                     System.out.println("Lựa chọn bạn nhập không đúng!");

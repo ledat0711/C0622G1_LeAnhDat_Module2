@@ -1,5 +1,7 @@
 package case_study.model.facility;
 
+import com.sun.javafx.binding.StringFormatter;
+
 public abstract class Facility {
     private String serviceID;
     private String serviceName;
@@ -73,21 +75,10 @@ public abstract class Facility {
         this.typeOfRental = typeOfRental;
     }
 
-    public String displayInfoToUser() {
-        return ", Mã dịch vụ: '" + serviceID + '\'' +
-                ", Tên:'" + serviceName + '\'' +
-                ", Diện tích:" + area +
-                ", Chi phí thuê: " + rentalPrice +
-                ", Số lượng người tối đa: " + maxPeople +
-                ", Kiểu cho thuê: '" + typeOfRental + '\'';
-    }
+    public abstract String getInfo();
 
+    @Override
     public String toString() {
-        return serviceID + "," +
-                serviceName + "," +
-                area + "," +
-                rentalPrice + "," +
-                maxPeople + "," +
-                typeOfRental;
+        return String.format("%s,%s,%s,%s,%s,%s",getServiceID(),getServiceName(),getArea(),getRentalPrice(),getMaxPeople(),getTypeOfRental());
     }
 }

@@ -1,6 +1,6 @@
 package case_study.service.impl.facility_impl;
 
-import case_study.common.CheckAndReturnServicesInfo;
+import case_study.common.EnterServicesInfo;
 import case_study.model.facility.Villa;
 import case_study.service.IFacilityService;
 import case_study.utils.read_write_data.ReadAndWriteFile;
@@ -49,31 +49,31 @@ public class VillaServiceImpl implements IFacilityService {
                 "\nBạn đang sử dụng chức năng thêm thông tin dịch vụ Villa. ");
         Map<Villa, Integer> villaIntegerMap = ReadAndWriteFile.readVillaFromFile("src\\case_study\\data\\facilities\\villa.csv");
 
-        String serviceID = CheckAndReturnServicesInfo.returnServiceID();
+        String serviceID = EnterServicesInfo.returnServiceID();
 
         System.out.println("\nNhập tên dịch vụ: ");
-        String serviceName = CheckAndReturnServicesInfo.formatAndReturnServiceName();
+        String serviceName = EnterServicesInfo.formatAndReturnServiceName();
 
         System.out.println("\nNhập diện tích sử dụng:");
-        double area = Double.parseDouble(CheckAndReturnServicesInfo.returnAreaDouble());
+        double area = Double.parseDouble(EnterServicesInfo.returnAreaDouble());
 
         System.out.println("\nNhập vào giá cho thuê: ");
-        double rentalPrice = Double.parseDouble(CheckAndReturnServicesInfo.returnRentalPriceAndFloor());
+        double rentalPrice = Double.parseDouble(EnterServicesInfo.returnRentalPriceAndFloor());
 
-        int maxPeople = CheckAndReturnServicesInfo.returnMaxPeopleServiceInt();
+        int maxPeople = EnterServicesInfo.returnMaxPeopleServiceInt();
 
-        String typeOfRental = CheckAndReturnServicesInfo.returnTypeOfRental();
+        String typeOfRental = EnterServicesInfo.returnTypeOfRental();
 
         System.out.println("\nNhập tiêu chuẩn phòng: ");
-        String roomStandard = CheckAndReturnServicesInfo.formatAndReturnServiceName();
+        String roomStandard = EnterServicesInfo.formatAndReturnServiceName();
 
         System.out.println("\nNhập diện tích hồ bơi:");
-        String poolArea = CheckAndReturnServicesInfo.returnAreaDouble();
+        String poolArea = EnterServicesInfo.returnAreaDouble();
 
         System.out.println("\nNhập vào số tầng: ");
-        int floor = Integer.parseInt(CheckAndReturnServicesInfo.returnRentalPriceAndFloor());
+        int floor = Integer.parseInt(EnterServicesInfo.returnRentalPriceAndFloor());
 
-        int timesUseVilla = CheckAndReturnServicesInfo.returnTimesUse();
+        int timesUseVilla = EnterServicesInfo.returnTimesUse();
 
         villaIntegerMap.put(new Villa(serviceID, serviceName, area, rentalPrice, maxPeople, typeOfRental, roomStandard, poolArea, floor), timesUseVilla);
 

@@ -11,7 +11,7 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
-public class CheckAndReturnPeopleInfo {
+public class EnterPeopleInfo {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     /**
@@ -57,7 +57,7 @@ public class CheckAndReturnPeopleInfo {
      *
      * @return name(kiểu String) đã được định dạng đúng.
      */
-    public static String formatAndReturnPeopleName() {
+    public static String formatAndEnterPeopleName() {
         String peopleName = checkAndReturnPeopleName();
         String[] arr = peopleName.toLowerCase().trim().split("");
         StringBuilder str = new StringBuilder().append(arr[0].toUpperCase());
@@ -122,7 +122,7 @@ public class CheckAndReturnPeopleInfo {
      * Nhập vào chuỗi ngày tháng năm.
      * Phải nhập đúng định dạng dd/MM/yyyy
      */
-    public static LocalDate checkAndReturnBirthDate(int minAge, int maxAge) {
+    public static LocalDate enterBirthDate(int minAge, int maxAge) {
         Scanner scanner = new Scanner(System.in);
         LocalDate birthDay;
         int age;
@@ -159,7 +159,7 @@ public class CheckAndReturnPeopleInfo {
         } while (true);
     }
 
-    public static String returnGender() {
+    public static String enterGender() {
         String selection;
         while (true) {
             System.out.println("Mời bạn nhập giới tính: ");
@@ -191,7 +191,7 @@ public class CheckAndReturnPeopleInfo {
      * Không được nhập trùng số CMND/CCCD trong file dữ liệu.
      * @return: personalID (kiểu String).
      */
-    public static String returnPersonalID() {
+    public static String enterPersonalID() {
         List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile("src\\case_study\\data\\person\\employee.csv");
         List<Customer> customerList = ReadAndWriteFile.readCustomerFromFile("src\\case_study\\data\\person\\customer.csv");
         String personalID;
@@ -226,7 +226,7 @@ public class CheckAndReturnPeopleInfo {
         } while (true);
     }
 
-    public static String returnPhoneNumber() {
+    public static String enterPhoneNumber() {
         String regexPhoneNumber = "^(0|84)\\d{9}$";
         String phoneNumber;
         do {
@@ -249,7 +249,7 @@ public class CheckAndReturnPeopleInfo {
         } while (true);
     }
 
-    public static String returnEmail() {
+    public static String enterEmail() {
         String regexEmail = "^[\\w.]+@[a-zA-Z0-9.]+$";
         String email;
         do {
@@ -272,7 +272,7 @@ public class CheckAndReturnPeopleInfo {
         } while (true);
     }
 
-    public static String returnEmployeeID() {
+    public static String enterEmployeeID() {
         List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile("src\\case_study\\data\\person\\employee.csv");
         String regexEmployeeID = "^EMP-\\d{4}$";
         String employeeID;
@@ -301,7 +301,7 @@ public class CheckAndReturnPeopleInfo {
         } while (true);
     }
 
-    public static String returnEmployeeAcademicLevel() {
+    public static String enterEmployeeAcademicLevel() {
         String selection;
         do {
             System.out.println("Chọn các số tương ứng với các trình độ:" +
@@ -331,7 +331,7 @@ public class CheckAndReturnPeopleInfo {
     }
 
 
-    public static String returnEmployeePosition() {
+    public static String enterEmployeePosition() {
         String selection;
         do {
             System.out.println("Chọn các số tương ứng với thông tin các vị trí:" +
@@ -368,7 +368,7 @@ public class CheckAndReturnPeopleInfo {
         } while (true);
     }
 
-    public static String returnEmployeeSalary() {
+    public static String enterEmployeeSalary() {
         String regexSalary = "^[1-9][0-9]{6,}$";
         String salary;
         do {
@@ -395,8 +395,8 @@ public class CheckAndReturnPeopleInfo {
     /**----------------------------------NHẬP THÔNG TIN KHÁC HÀNG-------------------------------------------------------
      */
 
-    public static String returnCustomerID() {
-        List<Customer> customerList = ReadAndWriteFile.readCustomerFromFile("src\\case_study\\data\\person\\.csv");
+    public static String enterCustomerID() {
+        List<Customer> customerList = ReadAndWriteFile.readCustomerFromFile("src\\case_study\\data\\person\\customer.csv");
         String regexCustomerID = "^CUS-\\d+$";
         String customerID;
         do {
@@ -424,7 +424,7 @@ public class CheckAndReturnPeopleInfo {
         } while (true);
     }
 
-    public static String returnCustomerType() {
+    public static String enterCustomerType() {
         String selection;
         while (true) {
             System.out.println("Nhập loại khách hàng.\nVới các lựa chọn:");
@@ -454,7 +454,7 @@ public class CheckAndReturnPeopleInfo {
         }
     }
 
-    public static String returnCustomerAddress() {
+    public static String enterCustomerAddress() {
         String regexAddress = "^([\\p{L}0-9._\\-]+(\\s*[\\p{L}0-9._\\-]*))+$";
         String address;
         do {

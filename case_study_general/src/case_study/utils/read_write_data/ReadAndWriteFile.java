@@ -236,17 +236,19 @@ public class ReadAndWriteFile {
         writeStringToFile(path, stringList, append);
     }
 
-    public static void readBookingToFile(String path) {
+    public static Set<Booking> readBookingFromFile(String path) {
         List<String> stringList = ReadAndWriteFile.readStringFromFile(path);
         Set<Booking> bookingSet = new TreeSet<>();
         for (String string : stringList) {
             String[] arr = string.split(",");
             bookingSet.add(new Booking(arr[0],
-                    LocalDate.parse(arr[2],DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                    LocalDate.parse(arr[3], DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                    LocalDate.parse(arr[1],DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                    LocalDate.parse(arr[2], DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                    arr[3],
                     arr[4],
-                    arr[5],
-                    arr[6]));
+                    arr[5]));
         }
+        return bookingSet;
     }
+
 }

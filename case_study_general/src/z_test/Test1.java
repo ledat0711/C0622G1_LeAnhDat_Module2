@@ -1,39 +1,18 @@
 package z_test;
 
-import case_study.common.CheckAndReturnPeopleInfo;
-import case_study.model.person.Employee;
-import case_study.utils.read_write_data.ReadAndWriteFile;
-
-import java.util.List;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Test1 {
-    private static final Scanner SCANNER = new Scanner(System.in);
-
     public static void main(String[] args) {
-        remove();
-    }
+        LocalDate dateInput1 = LocalDate.parse("01/09/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate dateInput2 = LocalDate.parse("10/09/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate dateInput3 = LocalDate.parse("05/09/2022", DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-    public static void remove() {
-        List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile("src\\case_study\\data\\person\\employee.csv");
-        for (Employee employee : employeeList) {
-            System.out.println(employee);
-        }
-        Employee employeeFound = (Employee) CheckAndReturnPeopleInfo.checkIDReturnObject(employeeList, "nhân viên", "EMP-[0-9]{4}", "xóa");
-        if (employeeFound == null) {
-            System.out.println("Không tìm thấy đối tượng cần xóa.");
-            return;
-        }
-        System.out.println("Bạn có chắc muốn xóa nhân viên có mã số " + employeeFound.getEmployeeID() + " không?");
-        System.out.println("Phím 1: Có" +
-                "\nBất kỳ phím khác: không");
-        String selection = SCANNER.nextLine();
-        if (selection.equals("1")) {
-            employeeList.remove(employeeFound);
-            System.out.println("Xóa thành công.");
-            ReadAndWriteFile.writeEmployeeToFile("src\\case_study\\data\\person\\employee.csv", employeeList, false);
-        } else {
-            System.out.println("Bạn đã chọn không xóa thông tin.");
-        }
+        int a = dateInput1.until(LocalDate.now()).getDays();
+        int b = dateInput2.until(LocalDate.now()).getDays();
+        int c = dateInput3.until(LocalDate.now()).getDays();
+
+        System.out.println(a + "," + b + "," + c);
     }
 }

@@ -10,7 +10,7 @@ public class FuramaController {
                             "\n1. Quản lý nhân viên." +
                             "\n2. Quản lý khách hàng." +
                             "\n3. Quản lý cơ sở." +
-                            "\n4. Quản lý đặt chỗ." +
+                            "\n4. Quản lý đặt chỗ (booking)." +
                             "\n5. Quản lý Promotion." +
                             "\n6. Thoát." +
                             "\nMời bạn nhập lựa chọn: "

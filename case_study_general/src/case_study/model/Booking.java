@@ -1,10 +1,10 @@
 package case_study.model;
 
-import case_study.service.IBookingService;
-
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.Objects;
 
-public class Booking {
+public class Booking implements Comparable<Booking> {
     private String bookingID;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -77,23 +77,21 @@ public class Booking {
         this.serviceType = serviceType;
     }
 
-    //    @Override
-//    public String toString() {
-//        return "Mã booking: '" + bookingID + '\'' +
-//                ", Ngày bắt đầu: '" + startDate + '\'' +
-//                ", Ngày kết thúc: '" + endDate + '\'' +
-//                ", Mã khách hàng: '" + customerID + '\'' +
-//                ", Tên dịch vụ: '" + serviceName + '\'' +
-//                ", Loại dịch vụ:  '" + serviceType + '\''
-//                ;
-//    }
+
     @Override
     public String toString() {
-        return bookingID + "," +
-                startDate + "," +
-                endDate + "," +
-                customerID + "," +
-                serviceName + "," +
-                serviceType;
+        return String.format("%s,%s,%s,%s,%s,%s", getBookingID(), getStartDate(), getEndDate(), getCustomerID(), getServiceName(), getServiceType());
     }
+
+    @Override
+    public int compareTo(Booking o) {
+        if (!this.startDate.equals(o.startDate)) {
+            return startDate.compareTo(o.startDate);
+        } else if (!this.endDate.equals(o.endDate)) {
+            return endDate.compareTo(o.endDate);
+        } else {
+            return this.bookingID.compareTo(o.bookingID);
+        }
+    }
+
 }

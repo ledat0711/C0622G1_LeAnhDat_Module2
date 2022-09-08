@@ -48,19 +48,12 @@ public class Villa extends Facility {
     }
 
     @Override
-    public String displayInfoToUser() {
-        return super.displayInfoToUser() + "," +
-                "Phòng tiêu chuẩn: '" + roomStandard + '\'' +
-                ", Diện tích hồ bơi: '" + poolArea + '\'' +
-                ", số tầng: " + floor +
-                '}';
+    public String getInfo() {
+            return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",getServiceID(),getServiceName(),getArea(),getRentalPrice(),getMaxPeople(),getTypeOfRental(),getRoomStandard(),getPoolArea(),getFloor());
     }
 
     @Override
     public String toString() {
-        return super.toString() + "," +
-                roomStandard + "," +
-                poolArea + "," +
-                floor;
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",getServiceID(),getServiceName(),getArea(),getRentalPrice(),getMaxPeople(),getTypeOfRental(),getRoomStandard(),getPoolArea(),getFloor());
     }
 }

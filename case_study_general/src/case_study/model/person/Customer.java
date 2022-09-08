@@ -70,20 +70,13 @@ public class Customer extends Person {
     }
 
     @Override
-    public String displayInfoToUser() {
-        return super.toString()+
-                ", Mã số khách hàng: " + customerID  +
-                ", Loại khách hàng" + customerType +
-                ", Địa chỉ: '" + address
-                ;
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",getName(),getDateOfBirth(),getGender(),getPersonalID(),getPhoneNumber(),getEmail(),getCustomerID(),getCustomerType(),getAddress());
     }
 
     @Override
     public String toString() {
-        return super.toString() + "," +
-                customerID + "," +
-                customerType + "," +
-                address;
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s",getName(),getDateOfBirth(),getGender(),getPersonalID(),getPhoneNumber(),getEmail(),getCustomerID(),getCustomerType(),getAddress());
     }
 }
 

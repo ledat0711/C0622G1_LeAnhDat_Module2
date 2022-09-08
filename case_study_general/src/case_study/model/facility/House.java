@@ -42,18 +42,12 @@ public class House extends Facility {
     }
 
     @Override
-    public String displayInfoToUser() {
-        return "House{" +
-                super.displayInfoToUser() +
-                ", Tiêu chuẩn phòng'" + roomStandard + '\'' +
-                ", Số tầng: " + floorNumber +
-                '}';
+    public String getInfo(){
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s",getServiceID(),getServiceName(),getArea(),getRentalPrice(),getMaxPeople(),getTypeOfRental(),getRoomStandard(),getFloorNumber());
     }
 
     @Override
     public String toString() {
-        return super.toString() + "," +
-                roomStandard + "," +
-                floorNumber;
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s",getServiceID(),getServiceName(),getArea(),getRentalPrice(),getMaxPeople(),getTypeOfRental(),getRoomStandard(),getFloorNumber());
     }
 }

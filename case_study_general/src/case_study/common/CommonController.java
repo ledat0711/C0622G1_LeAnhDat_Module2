@@ -1,4 +1,7 @@
 package case_study.common;
+
+import case_study.utils.exception.InvalidFormatException;
+
 import java.util.Scanner;
 
 public class CommonController {
@@ -7,13 +10,18 @@ public class CommonController {
     public static String inputValidChoice(String regex) {
         String choiceString;
         while (true) {
-            choiceString = SCANNER.nextLine().trim();
-            if (choiceString.matches(regex)) {
+            try {
+                choiceString = SCANNER.nextLine().trim();
+                if (!choiceString.matches(regex)) {
+                    throw new InvalidFormatException("Bạn đã nhập thông tin không hợp lệ");
+                }
                 return choiceString;
-            } else {
-                System.err.println("\nBạn đã nhập không hợp lệ.");
-                System.out.println("Vui lòng nhập lại lựa chọn: ");
+            } catch (InvalidFormatException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e){
+                System.out.println("Bạn đã nhập lỗi.");
             }
+            System.out.println("Hãy nhập lại lựa chọn:");
         }
     }
 }

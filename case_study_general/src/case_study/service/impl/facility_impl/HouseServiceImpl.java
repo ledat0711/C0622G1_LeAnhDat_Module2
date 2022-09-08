@@ -1,6 +1,6 @@
 package case_study.service.impl.facility_impl;
 
-import case_study.common.CheckAndReturnServicesInfo;
+import case_study.common.EnterServicesInfo;
 import case_study.model.facility.House;
 import case_study.service.IFacilityService;
 import case_study.utils.read_write_data.ReadAndWriteFile;
@@ -30,29 +30,29 @@ public class HouseServiceImpl implements IFacilityService {
     @Override
     public void add() {
         Map<House, Integer> houseIntegerMap = ReadAndWriteFile.readHouseFromFile(LINK_HOUSE_FILE);
-        String serviceID = CheckAndReturnServicesInfo.returnServiceID();
+        String serviceID = EnterServicesInfo.returnServiceID();
 
         System.out.println("\nNhập vào tên dịch vụ: ");
-        String serviceName = CheckAndReturnServicesInfo.formatAndReturnServiceName();
+        String serviceName = EnterServicesInfo.formatAndReturnServiceName();
 
         System.out.println("\nNhập vào diện tích sử dụng: ");
-        double area = Double.parseDouble(CheckAndReturnServicesInfo.returnAreaDouble());
+        double area = Double.parseDouble(EnterServicesInfo.returnAreaDouble());
 
         System.out.println("\nNhập vào giá cho thuê: ");
-        double rentalPrice = Double.parseDouble(CheckAndReturnServicesInfo.returnRentalPriceAndFloor());
+        double rentalPrice = Double.parseDouble(EnterServicesInfo.returnRentalPriceAndFloor());
 
 
-        int maxPeople = CheckAndReturnServicesInfo.returnMaxPeopleServiceInt();
+        int maxPeople = EnterServicesInfo.returnMaxPeopleServiceInt();
 
-        String typeOfRental = CheckAndReturnServicesInfo.returnTypeOfRental();
+        String typeOfRental = EnterServicesInfo.returnTypeOfRental();
 
         System.out.println("\nNhập vào tiêu chuẩn phòng: ");
-        String roomStandard = CheckAndReturnServicesInfo.formatAndReturnServiceName();
+        String roomStandard = EnterServicesInfo.formatAndReturnServiceName();
 
         System.out.println("\nNhập vào số tầng: ");
-        int floorNumber = Integer.parseInt(CheckAndReturnServicesInfo.returnRentalPriceAndFloor());
+        int floorNumber = Integer.parseInt(EnterServicesInfo.returnRentalPriceAndFloor());
 
-        int timesUseHouse = CheckAndReturnServicesInfo.returnTimesUse();
+        int timesUseHouse = EnterServicesInfo.returnTimesUse();
         houseIntegerMap.put(new House(serviceID, serviceName, area, rentalPrice, maxPeople, typeOfRental, roomStandard, floorNumber), timesUseHouse);
         ReadAndWriteFile.writeHouseToFile(LINK_HOUSE_FILE, houseIntegerMap, false);
     }

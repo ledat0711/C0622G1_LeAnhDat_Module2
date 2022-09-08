@@ -1,5 +1,7 @@
 package case_study.model.facility;
 
+import java.util.Objects;
+
 public class Room extends Facility {
     private String freeServices;
 
@@ -25,17 +27,34 @@ public class Room extends Facility {
         this.freeServices = freeServices;
     }
 
+    public String getFreeServices() {
+        return freeServices;
+    }
+
+    public void setFreeServices(String freeServices) {
+        this.freeServices = freeServices;
+    }
+
     @Override
-    public String displayInfoToUser() {
-        return "Room{" +
-                super.displayInfoToUser()+
-                ", Dịch vụ miễn phí: '" + freeServices + '\'' +
-                '}';
+    public String getInfo() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s",getServiceID(),getServiceName(),getArea(),getRentalPrice(),getMaxPeople(),getTypeOfRental(),getFreeServices());
     }
 
     @Override
     public String toString() {
-        return super.toString() + "," +
-                freeServices;
+        return String.format("%s,%s,%s,%s,%s,%s,%s",getServiceID(),getServiceName(),getArea(),getRentalPrice(),getMaxPeople(),getTypeOfRental(),getFreeServices());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return Objects.equals(freeServices, room.freeServices);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(freeServices);
     }
 }

@@ -14,7 +14,12 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, LocalDate dateOfBirth, String gender, String personalID, String phoneNumber, String email) {
+    public Person(String name,
+                  LocalDate dateOfBirth,
+                  String gender,
+                  String personalID,
+                  String phoneNumber,
+                  String email) {
         this.name = name;
         this.dateOfBirth = dateOfBirth;
         this.gender = gender;
@@ -85,23 +90,10 @@ public abstract class Person {
         return Objects.hash(name, personalID);
     }
 
-    public String displayInfoToUser() {
-        return "Tên: " + name +
-                ", Ngày sinh: " + dateOfBirth +
-                ", Giới tính: " + gender +
-                ", Số CMND/CCCD: " + personalID +
-                ", Số điện thoại: " + phoneNumber +
-                ", Email: '" + email
-                ;
-    }
+    public abstract String getInfo();
 
     @Override
     public String toString() {
-        return name + "," +
-                dateOfBirth + "," +
-                gender + "," +
-                personalID + "," +
-                phoneNumber + "," +
-                email;
+        return String.format("%s,%s,%s,%s,%s,%s",getName(),getDateOfBirth(),getGender(),getPersonalID(),getPhoneNumber(),getEmail());
     }
 }

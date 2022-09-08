@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-public class CheckAndReturnServicesInfo {
+public class EnterServicesInfo {
     private static final Scanner SCANNER = new Scanner(System.in);
 
     /**
@@ -217,7 +217,7 @@ public class CheckAndReturnServicesInfo {
                     System.out.println("Bạn đã nhập 'Thuê Theo Giờ");
                     return "Thuê Theo Giờ";
                 default:
-                    System.err.println("Đã chọn sai. Bạn hãy nhập lại.");
+                    System.out.println("Đã chọn sai. Bạn hãy nhập lại.");
             }
         } while (true);
     }

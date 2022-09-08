@@ -53,19 +53,19 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     public Customer addInfoCustomer(String customerID) {
-        String name = CheckAndReturnPeopleInfo.formatAndReturnPeopleName();
-        LocalDate dateOfBirth = CheckAndReturnPeopleInfo.checkAndReturnBirthDate(18, 120);
-        String gender = CheckAndReturnPeopleInfo.returnGender();
-        String personalID = CheckAndReturnPeopleInfo.returnPersonalID();
-        String phoneNumber = CheckAndReturnPeopleInfo.returnPhoneNumber();
-        String email = CheckAndReturnPeopleInfo.returnEmail();
+        String name = EnterPeopleInfo.formatAndEnterPeopleName();
+        LocalDate dateOfBirth = EnterPeopleInfo.enterBirthDate(18, 120);
+        String gender = EnterPeopleInfo.enterGender();
+        String personalID = EnterPeopleInfo.enterPersonalID();
+        String phoneNumber = EnterPeopleInfo.enterPhoneNumber();
+        String email = EnterPeopleInfo.enterEmail();
 
         if (customerID == null) {
-            customerID = CheckAndReturnPeopleInfo.returnCustomerID();
+            customerID = EnterPeopleInfo.enterCustomerID();
         }
 
-        String customerType = CheckAndReturnPeopleInfo.returnCustomerType();
-        String address = CheckAndReturnPeopleInfo.returnCustomerAddress();
+        String customerType = EnterPeopleInfo.enterCustomerType();
+        String address = EnterPeopleInfo.enterCustomerAddress();
         return new Customer(name, dateOfBirth, gender, personalID, phoneNumber, email, customerID, customerType, address);
     }
 
@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements ICustomerService {
     public void edit() {
         int j;
         List<Customer> customerList = ReadAndWriteFile.readCustomerFromFile(LINK_CUSTOMER_FILE);
-        Customer customerFound = (Customer) CheckAndReturnPeopleInfo.checkIDReturnObject(customerList, "khách hàng", "CUS-[0-9]{4}", "edit");
+        Customer customerFound = (Customer) EnterPeopleInfo.checkIDReturnObject(customerList, "khách hàng", "CUS-[0-9]{4}", "edit");
         if (customerFound == null) {
             System.out.println("Không tồn tại khách hàng với ID đã nhập.");
             return;
@@ -100,28 +100,28 @@ public class CustomerServiceImpl implements ICustomerService {
             selection = SCANNER.nextLine();
             switch (selection) {
                 case "1":
-                    customerFound.setName(CheckAndReturnPeopleInfo.formatAndReturnPeopleName());
+                    customerFound.setName(EnterPeopleInfo.formatAndEnterPeopleName());
                     break;
                 case "2":
-                    customerFound.setDateOfBirth(CheckAndReturnPeopleInfo.checkAndReturnBirthDate(18, 110));
+                    customerFound.setDateOfBirth(EnterPeopleInfo.enterBirthDate(18, 110));
                     break;
                 case "3":
-                    customerFound.setGender(CheckAndReturnPeopleInfo.returnGender());
+                    customerFound.setGender(EnterPeopleInfo.enterGender());
                     break;
                 case "4":
-                    customerFound.setPersonalID(CheckAndReturnPeopleInfo.returnPersonalID());
+                    customerFound.setPersonalID(EnterPeopleInfo.enterPersonalID());
                     break;
                 case "5":
-                    customerFound.setPhoneNumber(CheckAndReturnPeopleInfo.returnPhoneNumber());
+                    customerFound.setPhoneNumber(EnterPeopleInfo.enterPhoneNumber());
                     break;
                 case "6":
-                    customerFound.setEmail(CheckAndReturnPeopleInfo.returnEmail());
+                    customerFound.setEmail(EnterPeopleInfo.enterEmail());
                     break;
                 case "8":
-                    customerFound.setCustomerType(CheckAndReturnPeopleInfo.returnCustomerType());
+                    customerFound.setCustomerType(EnterPeopleInfo.enterCustomerType());
                     break;
                 case "9":
-                    customerFound.setAddress(CheckAndReturnPeopleInfo.returnCustomerAddress());
+                    customerFound.setAddress(EnterPeopleInfo.enterCustomerAddress());
                     break;
                 case "10":
                     CustomerController.displayCustomerManagementMenu();
@@ -151,4 +151,31 @@ public class CustomerServiceImpl implements ICustomerService {
         } while (true);
     }
 
+    public static void remove() {
+        List<Customer> customerList = ReadAndWriteFile.readCustomerFromFile(LINK_CUSTOMER_FILE);
+        System.out.println("\nDanh sách khách hàng:");
+        for (Customer customer : customerList) {
+            System.out.println(customer);
+        }
+        Customer customerFound = (Customer) EnterPeopleInfo.checkIDReturnObject(customerList, "khách hàng", "CUS-[0-9]{4}", "xóa");
+        if (customerFound == null) {
+            System.out.println("Không tìm thấy đối tượng cần xóa.");
+            return;
+        }
+        System.out.println("Bạn có chắc muốn xóa đối tượng bên dưới không?");
+        System.out.println(customerFound + "\n");
+        System.out.println("Phím 1: Có" +
+                "\nBất kỳ phím khác: không");
+        String selection = SCANNER.nextLine().trim();
+        if (selection.equals("1")) {
+            customerList.remove(customerFound);
+            System.out.println("Xóa thành công.");
+            ReadAndWriteFile.writeCustomerToFile(LINK_CUSTOMER_FILE, customerList, false);
+        } else {
+            System.out.println("Bạn đã chọn không xóa thông tin.");
+        }
+    }
+
+    public static void find(){
+    }
 }

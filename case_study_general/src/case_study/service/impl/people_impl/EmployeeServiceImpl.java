@@ -18,11 +18,26 @@ public class EmployeeServiceImpl implements IEmployeeService {
         int i;
         List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile(LINK_EMPLOYEE_FILE);
         System.out.println("--------------Danh sách nhân viên--------------");
+        if(employeeList.size() == 0){
+            System.out.println("Danh sách nhân viên đang trống.");
+        }
         for (i = 0; i < employeeList.size(); i++) {
             System.out.println("STT " + (i + 1) + ": " + employeeList.get(i));
         }
     }
-
+    private void showInfo(List<Employee> employeeList) {
+        System.out.println("EMPLOYEE_LIST");
+        System.out.printf("|%-7s|%-20s|%-12s|%-7s|%-10s|%-10s|%-25s|%-12s|%-12s|%-12s|\n",
+                "ID", "NAME", "DAY_OF_BIRTH", "GENDER", "IDENTITY",
+                "PHONE", "EMAIL", "LEVEL", "POSITION", "SALARY");
+        String infoE = "";
+        for (Employee e : employeeList) {
+            infoE = String.format("|%-7s|%-20s|%-12s|%-7s|%-10s|%-10s|%-25s|%-12s|%-12s|%12.2f|",
+                    e.getEmployeeID(), e.getName(), e.getDateOfBirth(), e.getGender(), e.getPersonalID(),
+                    e.getPhoneNumber(), e.getEmail(), e.getAcademicLevel(), e.getJobPosition(), e.getSalary());
+            System.out.println(infoE);
+        }
+    }
     @Override
     public void add() {
         System.out.println("-------------------------------------------" +
@@ -37,20 +52,20 @@ public class EmployeeServiceImpl implements IEmployeeService {
     }
 
     public Employee addInfoEmployee(String employeeID) {
-        String name = CheckAndReturnPeopleInfo.formatAndReturnPeopleName();
-        LocalDate dateOfBirth = CheckAndReturnPeopleInfo.checkAndReturnBirthDate(18, 100);
-        String gender = CheckAndReturnPeopleInfo.returnGender();
-        String personalID = CheckAndReturnPeopleInfo.returnPersonalID();
-        String phoneNumber = CheckAndReturnPeopleInfo.returnPhoneNumber();
-        String email = CheckAndReturnPeopleInfo.returnEmail();
+        String name = EnterPeopleInfo.formatAndEnterPeopleName();
+        LocalDate dateOfBirth = EnterPeopleInfo.enterBirthDate(18, 100);
+        String gender = EnterPeopleInfo.enterGender();
+        String personalID = EnterPeopleInfo.enterPersonalID();
+        String phoneNumber = EnterPeopleInfo.enterPhoneNumber();
+        String email = EnterPeopleInfo.enterEmail();
 
         if (employeeID == null) {
-            employeeID = CheckAndReturnPeopleInfo.returnEmployeeID();
+            employeeID = EnterPeopleInfo.enterEmployeeID();
         }
 
-        String academicLevel = CheckAndReturnPeopleInfo.returnEmployeeAcademicLevel();
-        String jobPosition = CheckAndReturnPeopleInfo.returnEmployeePosition();
-        double salary = Double.parseDouble(CheckAndReturnPeopleInfo.returnEmployeeSalary());
+        String academicLevel = EnterPeopleInfo.enterEmployeeAcademicLevel();
+        String jobPosition = EnterPeopleInfo.enterEmployeePosition();
+        double salary = Double.parseDouble(EnterPeopleInfo.enterEmployeeSalary());
         return new Employee(name, dateOfBirth, gender, personalID,
                 phoneNumber, email, employeeID, academicLevel, jobPosition, salary);
     }
@@ -59,7 +74,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
     public void edit() {
         int j;
         List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile(LINK_EMPLOYEE_FILE);
-        Employee employeeFound = (Employee) CheckAndReturnPeopleInfo.checkIDReturnObject(employeeList, "nhân viên", "EMP-[0-9]{4}", "edit");
+        Employee employeeFound = (Employee) EnterPeopleInfo.checkIDReturnObject(employeeList, "nhân viên", "EMP-[0-9]{4}", "edit");
         if (employeeFound == null) {
             System.out.println("Không tồn tại nhân viên với ID đã nhập.");
             return;
@@ -85,31 +100,31 @@ public class EmployeeServiceImpl implements IEmployeeService {
             selection = SCANNER.nextLine().trim();
             switch (selection) {
                 case "1":
-                    employeeFound.setName(CheckAndReturnPeopleInfo.formatAndReturnPeopleName());
+                    employeeFound.setName(EnterPeopleInfo.formatAndEnterPeopleName());
                     break;
                 case "2":
-                    employeeFound.setDateOfBirth(CheckAndReturnPeopleInfo.checkAndReturnBirthDate(18, 100));
+                    employeeFound.setDateOfBirth(EnterPeopleInfo.enterBirthDate(18, 100));
                     break;
                 case "3":
-                    employeeFound.setGender(CheckAndReturnPeopleInfo.returnGender());
+                    employeeFound.setGender(EnterPeopleInfo.enterGender());
                     break;
                 case "4":
-                    employeeFound.setPersonalID(CheckAndReturnPeopleInfo.returnPersonalID());
+                    employeeFound.setPersonalID(EnterPeopleInfo.enterPersonalID());
                     break;
                 case "5":
-                    employeeFound.setPhoneNumber(CheckAndReturnPeopleInfo.returnPhoneNumber());
+                    employeeFound.setPhoneNumber(EnterPeopleInfo.enterPhoneNumber());
                     break;
                 case "6":
-                    employeeFound.setEmail(CheckAndReturnPeopleInfo.returnEmail());
+                    employeeFound.setEmail(EnterPeopleInfo.enterEmail());
                     break;
                 case "8":
-                    employeeFound.setAcademicLevel(CheckAndReturnPeopleInfo.returnEmployeeAcademicLevel());
+                    employeeFound.setAcademicLevel(EnterPeopleInfo.enterEmployeeAcademicLevel());
                     break;
                 case "9":
-                    employeeFound.setJobPosition(CheckAndReturnPeopleInfo.returnEmployeePosition());
+                    employeeFound.setJobPosition(EnterPeopleInfo.enterEmployeePosition());
                     break;
                 case "10":
-                    employeeFound.setSalary(Double.parseDouble(CheckAndReturnPeopleInfo.returnEmployeeSalary()));
+                    employeeFound.setSalary(Double.parseDouble(EnterPeopleInfo.enterEmployeeSalary()));
                     break;
                 case "11":
                     employeeFound = addInfoEmployee(employeeFound.getEmployeeID());
@@ -143,18 +158,20 @@ public class EmployeeServiceImpl implements IEmployeeService {
 
     public static void remove() {
         List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile(LINK_EMPLOYEE_FILE);
+        System.out.println("\nDanh sách nhân viên: ");
         for (Employee employee : employeeList) {
             System.out.println(employee);
         }
-        Employee employeeFound = (Employee) CheckAndReturnPeopleInfo.checkIDReturnObject(employeeList, "nhân viên", "EMP-[0-9]{4}", "xóa");
+        Employee employeeFound = (Employee) EnterPeopleInfo.checkIDReturnObject(employeeList, "nhân viên", "EMP-[0-9]{4}", "xóa");
         if (employeeFound == null) {
             System.out.println("Không tìm thấy đối tượng cần xóa.");
             return;
         }
-        System.out.println("Bạn có chắc muốn xóa nhân viên có mã số " + employeeFound.getEmployeeID() + " không?");
+        System.out.println("Bạn có chắc muốn xóa đối tượng bên dưới không?");
+        System.out.println(employeeFound + "\n");
         System.out.println("Phím 1: Có" +
                 "\nBất kỳ phím khác: không");
-        String selection = SCANNER.nextLine();
+        String selection = SCANNER.nextLine().trim();
         if (selection.equals("1")) {
             employeeList.remove(employeeFound);
             System.out.println("Xóa thành công.");
@@ -162,5 +179,66 @@ public class EmployeeServiceImpl implements IEmployeeService {
         } else {
             System.out.println("Bạn đã chọn không xóa thông tin.");
         }
+    }
+
+    public static void findEmployee() {
+        String selection;
+        do {
+            System.out.println("Các lựa chọn tìm kiếm:" +
+                    "\n1.Tìm theo ID" +
+                    "\n2.Tìm theo tên" +
+                    "\n3.Thoát chức năng.");
+            System.out.println("Lựa chọn của bạn: ");
+            selection = SCANNER.nextLine();
+            switch (selection) {
+                case "1":
+                    findByEmployeeID();
+                    break;
+                case "2":
+                    findEmpployeeByName();
+                    break;
+                case "3":
+                    return;
+                default:
+                    System.err.println("Bạn đã nhập sai.");
+            }
+        } while (true);
+    }
+
+    public static void findByEmployeeID() {
+        List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile(LINK_EMPLOYEE_FILE);
+        Employee employeeFound = (Employee) EnterPeopleInfo.checkIDReturnObject(employeeList, "nhân viên", "EMP-[0-9]{4}", "tìm kiếm");
+        if (employeeFound == null) {
+            System.out.println("Không tìm thấy đối tượng cần xóa.");
+            return;
+        }
+        System.out.println("Thông tin nhân viên bạn cần tìm:");
+        System.out.println(employeeFound);
+    }
+
+    public static void findEmpployeeByName() {
+        List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile(LINK_EMPLOYEE_FILE);
+        System.out.print("Nhập tên nhân viên muốn tìm: ");
+        String nameToFind = SCANNER.nextLine();
+        if(!checkEmployeeExitByName(nameToFind)){
+            System.out.println("Không tìm thấy nhân viên.");
+            return;
+        }
+        System.out.println("Thông tin bạn muốn tìm: ");
+        for (Employee employee : employeeList) {
+            if (employee.getName().toLowerCase().contains(nameToFind.toLowerCase())) {
+                System.out.println(employee);
+            }
+        }
+    }
+
+    public static boolean checkEmployeeExitByName(String nameToFind) {
+        List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile(LINK_EMPLOYEE_FILE);
+        for(Employee employee:employeeList){
+            if(employee.getName().toLowerCase().contains(nameToFind.toLowerCase())){
+                return true;
+            }
+        }
+        return false;
     }
 }

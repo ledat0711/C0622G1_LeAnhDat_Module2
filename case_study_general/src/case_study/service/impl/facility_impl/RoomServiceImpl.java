@@ -1,6 +1,6 @@
 package case_study.service.impl.facility_impl;
 
-import case_study.common.CheckAndReturnServicesInfo;
+import case_study.common.EnterServicesInfo;
 import case_study.model.facility.Room;
 import case_study.service.IFacilityService;
 import case_study.utils.read_write_data.ReadAndWriteFile;
@@ -27,25 +27,25 @@ public class RoomServiceImpl implements IFacilityService {
         Map<Room, Integer> roomIntegerMap = ReadAndWriteFile.readRoomFromFile(LINK_ROOM_FILE);
 
         System.out.println("\nNhập mã dịch vụ: ");
-        String serviceID = CheckAndReturnServicesInfo.returnServiceID();
+        String serviceID = EnterServicesInfo.returnServiceID();
 
         System.out.println("\nNhập tên dịch vụ:");
-        String serviceName = CheckAndReturnServicesInfo.formatAndReturnServiceName();
+        String serviceName = EnterServicesInfo.formatAndReturnServiceName();
 
         System.out.println("\nNhập diện tích sử dụng: ");
-        double area = Double.parseDouble(CheckAndReturnServicesInfo.returnAreaDouble());
+        double area = Double.parseDouble(EnterServicesInfo.returnAreaDouble());
 
         System.out.println("\nNhập giá cho thuê: ");
-        double rentalPrice = Double.parseDouble(CheckAndReturnServicesInfo.returnRentalPriceAndFloor());
+        double rentalPrice = Double.parseDouble(EnterServicesInfo.returnRentalPriceAndFloor());
 
-        int maxPeople = CheckAndReturnServicesInfo.returnMaxPeopleServiceInt();
+        int maxPeople = EnterServicesInfo.returnMaxPeopleServiceInt();
 
-        String typeOfRental = CheckAndReturnServicesInfo.returnTypeOfRental();
+        String typeOfRental = EnterServicesInfo.returnTypeOfRental();
 
         System.out.println("\nNhập dịch vụ miễn phí: ");
-        String freeServices = CheckAndReturnServicesInfo.formatAndReturnServiceName();
+        String freeServices = EnterServicesInfo.formatAndReturnServiceName();
 
-        int timesUseRoom= CheckAndReturnServicesInfo.returnTimesUse();
+        int timesUseRoom= EnterServicesInfo.returnTimesUse();
         roomIntegerMap.put(new Room(serviceID, serviceName,area,rentalPrice,maxPeople,typeOfRental,freeServices), timesUseRoom);
         ReadAndWriteFile.writeRoomToFile(LINK_ROOM_FILE, roomIntegerMap, false);
     }
