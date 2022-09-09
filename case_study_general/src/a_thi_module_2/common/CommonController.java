@@ -1,6 +1,6 @@
 package a_thi_module_2.common;
 
-import case_study.utils.exception.InvalidFormatException;
+import a_thi_module_2.utils.exception.InvalidFormatException;
 
 import java.util.Scanner;
 

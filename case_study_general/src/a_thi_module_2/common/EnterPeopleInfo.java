@@ -1,9 +1,9 @@
 package a_thi_module_2.common;
 
-import case_study.model.person.Customer;
-import case_study.model.person.Employee;
-import case_study.utils.exception.*;
-import case_study.utils.read_write_data.ReadAndWriteFile;
+import a_thi_module_2.model.Student;
+import a_thi_module_2.model.Employee;
+import a_thi_module_2.utils.exception.*;
+import a_thi_module_2.utils.read_write_data.ReadAndWriteFile;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -102,15 +102,15 @@ public class EnterPeopleInfo {
         if (determineFlow.equals("nhân viên")) {
             List<Employee> employeeList = (List<Employee>) objectList;
             for (i = 0; i < employeeList.size(); i++) {
-                if (employeeList.get(i).getEmployeeID().equals(id)) {
+                if (employeeList.get(i).getPersonalID().equals(id)) {
                     return employeeList.get(i);
                 }
             }
         } else {
-            List<Customer> customerList = (List<Customer>) objectList;
-            for (i = 0; i < customerList.size(); i++) {
-                if (customerList.get(i).getCustomerID().equals(id)) {
-                    return customerList.get(i);
+            List<Student> studentList = (List<Student>) objectList;
+            for (i = 0; i < studentList.size(); i++) {
+                if (studentList.get(i).getPersonalID().equals(id)) {
+                    return studentList.get(i);
                 }
             }
         }
@@ -192,13 +192,13 @@ public class EnterPeopleInfo {
      * @return: personalID (kiểu String).
      */
     public static String enterPersonalID() {
-        List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile("src\\case_study\\data\\person\\employee.csv");
-        List<Customer> customerList = ReadAndWriteFile.readCustomerFromFile("src\\case_study\\data\\person\\customer.csv");
+        List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile("src\\a_thi_module_2\\data\\employee_file.csv");
+        List<Student> studentList = ReadAndWriteFile.readStudentFromFile("src\\a_thi_module_2\\data\\student_file.csv");
         String personalID;
-        String regexPersonalID = "^\\d{9}|\\d{12}$";
+        String regexPersonalID = "^(HV|NV)-\\d{3}$";
         do {
             try {
-                System.out.println("Nhập số CMND/CCCD (Nhập 9 hoặc 12 chữ số): ");
+                System.out.println("Nhập số định danh: HV-xxx hoặc NV-xxx ");
                 personalID = SCANNER.nextLine().trim();
                 if (personalID.isEmpty()) {
                     throw new EmptyInformationException("Bạn chưa nhập thông tin.");
@@ -208,19 +208,19 @@ public class EnterPeopleInfo {
                 }
                 for (Employee employee : employeeList) {
                     if (personalID.equals(employee.getPersonalID())) {
-                        throw new DuplicateInfoException("Bạn đã nhập trùng số CMND/CCCD");
+                        throw new DuplicateInfoException("Bạn đã nhập trùng mã định danh");
                     }
                 }
-                for (Customer customer : customerList) {
-                    if (personalID.equals(customer.getPersonalID())) {
-                        throw new DuplicateInfoException("Bạn đã nhập trùng số CMND/CCCD");
+                for (Student student : studentList) {
+                    if (personalID.equals(student.getPersonalID())) {
+                        throw new DuplicateInfoException("Bạn đã nhập trùng mã định danh");
                     }
                 }
                 return personalID;
             } catch (InvalidFormatException | EmptyInformationException | DuplicateInfoException e) {
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
             } catch (Exception e) {
-                System.err.println("Thông tin bạn đã nhập bị lỗi.");
+                System.out.println("Thông tin bạn đã nhập bị lỗi.");
             }
             System.out.println("Vui lòng nhập lại.");
         } while (true);
@@ -241,7 +241,7 @@ public class EnterPeopleInfo {
                 }
                 return phoneNumber;
             } catch (EmptyInformationException | InvalidFormatException e) {
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
             } catch (Exception e) {
                 System.out.println("Bạn đã nhập số điện thoại bị lỗi.");
             }
@@ -264,7 +264,7 @@ public class EnterPeopleInfo {
                 }
                 return email;
             } catch (EmptyInformationException | InvalidFormatException e) {
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
             } catch (Exception e) {
                 System.out.println("Bạn đã nhập email bị lỗi.");
             }
@@ -273,8 +273,8 @@ public class EnterPeopleInfo {
     }
 
     public static String enterEmployeeID() {
-        List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile("src\\case_study\\data\\person\\employee.csv");
-        String regexEmployeeID = "^EMP-\\d{4}$";
+        List<Employee> employeeList = ReadAndWriteFile.readEmployeeFromFile("src\\a_thi_module_2\\data\\employee_file.csv");
+        String regexEmployeeID = "^NV-\\d{3}$";
         String employeeID;
         do {
             try {
@@ -287,15 +287,15 @@ public class EnterPeopleInfo {
                     throw new InvalidFormatException("Bạn đã nhập mã số nhân viên không hợp lệ.");
                 }
                 for (Employee employee : employeeList) {
-                    if (employeeID.equals(employee.getEmployeeID())) {
+                    if (employeeID.equals(employee.getPersonalID())) {
                         throw new DuplicateInfoException("Bạn đã nhập trùng mã số nhân viên");
                     }
                 }
                 return employeeID;
             } catch (EmptyInformationException | InvalidFormatException | DuplicateInfoException e) {
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
             } catch (Exception e) {
-                System.err.println("Bạn đã nhập mã số nhân viên bị lỗi.");
+                System.out.println("Bạn đã nhập mã số nhân viên bị lỗi.");
             }
             System.out.println("Vui lòng nhập lại.");
         } while (true);
@@ -392,12 +392,12 @@ public class EnterPeopleInfo {
     }
 
 
-    /**----------------------------------NHẬP THÔNG TIN KHÁC HÀNG-------------------------------------------------------
+    /**----------------------------------NHẬP THÔNG TIN học viên-------------------------------------------------------
      */
 
-    public static String enterCustomerID() {
-        List<Customer> customerList = ReadAndWriteFile.readCustomerFromFile("src\\case_study\\data\\person\\customer.csv");
-        String regexCustomerID = "^CUS-\\d+$";
+    public static String enterStudentID() {
+        List<Student> studentList = ReadAndWriteFile.readStudentFromFile("src\\a_thi_module_2\\data\\student_file.csv");
+        String regexCustomerID = "^HV-\\d{3}$";
         String customerID;
         do {
             try {
@@ -407,54 +407,25 @@ public class EnterPeopleInfo {
                     throw new EmptyInformationException("Bạn chưa nhập thông tin.");
                 }
                 if (!customerID.matches(regexCustomerID)) {
-                    throw new InvalidFormatException("Bạn đã nhập mã số khách hàng không hợp lệ.");
+                    throw new InvalidFormatException("Bạn đã nhập mã mã học viên không hợp lệ.");
                 }
-                for (Customer customer : customerList) {
-                    if (customerID.equals(customer.getCustomerID())) {
-                        throw new DuplicateInfoException("Bạn đã nhập trùng mã số khách hàng");
+                for (Student student : studentList) {
+                    if (customerID.equals(student.getPersonalID())) {
+                        throw new DuplicateInfoException("Bạn đã nhập trùng mã học viên");
                     }
                 }
                 return customerID;
             } catch (EmptyInformationException | InvalidFormatException | DuplicateInfoException e) {
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
             } catch (Exception e) {
-                System.err.println("Bạn đã nhập mã số bị lỗi.");
+                System.out.println("Bạn đã nhập mã số bị lỗi.");
             }
             System.out.println("Vui lòng nhập lại.");
         } while (true);
     }
 
-    public static String enterCustomerType() {
-        String selection;
-        while (true) {
-            System.out.println("Nhập loại khách hàng.\nVới các lựa chọn:");
-            System.out.printf("%s-%s\n%s-%s\n%s-%s\n%s-%s\n%s-%s",
-                    1, "Diamond", 2, "Platinium", 3, "Gold", 4, "Silver", 5, "Member");
-            System.out.println("\nĐiền một con số từ số 1 -> 5: ");
-            selection = SCANNER.nextLine().trim();
-            switch (selection) {
-                case "1":
-                    System.out.println("Bạn đã nhập Diamond");
-                    return "Diamond";
-                case "2":
-                    System.out.println("Bạn đã nhập Platinium");
-                    return "Platinium";
-                case "3":
-                    System.out.println("Bạn đã nhập Gold");
-                    return "Gold";
-                case "4":
-                    System.out.println("Bạn đã nhập Silver");
-                    return "Silver";
-                case "5":
-                    System.out.println("Bạn đã nhập Member");
-                    return "Member";
-                default:
-                    System.out.println("Thông tin đã nhập bị lỗi. Vui lòng nhập lại.");
-            }
-        }
-    }
 
-    public static String enterCustomerAddress() {
+    public static String enterAddress() {
         String regexAddress = "^([\\p{L}0-9._\\-]+(\\s*[\\p{L}0-9._\\-]*))+$";
         String address;
         do {
@@ -471,9 +442,9 @@ public class EnterPeopleInfo {
                 }
                 return address;
             } catch (EmptyInformationException | InvalidFormatException e) {
-                System.err.println(e.getMessage());
+                System.out.println(e.getMessage());
             } catch (Exception e) {
-                System.err.println("Bạn đã nhập địa chỉ bị lỗi.");
+                System.out.println("Bạn đã nhập địa chỉ bị lỗi.");
             }
             System.out.println("Vui lòng nhập lại.");
         } while (true);
